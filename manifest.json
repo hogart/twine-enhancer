@@ -1,0 +1,45 @@
+{
+    "name": "Twine Enhancer",
+    "manifest_version": 2,
+    "version": "1.0.0",
+    "description": "Unofficial enhancements and tuning for Twine (online version)",
+    "homepage_url": "https://github.com/hogart/twine-enhancer",
+    "icons": {
+        "16": "./icons/16.png",
+        "48": "./icons/48.png",
+        "128": "./icons/128.png"
+    },
+
+    "permissions": [
+        "storage"
+    ],
+
+    "content_scripts": [
+        {
+            "matches": [
+                "http://twinery.org/2/*"
+            ],
+            "js": [
+                "./syncOptions.js",
+
+                "./content/detectStoryEditor.js",
+                "./content/snapPassages.js",
+                "./content/toggleTheme.js",
+                "./content/shortcuts.js",
+
+                "./content/biggerEditors.js",
+                "./content/neaterPassages.js"
+            ],
+            "css": [
+                "./content/biggerEditors.css",
+                "./content/neaterPassages.css",
+                "./content/toolbarButtons.css"
+            ]
+        }
+    ],
+
+    "options_ui": {
+        "page": "options/options.html",
+        "chrome_style": true
+    }
+}

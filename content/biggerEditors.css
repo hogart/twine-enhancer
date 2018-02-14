@@ -1,0 +1,18 @@
+.wideEditors .modal-dialog.editor {
+    width: auto !important;
+    left: .5rem !important;
+    right: .5rem !important;
+}
+
+.wideEditors .modal-dialog.editor .content > p {
+    height: 0;
+    overflow: hidden;
+}
+
+.wideEditors .modal-dialog.editor button.widen {
+    display: none;
+}
+
+.wideEditors #storyEditView .toolbar.main .searchContainer input {
+    width: 30em;
+}
