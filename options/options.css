@@ -37,3 +37,13 @@ summary:hover {
 summary:focus {
     outline: none;
 }
+
+.saveStatus {
+    opacity: 0;
+    color: darkgreen;
+    transition: 150ms opacity linear;
+}
+.saveStatus.show {
+    opacity: 1;
+    transition: 150ms opacity linear;
+}

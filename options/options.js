@@ -1,19 +1,8 @@
 'use strict';
 
-const defaultOptions = {
-    shortcutButtons: true,
-    editJs: true,
-    editCss: true,
-    proofRead: false,
-    publish: true,
-    snap: true,
-    theme: false,
-    wideEditors: true,
-    neatPassages: false,
-};
-
 const form = document.querySelector('.js-optionsForm');
 const fields = Array.from(form.querySelectorAll('input[type="checkbox"]'));
+const saveStatus = form.querySelector('.js-saveStatus');
 
 form.addEventListener('change', (event) => {
     const legend = event.target.closest('legend');
@@ -28,8 +17,19 @@ form.addEventListener('submit', (event) => {
 
     const newOptions = {};
     fields.forEach((field) => newOptions[field.name] = field.checked);
-    saveOptions(newOptions);
+    saveOptions(newOptions).then(() => {
+        saveStatus.classList.add('show');
+        setTimeout(() => {
+            saveStatus.classList.remove('show');
+        }, 2000);
+    });
 }, false);
+
+form.addEventListener('reset', (event) => {
+    event.preventDefault();
+
+    clearOptions().then(() => window.location.reload());
+});
 
 document.addEventListener('DOMContentLoaded', async () => {
     const values = await loadOptions(defaultOptions);
