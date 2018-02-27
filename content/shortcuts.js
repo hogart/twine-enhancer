@@ -11,16 +11,91 @@ function triggerEvent(element, type = 'click') {
 }
 
 function button({icon, title}, action) {
-    return `<button title="${title}" data-action="${action}"><i class="fa fa-${icon}"></i></button>`;
+    return h('button', {title, data: {action}}, `<i class="fa fa-${icon}"></i>`);
+}
+
+function h(tagName, attrs = null, children = null) {
+    const el = document.createElement(tagName);
+    if (attrs) {
+        Object.keys(attrs).forEach((attrName) => {
+            if (attrName === 'tagName' || attrName === 'children') {
+                return;
+            }
+
+            if (attrName === 'data') {
+                Object.keys(attrs[attrName]).forEach((datasetName) => {
+                    el.dataset[datasetName] = attrs[attrName][datasetName];
+                })
+            } else {
+                el.setAttribute(attrName, attrs[attrName]);
+            }
+        })
+    }
+
+    if (children) {
+        if (typeof children === 'string') {
+            el.innerHTML = children;
+        } else {
+            children.forEach((child) => {
+                let childEl = child instanceof HTMLElement ? child : h(child.tagName, child, child.children);
+                el.appendChild(childEl);
+            })
+        }
+    }
+
+    return el;
 }
 
 const buttonsMap = {
-    editJs: {icon: 'terminal', title: 'Edit Story JavaScript'},
-    editCss: {icon: 'css3', title: 'Edit Story StyleSheet'},
-    proofRead: {icon: 'book', title: 'View Proofing Copy'},
-    publish: {icon: 'download', title: 'Publish to File'},
-    snap: {icon: 'sitemap', title: 'Snap all passages (reloads page)'},
-    theme: {icon: 'moon-o', title: 'Toggle dark/light theme'},
+    editJs: {
+        icon: 'terminal',
+        title: 'Edit Story JavaScript',
+        hotkey: 'alt+j',
+        buttonIndex: 0,
+    },
+    editCss: {
+        icon: 'css3',
+        title: 'Edit Story StyleSheet',
+        hotkey: 'alt+c',
+        buttonIndex: 1,
+    },
+    proofRead: {
+        icon: 'book',
+        title: 'View Proofing Copy',
+        hotkey: 'f4',
+        buttonIndex: 7,
+    },
+    publish: {
+        icon: 'download',
+        title: 'Publish to File',
+        hotkey: 'ctrl+s',
+        buttonIndex: 8,
+    },
+    snap: {
+        icon: 'sitemap',
+        title: 'Snap all passages (reloads page)',
+        action() {
+            snapPassages();
+            window.location.reload();
+        }
+    },
+    theme: {
+        icon: 'moon-o',
+        title: 'Toggle dark/light theme',
+        action: toggleTheme,
+    },
+    run: {
+        hotkey: 'shift+f10',
+        action() {
+            console.log('run');
+        },
+    },
+    debug: {
+        hotkey: 'shift+f9',
+        action() {
+            console.log('debug');
+        }
+    }
 };
 
 function getMenu(toolbar) {
@@ -32,32 +107,11 @@ function getMenu(toolbar) {
 }
 
 function getMenuButtons(menu) {
-    const [editJsBtn, editCssBtn, ...rest] = menu.querySelectorAll('li button');
-    const proofBtn = rest[rest.length - 2];
-    const publishBtn = rest[rest.length - 1];
-
-    return {
-        editJsBtn,
-        editCssBtn,
-        proofBtn,
-        publishBtn,
-    }
+    return menu.querySelectorAll('li button');
 }
 
-function createContainer(enabledButtons) {
-    const buttonsContainer = document.createElement('div');
-
-    buttonsContainer.innerHTML = Object.keys(buttonsMap).map((key) => {
-        if (enabledButtons[key]) {
-            return button(buttonsMap[key], key);
-        } else {
-            return '';
-        }
-    }).join('');
-
-    buttonsContainer.className = 'toolbarButtons';
-
-    return buttonsContainer;
+function createContainer() {
+    return h('div', {class: 'toolbarButtons'});
 }
 
 function waitForElement(selector, parent = document) {
@@ -93,36 +147,45 @@ detectStoryEditor(async () => {
 
     attachToDom(menu);
 
-    function attachToDom(menu) {
-        const {editJsBtn, editCssBtn, proofBtn, publishBtn} = getMenuButtons(menu);
+    function btnConfToHandler(buttons, conf) {
+        let handler;
+        if (Number.isInteger(conf.buttonIndex)) {
+            handler = () => triggerEvent(buttons[conf.buttonIndex])
+        } else if (typeof conf.action === 'function') {
+            handler = conf.action;
+        }
 
-        const actions = {
-            editJs() {
-                triggerEvent(editJsBtn);
-            },
-            editCss() {
-                triggerEvent(editCssBtn);
-            },
-            proofRead() {
-                triggerEvent(proofBtn);
-            },
-            publish() {
-                triggerEvent(publishBtn);
-            },
-            snap() {
-                snapPassages();
-                window.location.reload();
-            },
-            theme() {
-                toggleTheme();
-            },
-        };
+        return handler;
+    }
+
+    function attachToDom(menu) {
+        const buttons = getMenuButtons(menu);
+
+        Object.keys(buttonsMap).forEach((btnName) => {
+            if (!options[btnName]) {
+                return;
+            }
+
+            const conf = buttonsMap[btnName];
+
+            if (conf.icon && conf.title) {
+                buttonsContainer.appendChild(button(conf, btnName));
+            }
+
+            if (conf.hotkey) {
+                listenForHotKey(conf.hotkey, () => {
+                    const handler = btnConfToHandler(buttons, conf);
+                    handler();
+                });
+            }
+        });
 
         buttonsContainer.addEventListener('click', (event) => {
             const button = event.target.closest('button[data-action]');
-            if (actions[button.dataset.action]) {
-                actions[button.dataset.action]();
-            }
+            const action = button.dataset.action;
+            const conf = buttonsMap[action];
+            const handler = btnConfToHandler(buttons, conf);
+            handler();
         });
 
         toolbar[0].appendChild(buttonsContainer);

@@ -22,6 +22,7 @@
             ],
             "js": [
                 "./syncOptions.js",
+                "./listenForHotKeys.js",
 
                 "./content/detectStoryEditor.js",
                 "./content/snapPassages.js",

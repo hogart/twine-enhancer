@@ -8,6 +8,8 @@ const defaultOptions = {
     publish: true,
     snap: true,
     theme: false,
+    run: false,
+    debug: false,
     wideEditors: true,
     neatPassages: false,
 };
