@@ -86,15 +86,11 @@ const buttonsMap = {
     },
     run: {
         hotkey: 'shift+f10',
-        action() {
-            console.log('run');
-        },
+        buttonIndex: 10,
     },
     debug: {
         hotkey: 'shift+f9',
-        action() {
-            console.log('debug');
-        }
+        buttonIndex: 9,
     }
 };
 
@@ -106,8 +102,11 @@ function getMenu(toolbar) {
     return document.querySelector('.drop-content div .menu:first-child');
 }
 
-function getMenuButtons(menu) {
-    return menu.querySelectorAll('li button');
+function getMenuButtons(menu, toolbar) {
+    return [
+        ...menu.querySelectorAll('li button'),
+        ...toolbar.closest('.toolbar').querySelectorAll('.right > button')
+    ];
 }
 
 function createContainer() {
@@ -159,7 +158,7 @@ detectStoryEditor(async () => {
     }
 
     function attachToDom(menu) {
-        const buttons = getMenuButtons(menu);
+        const menuButtons = getMenuButtons(menu, toolbar[0]);
 
         Object.keys(buttonsMap).forEach((btnName) => {
             if (!options[btnName]) {
@@ -174,7 +173,7 @@ detectStoryEditor(async () => {
 
             if (conf.hotkey) {
                 listenForHotKey(conf.hotkey, () => {
-                    const handler = btnConfToHandler(buttons, conf);
+                    const handler = btnConfToHandler(menuButtons, conf);
                     handler();
                 });
             }
@@ -184,7 +183,7 @@ detectStoryEditor(async () => {
             const button = event.target.closest('button[data-action]');
             const action = button.dataset.action;
             const conf = buttonsMap[action];
-            const handler = btnConfToHandler(buttons, conf);
+            const handler = btnConfToHandler(menuButtons, conf);
             handler();
         });
 
