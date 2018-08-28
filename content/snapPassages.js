@@ -1,15 +1,15 @@
+'use strict';
+
+function snapCoord(coord) {
+    return Math.round(coord / 25) * 25
+}
+
 function snapPassages() {
     const urlMatch = ifidRe.exec(location.hash);
     if (urlMatch) {
         const storyId = urlMatch[0];
 
-        const passages = localStorage.getItem('twine-passages').split(',')
-            .map((pid) => JSON.parse(localStorage.getItem(`twine-passages-${pid}`)))
-            .filter((passage) => passage.story === storyId);
-
-        function snapCoord(coord) {
-            return Math.round(coord / 25) * 25
-        }
+        const passages = extractPassages(storyId);
 
         passages.forEach((passage) => {
             passage.left = snapCoord(passage.left);

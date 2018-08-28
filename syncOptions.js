@@ -6,6 +6,7 @@ const defaultOptions = {
     editCss: true,
     proofRead: false,
     publish: true,
+    export: true,
     snap: true,
     theme: false,
     run: false,

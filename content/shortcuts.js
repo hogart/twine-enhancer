@@ -71,6 +71,14 @@ const buttonsMap = {
         hotkey: 'ctrl+s',
         buttonIndex: 8,
     },
+    export: {
+        icon: 'file-code-o',
+        title: 'Export as *.twee',
+        hotkey: 'ctrl+e',
+        action() {
+            console.log('Exporting as twee...');
+        }
+    },
     snap: {
         icon: 'sitemap',
         title: 'Snap all passages (reloads page)',
