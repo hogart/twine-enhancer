@@ -1,4 +1,4 @@
-'use strict';
+import { clearOptions, defaultOptions, loadOptions, saveOptions } from '../syncOptions.js';
 
 const form = document.querySelector('.js-optionsForm');
 const fields = Array.from(form.querySelectorAll('input[type="checkbox"]'));
@@ -9,7 +9,7 @@ form.addEventListener('change', (event) => {
     if (legend) {
         const fieldset = legend.closest('fieldset');
         fieldset.disabled = !event.target.checked;
-    };
+    }
 });
 
 form.addEventListener('submit', (event) => {
@@ -25,10 +25,11 @@ form.addEventListener('submit', (event) => {
     });
 }, false);
 
-form.addEventListener('reset', (event) => {
+form.addEventListener('reset', async (event) => {
     event.preventDefault();
 
-    clearOptions().then(() => window.location.reload());
+    await clearOptions();
+    window.location.reload();
 });
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -36,5 +37,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     Object.keys(values).forEach((key) => {
         const val = values[key];
         form.querySelector(`[name=${key}]`).checked = val;
-    })
+    });
 });

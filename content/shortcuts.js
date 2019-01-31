@@ -1,10 +1,17 @@
-'use strict';
+import { loadOptions } from '../syncOptions';
+import { waitForElement } from './waitForElement';
+import { h } from './h';
+import { toggleTheme } from './toggleTheme';
+import { snapPassages } from './snapPassages';
+import { listenForHotKey } from '../listenForHotkeys';
+
+import { downloadTwee } from './downloadTwee';
 
 function triggerEvent(element, type = 'click') {
     const event = new MouseEvent(type, {
         view: window,
         bubbles: true,
-        cancelable: true
+        cancelable: true,
     });
 
     element.dispatchEvent(event);
@@ -12,38 +19,6 @@ function triggerEvent(element, type = 'click') {
 
 function button({icon, title}, action) {
     return h('button', {title, data: {action}}, `<i class="fa fa-${icon}"></i>`);
-}
-
-function h(tagName, attrs = null, children = null) {
-    const el = document.createElement(tagName);
-    if (attrs) {
-        Object.keys(attrs).forEach((attrName) => {
-            if (attrName === 'tagName' || attrName === 'children') {
-                return;
-            }
-
-            if (attrName === 'data') {
-                Object.keys(attrs[attrName]).forEach((datasetName) => {
-                    el.dataset[datasetName] = attrs[attrName][datasetName];
-                })
-            } else {
-                el.setAttribute(attrName, attrs[attrName]);
-            }
-        })
-    }
-
-    if (children) {
-        if (typeof children === 'string') {
-            el.innerHTML = children;
-        } else {
-            children.forEach((child) => {
-                let childEl = child instanceof HTMLElement ? child : h(child.tagName, child, child.children);
-                el.appendChild(childEl);
-            })
-        }
-    }
-
-    return el;
 }
 
 const buttonsMap = {
@@ -76,8 +51,8 @@ const buttonsMap = {
         title: 'Export as *.twee',
         hotkey: 'ctrl+e',
         action() {
-            console.log('Exporting as twee...');
-        }
+            downloadTwee();
+        },
     },
     snap: {
         icon: 'sitemap',
@@ -85,7 +60,7 @@ const buttonsMap = {
         action() {
             snapPassages();
             window.location.reload();
-        }
+        },
     },
     theme: {
         icon: 'moon-o',
@@ -99,7 +74,7 @@ const buttonsMap = {
     debug: {
         hotkey: 'shift+f9',
         buttonIndex: 9,
-    }
+    },
 };
 
 function getMenu(toolbar) {
@@ -113,7 +88,7 @@ function getMenu(toolbar) {
 function getMenuButtons(menu, toolbar) {
     return [
         ...menu.querySelectorAll('li button'),
-        ...toolbar.closest('.toolbar').querySelectorAll('.right > button')
+        ...toolbar.closest('.toolbar').querySelectorAll('.right > button'),
     ];
 }
 
@@ -121,22 +96,51 @@ function createContainer() {
     return h('div', {class: 'toolbarButtons'});
 }
 
-function waitForElement(selector, parent = document) {
-    return new Promise((resolve, reject) => {
-        function getElem() {
-            const elem = parent.querySelectorAll(selector);
-            if (elem.length) {
-                resolve(elem);
-            } else {
-                setTimeout(getElem)
-            }
+function attachToDom(menu, toolbar, options, buttonsContainer) {
+    const menuButtons = getMenuButtons(menu, toolbar[0]);
+
+    Object.keys(buttonsMap).forEach((btnName) => {
+        if (!options[btnName]) {
+            return;
         }
 
-        getElem();
+        const conf = buttonsMap[btnName];
+
+        if (conf.icon && conf.title) {
+            buttonsContainer.appendChild(button(conf, btnName));
+        }
+
+        if (conf.hotkey) {
+            listenForHotKey(conf.hotkey, () => {
+                const handler = btnConfToHandler(menuButtons, conf);
+                handler();
+            });
+        }
     });
+
+    buttonsContainer.addEventListener('click', (event) => {
+        const button = event.target.closest('button[data-action]');
+        const action = button.dataset.action;
+        const conf = buttonsMap[action];
+        const handler = btnConfToHandler(menuButtons, conf);
+        handler();
+    });
+
+    toolbar[0].appendChild(buttonsContainer);
 }
 
-detectStoryEditor(async () => {
+function btnConfToHandler(buttons, conf) {
+    let handler;
+    if (Number.isInteger(conf.buttonIndex)) {
+        handler = () => triggerEvent(buttons[conf.buttonIndex]);
+    } else if (typeof conf.action === 'function') {
+        handler = conf.action;
+    }
+
+    return handler;
+}
+
+export async function attachShortcutToolbar() {
     const options = await loadOptions();
 
     if (!options.shortcutButtons) {
@@ -152,52 +156,8 @@ detectStoryEditor(async () => {
 
     const menu = getMenu(toolbar[0]);
 
-    attachToDom(menu);
-
-    function btnConfToHandler(buttons, conf) {
-        let handler;
-        if (Number.isInteger(conf.buttonIndex)) {
-            handler = () => triggerEvent(buttons[conf.buttonIndex])
-        } else if (typeof conf.action === 'function') {
-            handler = conf.action;
-        }
-
-        return handler;
-    }
-
-    function attachToDom(menu) {
-        const menuButtons = getMenuButtons(menu, toolbar[0]);
-
-        Object.keys(buttonsMap).forEach((btnName) => {
-            if (!options[btnName]) {
-                return;
-            }
-
-            const conf = buttonsMap[btnName];
-
-            if (conf.icon && conf.title) {
-                buttonsContainer.appendChild(button(conf, btnName));
-            }
-
-            if (conf.hotkey) {
-                listenForHotKey(conf.hotkey, () => {
-                    const handler = btnConfToHandler(menuButtons, conf);
-                    handler();
-                });
-            }
-        });
-
-        buttonsContainer.addEventListener('click', (event) => {
-            const button = event.target.closest('button[data-action]');
-            const action = button.dataset.action;
-            const conf = buttonsMap[action];
-            const handler = btnConfToHandler(menuButtons, conf);
-            handler();
-        });
-
-        toolbar[0].appendChild(buttonsContainer);
-    }
-});
+    attachToDom(menu, toolbar, options, buttonsContainer);
+}
 
 
 

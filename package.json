@@ -1,0 +1,30 @@
+{
+  "name": "twine-enhancer",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "aife-twee2": "github:aifejs/aife-interop"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.1",
+    "rollup": "^1.1.2",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w",
+    "lint": "eslint --ignore-path .gitignore ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hogart/twine-enhancer.git"
+  },
+  "keywords": [],
+  "author": "Konstantin Kitmanov <me@kitmanov.name>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/hogart/twine-enhancer/issues"
+  },
+  "homepage": "https://github.com/hogart/twine-enhancer#readme"
+}

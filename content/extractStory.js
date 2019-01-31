@@ -13,19 +13,65 @@ function readJsonFromLocalStorage(key) {
     }
 }
 
+/**
+ * @param {string} storyId
+ * @return {object}
+ */
 function extractStoryMeta(storyId) {
-    return readJsonFromLocalStorage(`twine-stories-${storyId}`);
-}
-
-function extractPassages(storyId) {
-    return localStorage.getItem('twine-passages').split(',')
-        .map((pid) => readJsonFromLocalStorage(`twine-passages-${pid}`))
-        .filter((passage) => passage.story === storyId);
-}
-
-function extractStory(storyId) {
+    const rawMeta = readJsonFromLocalStorage(`twine-stories-${storyId}`);
     return {
-        ...extractStory(storyId),
-        passages: extractStory(storyId),
+        title: rawMeta.name,
+        ifid: rawMeta.ifid,
+        lastEdit: rawMeta.lastUpdate,
+        styleSheet: rawMeta.stylesheet,
+        script: rawMeta.script,
+        format: rawMeta.storyFormat,
+
+        startPassage: rawMeta.startPassage,
+    };
+}
+
+/**
+ * @param {string} storyId
+ * @param {string} [startPassage]
+ * @return {object[]}
+ */
+export function extractPassages(storyId, startPassage = null) {
+    return localStorage.getItem('twine-passages').split(',') // TODO: change to .reduce
+        .reduce(
+            (acc, pid, index) => {
+                const rawPassage = readJsonFromLocalStorage(`twine-passages-${pid}`);
+                if (rawPassage.story === storyId) {
+                    const starting = startPassage === null ? false : startPassage === rawPassage.id;
+                    acc.push({
+                        title: rawPassage.name,
+                        text: rawPassage.text,
+                        pid: index,
+                        tags: rawPassage.tags,
+                        starting,
+                        selected: rawPassage.selected,
+                        position: {
+                            x: rawPassage.left,
+                            y: rawPassage.top,
+                        },
+                    });
+                }
+
+                return acc;
+            },
+            []
+        );
+}
+
+/**
+ * @param {string} storyId
+ * @return {object}
+ */
+export function extractStory(storyId) {
+    const { startPassage, ...meta} = extractStoryMeta(storyId);
+
+    return {
+        ...meta,
+        passages: extractPassages(storyId, startPassage),
     };
 }

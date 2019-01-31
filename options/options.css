@@ -12,6 +12,10 @@ form label {
     display: block;
 }
 
+fieldset > label {
+    margin-left: 1em;
+}
+
 label input[type="checkbox"] {
     margin-right: .5em;
 }

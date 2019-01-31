@@ -1,6 +1,4 @@
-'use strict';
-
-const defaultOptions = {
+export const defaultOptions = {
     shortcutButtons: true,
     editJs: true,
     editCss: true,
@@ -15,26 +13,26 @@ const defaultOptions = {
     neatPassages: false,
 };
 
-function loadOptions(defaults = defaultOptions) {
-    return new Promise((resolve, reject) => {
+export function loadOptions(defaults = defaultOptions) {
+    return new Promise((resolve) => {
         chrome.storage.sync.get(Object.keys(defaults), (items) => {
             resolve(Object.assign({}, defaults, items));
         });
     });
 }
 
-function saveOptions(values) {
+export function saveOptions(values) {
     return new Promise((resolve) => {
         chrome.storage.sync.set(values, () => {
             resolve();
         });
-    })
+    });
 }
 
-function clearOptions() {
+export function clearOptions() {
     return new Promise((resolve) => {
         chrome.storage.sync.clear(() => {
             resolve();
         });
-    })
+    });
 }

@@ -21,16 +21,7 @@
                 "http://twinery.org/2/*"
             ],
             "js": [
-                "./syncOptions.js",
-                "./listenForHotKeys.js",
-
-                "./content/detectStoryEditor.js",
-                "./content/snapPassages.js",
-                "./content/toggleTheme.js",
-                "./content/shortcuts.js",
-
-                "./content/biggerEditors.js",
-                "./content/neaterPassages.js"
+                "./content/bundle.js"
             ],
             "css": [
                 "./content/biggerEditors.css",

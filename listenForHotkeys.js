@@ -9,7 +9,7 @@ function parseHotKeyString(str) {
         } else if (key === 'shift') {
             acc.shiftKey = true;
         } else if (key.length === 1) {
-            acc.code = 'key' + key;
+            acc.code = `key${key}`;
         } else {
             acc.code = key;
         }
@@ -29,7 +29,7 @@ function eventMatchesHotKey(event, hotKey) {
     }, true);
 }
 
-function listenForHotKey(hotKey, handler) {
+export function listenForHotKey(hotKey, handler) {
     const parsedHotKey = parseHotKeyString(hotKey);
     window.addEventListener('keydown', (event) => {
         if (eventMatchesHotKey(event, parsedHotKey)) {
@@ -42,6 +42,7 @@ function listenForHotKey(hotKey, handler) {
     }, false);
 }
 
+// eslint-disable-next-line no-unused-vars
 function listenForHotKeys(hotKeysConfig) {
     const { hotKeys, handlers } = Object.keys(hotKeysConfig).reduce(
         (acc, confKey) => {

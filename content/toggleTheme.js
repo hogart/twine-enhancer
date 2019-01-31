@@ -1,5 +1,3 @@
-'use strict';
-
 function getThemePref() {
     const prefIds = localStorage.getItem('twine-prefs').split(',');
 
@@ -8,10 +6,10 @@ function getThemePref() {
         if (pref.name === 'appTheme') {
             return pref;
         }
-    };
+    }
 }
 
-function toggleTheme() {
+export function toggleTheme() {
     const pref = getThemePref();
     const wasDark = pref.value === 'dark';
     pref.value = wasDark ? 'light' : 'dark';
