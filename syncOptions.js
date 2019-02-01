@@ -16,7 +16,8 @@ export const defaultOptions = {
 export function loadOptions(defaults = defaultOptions) {
     return new Promise((resolve) => {
         chrome.storage.sync.get(Object.keys(defaults), (items) => {
-            resolve(Object.assign({}, defaults, items));
+            const options = Object.assign({}, defaults, items);
+            resolve(options);
         });
     });
 }

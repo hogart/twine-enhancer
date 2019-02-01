@@ -3,7 +3,7 @@ import { waitForElement } from './waitForElement';
 import { h } from './h';
 import { toggleTheme } from './toggleTheme';
 import { snapPassages } from './snapPassages';
-import { listenForHotKey } from '../listenForHotkeys';
+import { listenForHotKey } from './listenForHotkeys';
 
 import { downloadTwee } from './downloadTwee';
 
