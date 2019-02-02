@@ -11,8 +11,13 @@ export const defaultOptions = {
     debug: false,
     wideEditors: true,
     neatPassages: false,
+    tweeExtension: 'twee',
 };
 
+/**
+ * @param {typeof defaultOptions} defaults
+ * @return {Promise<typeof defaultOptions>}
+ */
 export function loadOptions(defaults = defaultOptions) {
     return new Promise((resolve) => {
         chrome.storage.sync.get(Object.keys(defaults), (items) => {
@@ -22,6 +27,10 @@ export function loadOptions(defaults = defaultOptions) {
     });
 }
 
+/**
+ * @param {typeof defaultOptions} values
+ * @return {Promise<void>}
+ */
 export function saveOptions(values) {
     return new Promise((resolve) => {
         chrome.storage.sync.set(values, () => {

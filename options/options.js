@@ -1,7 +1,7 @@
 import { clearOptions, defaultOptions, loadOptions, saveOptions } from '../syncOptions.js';
 
 const form = document.querySelector('.js-optionsForm');
-const fields = Array.from(form.querySelectorAll('input[type="checkbox"]'));
+const fields = Array.from(form.querySelectorAll('input[type="checkbox"], select'));
 const saveStatus = form.querySelector('.js-saveStatus');
 
 form.addEventListener('change', (event) => {
@@ -12,11 +12,28 @@ form.addEventListener('change', (event) => {
     }
 });
 
+function inputType(element) {
+    const tagName = element.tagName.toLowerCase();
+    if (tagName === 'input') {
+        return element.type;
+    } else {
+        return tagName;
+    }
+}
+
 form.addEventListener('submit', (event) => {
     event.preventDefault();
 
     const newOptions = {};
-    fields.forEach((field) => newOptions[field.name] = field.checked);
+    fields.forEach((field) => {
+        const type = inputType(field);
+        if (type === 'checkbox') {
+            newOptions[field.name] = field.checked;
+        } else if (type === 'select') {
+            newOptions[field.name] = field.value;
+        }
+    });
+
     saveOptions(newOptions).then(() => {
         saveStatus.classList.add('show');
         setTimeout(() => {
@@ -36,6 +53,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const values = await loadOptions(defaultOptions);
     Object.keys(values).forEach((key) => {
         const val = values[key];
-        form.querySelector(`[name=${key}]`).checked = val;
+        const input = form.querySelector(`[name=${key}]`);
+        const type = inputType(input);
+        if (type === 'checkbox') {
+            input.checked = val;
+        } else if (type === 'select') {
+            input.value = val;
+        }
     });
 });
