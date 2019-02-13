@@ -1,7 +1,7 @@
 import { getCurrentStoryIfid } from './getCurrentStoryIfid';
-import { extractStory } from './extractStory';
+import { extractStory } from './story/extractStory';
 import { exportTwee } from 'aife-twee2/src/exportTwee';
-import { h } from './h';
+import { h } from './dom/h';
 import { loadOptions } from '../syncOptions';
 
 export async function downloadTwee() {

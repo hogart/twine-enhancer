@@ -1,4 +1,4 @@
-import { extractPassages } from './extractStory';
+import { extractPassages } from './story/extractStory';
 import { getCurrentStoryIfid } from './getCurrentStoryIfid';
 
 function snapCoord(coord) {

@@ -1,3 +1,5 @@
+import { parseHtml } from './parseHtml';
+
 /**
  * @param {string} tagName
  * @param {object} [attrs=null]
@@ -5,6 +7,10 @@
  * @return {HTMLElement}
  */
 export function h(tagName, attrs = null, children = null) {
+    if (tagName.match(/[^a-z]/i) !== null) {
+        return parseHtml(tagName);
+    }
+
     const el = document.createElement(tagName);
     if (attrs) {
         Object.keys(attrs).forEach((attrName) => {
@@ -27,7 +33,15 @@ export function h(tagName, attrs = null, children = null) {
             el.innerHTML = children;
         } else {
             children.forEach((child) => {
-                const childEl = child instanceof HTMLElement ? child : h(child.tagName, child, child.children);
+                let childEl;
+                if (child instanceof HTMLElement) {
+                    childEl = child;
+                } else if (typeof child === 'string') {
+                    childEl = document.createTextNode(child);
+                } else {
+                    childEl = h(child.tagName, child, child.children);
+                }
+
                 el.appendChild(childEl);
             });
         }

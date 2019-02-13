@@ -1,3 +1,8 @@
+/**
+ * @param {string} selector
+ * @param {HTMLElement|Node} [parent=document]
+ * @return {Promise<HTMLElement[]>}
+ */
 export function waitForElement(selector, parent = document) {
     return new Promise((resolve) => {
         function getElem() {

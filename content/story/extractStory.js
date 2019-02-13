@@ -1,24 +1,15 @@
-'use strict';
+import { readJson, readPassagesUids } from './persistence';
 
-function readJsonFromLocalStorage(key) {
-    const str = localStorage.getItem(key);
-    if (!str) {
-        throw new Error(`No such item "${key}" in localStorage`);
-    }
-
-    try {
-        return JSON.parse(str);
-    } catch (e) {
-        throw new Error(`Item "${key}" is not valid JSON`);
-    }
+export function extractStoryMetaRaw(storyId) {
+    return readJson(`twine-stories-${storyId}`);
 }
 
 /**
  * @param {string} storyId
  * @return {object}
  */
-function extractStoryMeta(storyId) {
-    const rawMeta = readJsonFromLocalStorage(`twine-stories-${storyId}`);
+export function extractStoryMeta(storyId) {
+    const rawMeta = extractStoryMetaRaw(storyId);
     return {
         title: rawMeta.name,
         ifid: rawMeta.ifid,
@@ -26,6 +17,7 @@ function extractStoryMeta(storyId) {
         styleSheet: rawMeta.stylesheet,
         script: rawMeta.script,
         format: rawMeta.storyFormat,
+        formatVer: rawMeta.storyFormatVersion,
 
         startPassage: rawMeta.startPassage,
     };
@@ -37,10 +29,10 @@ function extractStoryMeta(storyId) {
  * @return {object[]}
  */
 export function extractPassages(storyId, startPassage = null) {
-    return localStorage.getItem('twine-passages').split(',') // TODO: change to .reduce
+    return readPassagesUids()
         .reduce(
             (acc, pid, index) => {
-                const rawPassage = readJsonFromLocalStorage(`twine-passages-${pid}`);
+                const rawPassage = readJson(`twine-passages-${pid}`);
                 if (rawPassage.story === storyId) {
                     const starting = startPassage === null ? false : startPassage === rawPassage.id;
                     acc.push({

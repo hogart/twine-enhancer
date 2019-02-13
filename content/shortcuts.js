@@ -1,11 +1,12 @@
 import { loadOptions } from '../syncOptions';
 import { waitForElement } from './waitForElement';
-import { h } from './h';
+import { h } from './dom/h';
 import { toggleTheme } from './toggleTheme';
 import { snapPassages } from './snapPassages';
 import { listenForHotKey } from './listenForHotkeys';
 
 import { downloadTwee } from './downloadTwee';
+import { createIcon } from './dom/createIcon';
 
 function triggerEvent(element, type = 'click') {
     const event = new MouseEvent(type, {
@@ -18,7 +19,7 @@ function triggerEvent(element, type = 'click') {
 }
 
 function button({icon, title}, action) {
-    return h('button', {title, data: {action}}, `<i class="fa fa-${icon}"></i>`);
+    return h('button', {title, data: {action}}, [createIcon(icon)]);
 }
 
 const buttonsMap = {
