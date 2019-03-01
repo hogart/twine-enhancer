@@ -18,6 +18,7 @@ export function extractStoryMeta(storyId) {
         script: rawMeta.script,
         format: rawMeta.storyFormat,
         formatVer: rawMeta.storyFormatVersion,
+        tagColors: rawMeta.tagColors,
 
         startPassage: rawMeta.startPassage,
     };

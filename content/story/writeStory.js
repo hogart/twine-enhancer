@@ -65,7 +65,7 @@ export function writeStory(story) {
         storyFormat: story.format,
         storyFormatVersion: story.formatVer,
         stylesheet: story.styleSheet,
-        tagColors: {}, // TODO
+        tagColors: story.tagColors,
         zoom: 1,
     });
 
