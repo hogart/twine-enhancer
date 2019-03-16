@@ -5,6 +5,7 @@
     "version": "1.5.0",
     "description": "Unofficial enhancements and tuning for Twine (online version)",
     "homepage_url": "https://github.com/hogart/twine-enhancer",
+    "default_locale": "en",
     "icons": {
         "16": "./icons/16.png",
         "48": "./icons/48.png",

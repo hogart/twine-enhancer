@@ -1,0 +1,83 @@
+{
+  "importBtn": {
+    "message": "Импорт из *.twee"
+  },
+  "importDlgTitle": {
+    "message": "Импорт из *.twee/*.tw2"
+  },
+  "exportAsTwee": {
+    "message": "Экспорт в *.twee"
+  },
+  "snapPassages": {
+    "message": "Выровнять параграфы по сетке (перезагружает страницу)"
+  },
+  "toggleDarkLightTheme": {
+    "message": "Темная/светлая тема"
+  },
+  "editJs": {
+    "message": "Редактировать JavaScript"
+  },
+  "editCss": {
+    "message": "Редактировать стили"
+  },
+  "proofRead": {
+    "message": "Копия для вычитки"
+  },
+  "download": {
+    "message": "Опубликовать в файл"
+  },
+  "enableShortcuts": {
+    "message": "Включить доп. кнопки и хоткеи"
+  },
+  "enableEditJs": {
+    "message": "Кнопка \"Редактировать JS\" (Alt+j)"
+  },
+  "enableEditCss": {
+    "message": "Кнопка \"Редактировать стили\" (Alt+c)"
+  },
+  "enableProofRead": {
+    "message": "Кнопка \"Копия для вычитки\" (F4)"
+  },
+  "enablePublish": {
+    "message": "Кнопка \"Опубликовать\" (Ctrl+S)"
+  },
+  "enableImportExport": {
+    "message": "Кнопки \"Экспорт в *.twee\" (Ctrl+E) и \"Импорт из *.twee\""
+  },
+  "enableSnap": {
+    "message": "Кнопка \"Выровнять параграфы по сетке\""
+  },
+  "enableThemeToggle": {
+    "message": "Кнопка \"Темная/светлая тема\""
+  },
+  "enablePlay": {
+    "message": "Хоткей \"Запустить игру\" (Shift+F10)"
+  },
+  "enableDebug": {
+    "message": "Хоткей \"Запустить игру в режиме отладки\" (Shift+F9)"
+  },
+  "styleChanges": {
+    "message": "Визуальные изменения"
+  },
+  "enableAlwaysWide": {
+    "message": "Всегда широкие окна редакторов и строка поиска (так же скрывает кнопку \"раскрыть\")"
+  },
+  "enableNeatPassages": {
+    "message": "\"Аккуратные\" параграфы"
+  },
+  "otherSettings": {
+    "message": "Прочие настройка"
+  },
+  "exportExtension": {
+    "message": "Расширение экспортируемого файла"
+  },
+  "savedSuccessfully": {
+    "message": "Успешно сохранено"
+  },
+  "saveSettings": {
+    "message": "Сохранить настройки"
+  },
+  "resetSettings": {
+    "message": "Настройки по умолчанию"
+  }
+}

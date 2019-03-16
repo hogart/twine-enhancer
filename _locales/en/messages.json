@@ -1,0 +1,83 @@
+{
+  "importBtn": {
+    "message": "Import *.twee"
+  },
+  "importDlgTitle": {
+    "message": "Import *.twee/*.tw2"
+  },
+  "exportAsTwee": {
+    "message": "Export as *.twee"
+  },
+  "snapPassages": {
+    "message": "Snap all passages (reloads page)"
+  },
+  "toggleDarkLightTheme": {
+    "message": "Toggle dark/light theme"
+  },
+  "editJs": {
+    "message": "Edit JavaScript"
+  },
+  "editCss": {
+    "message": "Edit Stylesheet"
+  },
+  "proofRead": {
+    "message": "View Proofing Copy"
+  },
+  "download": {
+    "message": "Publish to File"
+  },
+  "enableShortcuts": {
+    "message": "Enable shortcut buttons and hotkeys"
+  },
+  "enableEditJs": {
+    "message": "\"Edit JS\" button (Alt+j)"
+  },
+  "enableEditCss": {
+    "message": "\"Edit CSS\" button (Alt+c)"
+  },
+  "enableProofRead": {
+    "message": "\"Proof read\" button (F4)"
+  },
+  "enablePublish": {
+    "message": "\"Publish\" button (Ctrl+S)"
+  },
+  "enableImportExport": {
+    "message": "\"Export as *.twee\" (Ctrl+E) and \"Import *.twee\" buttons"
+  },
+  "enableSnap": {
+    "message": "\"Snap passages\" button (also reloads entire page)"
+  },
+  "enableThemeToggle": {
+    "message": "\"Dark/light theme\" button"
+  },
+  "enablePlay": {
+    "message": "\"Play this story\" hotkey (Shift+F10)"
+  },
+  "enableDebug": {
+    "message": "\"Play this story in test mode\" hotkey (Shift+F9)"
+  },
+  "styleChanges": {
+    "message": "Stylistic changes"
+  },
+  "enableAlwaysWide": {
+    "message": "Always wide editors and search field (also hides \"expand\" button)"
+  },
+  "enableNeatPassages": {
+    "message": "\"Neat\" passages"
+  },
+  "otherSettings": {
+    "message": "Other settings"
+  },
+  "exportExtension": {
+    "message": "Export file extension"
+  },
+  "savedSuccessfully": {
+    "message": "Saved successfully"
+  },
+  "saveSettings": {
+    "message": "Save settings"
+  },
+  "resetSettings": {
+    "message": "Reset to defaults"
+  }
+}
