@@ -1,8 +1,16 @@
 import { extractPassages } from './story/extractStory';
 import { getCurrentStoryIfid } from './getCurrentStoryIfid';
+import { writePassage } from './story/writeStory';
 
 function snapCoord(coord) {
     return Math.round(coord / 25) * 25;
+}
+
+function snapPosition(position) {
+    return {
+        x: snapCoord(position.x),
+        y: snapCoord(position.y),
+    };
 }
 
 export function snapPassages() {
@@ -11,10 +19,9 @@ export function snapPassages() {
         const passages = extractPassages(storyId);
 
         passages.forEach((passage) => {
-            passage.left = snapCoord(passage.left);
-            passage.top = snapCoord(passage.top);
+            passage.position = snapPosition(passage.position);
 
-            localStorage.setItem(`twine-passages-${passage.id}`, JSON.stringify(passage));
+            writePassage(passage, storyId);
         });
     }
 }

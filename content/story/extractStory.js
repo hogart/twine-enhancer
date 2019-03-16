@@ -32,14 +32,14 @@ export function extractStoryMeta(storyId) {
 export function extractPassages(storyId, startPassage = null) {
     return readPassagesUids()
         .reduce(
-            (acc, pid, index) => {
-                const rawPassage = readJson(`twine-passages-${pid}`);
+            (acc, id) => {
+                const rawPassage = readJson(`twine-passages-${id}`);
                 if (rawPassage.story === storyId) {
                     const starting = startPassage === null ? false : startPassage === rawPassage.id;
                     acc.push({
+                        id,
                         title: rawPassage.name,
                         text: rawPassage.text,
-                        pid: index,
                         tags: rawPassage.tags,
                         starting,
                         selected: rawPassage.selected,

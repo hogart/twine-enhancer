@@ -7,12 +7,12 @@ import {
     writeStoryUids,
 } from './persistence';
 
-function writePassage(passage, storyId) {
-    const pid = uuid();
+export function writePassage(passage, storyId) {
+    const id = passage.id || uuid();
 
-    writeJson(`twine-passages-${pid}`, {
+    writeJson(`twine-passages-${id}`, {
         height: 100,
-        id: pid,
+        id,
         left: passage.position.x,
         name: passage.title,
         selected: false,
@@ -23,7 +23,7 @@ function writePassage(passage, storyId) {
         width: 100,
     });
 
-    return [pid, passage.starting];
+    return [id, passage.starting];
 }
 
 /**
