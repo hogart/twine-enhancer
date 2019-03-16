@@ -25,31 +25,31 @@ function button({icon, title}, action) {
 const buttonsMap = {
     editJs: {
         icon: 'terminal',
-        title: 'Edit Story JavaScript',
+        title: chrome.i18n.getMessage('editJs'),//'Edit Story JavaScript',
         hotkey: 'alt+j',
         buttonIndex: 0,
     },
     editCss: {
         icon: 'css3',
-        title: 'Edit Story StyleSheet',
+        title: chrome.i18n.getMessage('editCss'),
         hotkey: 'alt+c',
         buttonIndex: 1,
     },
     proofRead: {
         icon: 'book',
-        title: 'View Proofing Copy',
+        title: chrome.i18n.getMessage('proofRead'),
         hotkey: 'f4',
         buttonIndex: 7,
     },
     publish: {
         icon: 'download',
-        title: 'Publish to File',
+        title: chrome.i18n.getMessage('download'),
         hotkey: 'ctrl+s',
         buttonIndex: 8,
     },
     export: {
         icon: 'file-code-o',
-        title: 'Export as *.twee',
+        title: chrome.i18n.getMessage('exportAsTwee'),
         hotkey: 'ctrl+e',
         action() {
             downloadTwee();
@@ -57,7 +57,7 @@ const buttonsMap = {
     },
     snap: {
         icon: 'sitemap',
-        title: 'Snap all passages (reloads page)',
+        title: chrome.i18n.getMessage('snapPassages'),
         action() {
             snapPassages();
             window.location.reload();
@@ -65,7 +65,7 @@ const buttonsMap = {
     },
     theme: {
         icon: 'moon-o',
-        title: 'Toggle dark/light theme',
+        title: chrome.i18n.getMessage('Toggle dark/light theme'),
         action: toggleTheme,
     },
     run: {

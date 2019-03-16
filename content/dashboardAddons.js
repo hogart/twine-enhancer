@@ -78,7 +78,7 @@ function createImportModal() {
         }
     });
 
-    const modal = new Modal('Import *.twee/*.tw2', selectFileWrapper);
+    const modal = new Modal(chrome.i18n.getMessage('importDlgTitle'), selectFileWrapper);
     return modal;
 }
 
@@ -95,7 +95,7 @@ export async function addButtons() {
         const modal = createImportModal();
 
         const button = createDashboardButton({
-            text: 'Import *.twee',
+            text: chrome.i18n.getMessage('importBtn'),
             icon: 'file-text',
         }, () => modal.show());
 

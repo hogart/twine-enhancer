@@ -1,8 +1,11 @@
 import { clearOptions, defaultOptions, loadOptions, saveOptions } from '../syncOptions.js';
+import { domI18n } from '../domI18n.js';
 
 const form = document.querySelector('.js-optionsForm');
 const fields = Array.from(form.querySelectorAll('input[type="checkbox"], select'));
 const saveStatus = form.querySelector('.js-saveStatus');
+
+domI18n(form);
 
 form.addEventListener('change', (event) => {
     const legend = event.target.closest('legend');
