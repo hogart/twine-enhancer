@@ -43,7 +43,7 @@ export function writeStory(story) {
         const [pid, starting] = writePassage(passage, story.id);
         acc.addedPids.push(pid);
         if (starting) {
-            acc.startPassage = starting;
+            acc.startPassage = pid;
         }
 
         return acc;
