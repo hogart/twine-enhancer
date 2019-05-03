@@ -5,6 +5,12 @@
   "importDlgTitle": {
     "message": "Import *.twee/*.tw2"
   },
+  "importDlgHelp": {
+    "message": "If there's already a story with the same name, it will be renamed as backup. Importing takes some time; page will automatically reload after."
+  },
+  "importDlgExperimental": {
+    "message": "<strong style=\"color: red;\">Experimental feature!</strong> Make backup before proceed."
+  },
   "exportAsTwee": {
     "message": "Export as *.twee"
   },

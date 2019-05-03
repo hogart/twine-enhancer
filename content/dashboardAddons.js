@@ -53,11 +53,9 @@ function renameDublicate(ifid) {
 
 function createImportModal() {
     const fileInput = h('input', {type: 'file', accept: '.twee,.tw2'});
-    const fileHint0 = h('<p><strong style="color: red;">Experimental feature!</strong> Make backup before proceeed.');
+    const fileHint0 = h(`<p>${chrome.i18n.getMessage('importDlgExperimental')}</p>`);
     const fileHint1 = h(
-        'p',
-        {},
-        ['If there\'s already a story with the same name, it will be renamed as backup. Importing takes some time; page will automatically reload after.']
+        `<p>${chrome.i18n.getMessage('importDlgHelp')}</p>`
     );
     const selectFileWrapper = h('div', {class: 'selectWrapper select'}, [fileInput, fileHint0, fileHint1]);
 
