@@ -62,6 +62,9 @@
   "enableDebug": {
     "message": "\"Play this story in test mode\" hotkey (Shift+F9)"
   },
+  "enableSnippet": {
+    "message": "Insert snippet (Alt+S)"
+  },
   "styleChanges": {
     "message": "Stylistic changes"
   },

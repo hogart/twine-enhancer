@@ -12,6 +12,7 @@ export const defaultOptions = {
     wideEditors: true,
     neatPassages: false,
     tweeExtension: 'twee',
+    snippet: true,
 };
 
 /**

@@ -62,6 +62,9 @@
   "enableDebug": {
     "message": "Хоткей \"Запустить игру в режиме отладки\" (Shift+F9)"
   },
+  "enableSnippet": {
+    "message": "Вставить сниппет (Alt+S)"
+  },
   "styleChanges": {
     "message": "Визуальные изменения"
   },
