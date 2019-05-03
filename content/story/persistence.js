@@ -18,7 +18,11 @@ export function writeJson(key, value) {
 
 function readUids(isStory) {
     const val = localStorage.getItem(`twine-${isStory ? 'stories' : 'passages'}`);
-    return val !== null ? val.split(',') : [];
+    if (val === null || val === '') {
+        return [];
+    } else {
+        return val.split(',');
+    }
 }
 
 function writeUids(isStory, uids) {
