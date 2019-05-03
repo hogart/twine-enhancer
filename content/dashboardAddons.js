@@ -1,6 +1,6 @@
 import { importTwee } from 'aife-twee2/src/importTwee';
 import { loadOptions } from '../syncOptions';
-import { waitForElement } from './waitForElement';
+import { waitForElement } from './dom/waitForElement';
 import { h } from './dom/h';
 import { createIcon } from './dom/createIcon';
 import { Modal } from './dom/Modal';

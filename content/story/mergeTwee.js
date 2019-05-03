@@ -1,4 +1,4 @@
-import { getCurrentStoryIfid } from '../getCurrentStoryIfid';
+import { getCurrentStoryIfid } from './getCurrentStoryIfid';
 import { importTwee } from 'aife-twee2/src/importTwee';
 import { extractStory } from './extractStory';
 

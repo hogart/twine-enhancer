@@ -1,9 +1,9 @@
 import { loadOptions } from '../syncOptions';
-import { waitForElement } from './waitForElement';
+import { waitForElement } from './dom/waitForElement';
 import { h } from './dom/h';
 import { toggleTheme } from './toggleTheme';
 import { snapPassages } from './snapPassages';
-import { listenForHotKey } from './listenForHotkeys';
+import { listenForHotKey } from './dom/listenForHotkeys';
 
 import { downloadTwee } from './downloadTwee';
 import { createIcon } from './dom/createIcon';
