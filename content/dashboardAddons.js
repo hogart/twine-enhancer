@@ -20,7 +20,7 @@ function createDashboardButton({text, icon}, onClick) {
 
 function detectDublicates(name) {
     const ifids = readStoryUids();
-    for (const ifid of ifids.values()) {
+    for (const ifid of ifids) {
         const story = extractStoryMetaRaw(ifid);
         if (story.name === name) {
             return story.id;
@@ -51,6 +51,22 @@ function renameDublicate(ifid) {
     localStorage.setItem(`twine-stories-${ifid}`, JSON.stringify(meta));
 }
 
+async function onFileChange() {
+    const text = await readFile(this);
+
+    if (text !== null) {
+        const importingStory = importTwee(text);
+        const dublicateId = detectDublicates(importingStory.title);
+
+        if (dublicateId !== null) {
+            renameDublicate(dublicateId);
+        }
+
+        writeStory(importingStory);
+        location.reload();
+    }
+}
+
 function createImportModal() {
     const fileInput = h('input', {type: 'file', accept: '.twee,.tw2'});
     const fileHint0 = h(`<p>${chrome.i18n.getMessage('importDlgExperimental')}</p>`);
@@ -60,21 +76,7 @@ function createImportModal() {
     const selectFileWrapper = h('div', {class: 'selectWrapper select'}, [fileInput, fileHint0, fileHint1]);
 
 
-    fileInput.addEventListener('change', async () => {
-        const text = await readFile(fileInput);
-
-        if (text !== null) {
-            const importingStory = importTwee(text);
-            const dublicateId = detectDublicates(importingStory.title);
-
-            if (dublicateId !== null) {
-                renameDublicate(dublicateId);
-            }
-
-            writeStory(importingStory);
-            location.reload();
-        }
-    });
+    fileInput.addEventListener('change', onFileChange);
 
     const modal = new Modal(chrome.i18n.getMessage('importDlgTitle'), selectFileWrapper);
     return modal;
