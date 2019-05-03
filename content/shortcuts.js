@@ -9,6 +9,7 @@ import { downloadTwee } from './downloadTwee';
 import { createIcon } from './dom/createIcon';
 import { mergeTwee } from './story/mergeTwee';
 import { writeStory } from './story/writeStory';
+import { addSnippet } from './addSnippet';
 
 function triggerEvent(element, type = 'click') {
     const event = new MouseEvent(type, {
@@ -82,38 +83,7 @@ const buttonsMap = {
         icon: 'puzzle-piece',
         title: 'Insert snippet',
         hotkey: 'alt+a',
-        action() {
-            const merged = mergeTwee(`
-:: StoryTitle
-Adding Functionality in SugarCube
-
-:: UserScript[script]
-Macro.add("currenttime", {
-    tags: null,
-    handler: function() {
-        // Try the following code and catch any errors
-        try {
-
-            // Get the current time and save it to the payload
-            this.payload.contents = new Date();
-
-            // Wikify (and append) the current payload contents
-            jQuery(this.output).wiki(this.payload.contents);
-
-        }
-        catch (ex) {
-            // Return any errors
-            return this.error("Error: " + ex.message);
-        }
-    }
-});
-
-:: Start
-<<currenttime>><</currenttime>>
-            `, {});
-            writeStory(merged);
-            location.reload();
-        },
+        action: addSnippet,
     },
 };
 

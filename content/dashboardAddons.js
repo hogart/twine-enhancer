@@ -69,7 +69,7 @@ async function onFileChange() {
 
 function createImportModal() {
     const fileInput = h('input', {type: 'file', accept: '.twee,.tw2'});
-    const fileHint0 = h(`<p>${chrome.i18n.getMessage('importDlgExperimental')}</p>`);
+    const fileHint0 = h(`<p>${chrome.i18n.getMessage('experimentalWarning')}</p>`);
     const fileHint1 = h(
         `<p>${chrome.i18n.getMessage('importDlgHelp')}</p>`
     );
@@ -78,8 +78,7 @@ function createImportModal() {
 
     fileInput.addEventListener('change', onFileChange);
 
-    const modal = new Modal(chrome.i18n.getMessage('importDlgTitle'), selectFileWrapper);
-    return modal;
+    return new Modal(chrome.i18n.getMessage('importDlgTitle'), selectFileWrapper);
 }
 
 export async function addButtons() {

@@ -1,8 +1,8 @@
 export interface IMergeOverride {
-    title: boolean;
-    script: boolean;
-    styleSheet: boolean;
-    passages: boolean;
+    title?: boolean;
+    script?: boolean;
+    styleSheet?: boolean;
+    passages?: boolean;
 }
 
 // @ts-ignore

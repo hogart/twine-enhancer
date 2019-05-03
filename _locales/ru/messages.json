@@ -8,8 +8,14 @@
   "importDlgHelp": {
     "message": "Если история с таким названием уже существует, она будете переименована в резервную копию. Импорт занимает некоторое время; страница автоматически перезагрузится."
   },
-  "importDlgExperimental": {
+  "experimentalWarning": {
     "message": "<strong style=\"color: red;\">Экспериментальная функция!</strong> Скачайте резервную копию перед использованием."
+  },
+  "addSnippetDlgHelp": {
+    "message": "Введите код сниппета <a href=\"https://twinery.org/cookbook/terms/terms_twee.html\">формате twee</a>."
+  },
+  "addSnippetDlgTitle": {
+    "message": "Вставить сниппет"
   },
   "exportAsTwee": {
     "message": "Экспорт в *.twee"
@@ -88,5 +94,8 @@
   },
   "resetSettings": {
     "message": "Настройки по умолчанию"
+  },
+  "confirm": {
+    "message": "ОК"
   }
 }

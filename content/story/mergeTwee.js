@@ -85,13 +85,15 @@ function mergeStories(story, toMerge, override) {
                         story.passages[existingPassage[0]] = mergePassage(existingPassage[1], passage);
                     }
                 } else {
-                    story.passages.push({
-                        ...passage,
-                        position: {
-                            x: index * 25,
-                            y: index * 100,
-                        },
-                    });
+                    if (!passage.position) {
+                        Object.assign(passage, {
+                            position: {
+                                x: index * 25,
+                                y: index * 125,
+                            },
+                        });
+                    }
+                    story.passages.push(passage);
                 }
             }
         }
