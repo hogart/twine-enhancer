@@ -8,19 +8,23 @@
   },
   "devDependencies": {
     "@types/chrome": "0.0.81",
+    "concurrently": "^4.1.0",
     "eslint": "^5.15.2",
     "mkdirp": "^0.5.1",
     "rollup": "^1.6.0",
     "rollup-plugin-commonjs": "^9.2.1",
     "rollup-plugin-eslint": "^5.0.0",
     "rollup-plugin-html": "^0.2.1",
-    "rollup-plugin-node-resolve": "^4.0.1"
+    "rollup-plugin-node-resolve": "^4.0.1",
+    "web-ext": "^3.0.0"
   },
   "scripts": {
     "prebuild": "rm -rf build && mkdirp build && mkdirp build/content",
-    "postbuild": "cp -r ./manifest.json ./syncOptions.js ./domI18n.js ./options ./_locales ./icons build && cp -r content/bundle.js content/*.css build/content",
+    "postbuild": "cp -r ./manifest.json ./syncOptions.js ./domI18n.js ./options ./_locales ./icons build && cp -r content/bundle.js content/*.css build/content && web-ext build -s build -a .",
     "build": "rollup -c",
     "watch": "rollup -c -w",
+    "chrome": "npm run watch",
+    "ff": "concurrently \"npm:watch\" \"web-ext run\"",
     "lint": "eslint --ignore-path .gitignore ."
   },
   "repository": {

@@ -24,13 +24,12 @@ You should have nodejs and npm installed.
 
 0. Clone or download repository
 0. Run `npm install` in project directory.
-0. Run `npm run watch`. This will assemble scripts that need assembling. 
     
-    In **Chrome**, open `chrome://extensions` page and click "Load unpacked" button. Select project directory. You'll need to manually click "reload" button every time you make changes.
+    In **Chrome**, run `npm run chrome`, open `chrome://extensions` page and click "Load unpacked" button. Select project directory. You'll need to manually click "reload" button every time you make changes.
     
-    In **Firefox**, you'll need to make manual build after every changes.
+    In **Firefox**, run `npm run ff`. This will open browser window with extension installed and will automatically reload extension on changes.
 
 
 ## Building
 
-0. In project directory, run `npm run build`. This will create `build` directory with some files. Contents of this directory (not directory itself!) should be packed into *.zip file, which can be submitted to Chrome and Firefox extension stores.
+0. In project directory, run `npm run build`. This will create `twine_enchancer-<vesrion>.zip` file in project root, ready for upload to extension stores.
