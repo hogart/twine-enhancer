@@ -15,7 +15,7 @@
     "browser_specific_settings": {
         "gecko": {
             "id": "7a6c3c31de8b5b7389304c652dfd8c930f4bb98a@twine-enhancer",
-            "strict_min_version": "42.0"
+            "strict_min_version": "57.0"
         }
     },
 
