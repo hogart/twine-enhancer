@@ -18,7 +18,7 @@
   },
   "scripts": {
     "prebuild": "rm -rf build && mkdirp build && mkdirp build/content",
-    "postbuild": "cp -r ./manifest.json ./syncOptions.js ./domI18n.js ./options ./_locales build && cp -r content/bundle.js content/*.css build/content",
+    "postbuild": "cp -r ./manifest.json ./syncOptions.js ./domI18n.js ./options ./_locales ./icons build && cp -r content/bundle.js content/*.css build/content",
     "build": "rollup -c",
     "watch": "rollup -c -w",
     "lint": "eslint --ignore-path .gitignore ."
