@@ -1,5 +1,5 @@
 import { extractPassages } from './story/extractStory';
-import { getCurrentStoryIfid } from './getCurrentStoryIfid';
+import { getCurrentStoryIfid } from './story/getCurrentStoryIfid';
 import { writePassage } from './story/writeStory';
 
 function snapCoord(coord) {

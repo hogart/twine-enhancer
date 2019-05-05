@@ -58,7 +58,7 @@ export function extractPassages(storyId, startPassage = null) {
 
 /**
  * @param {string} storyId
- * @return {object}
+ * @return {IStory}
  */
 export function extractStory(storyId) {
     const { startPassage, ...meta} = extractStoryMeta(storyId);

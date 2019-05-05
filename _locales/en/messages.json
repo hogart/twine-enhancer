@@ -8,8 +8,14 @@
   "importDlgHelp": {
     "message": "If there's already a story with the same name, it will be renamed as backup. Importing takes some time; page will automatically reload after."
   },
-  "importDlgExperimental": {
+  "experimentalWarning": {
     "message": "<strong style=\"color: red;\">Experimental feature!</strong> Make backup before proceed."
+  },
+  "addSnippetDlgHelp": {
+    "message": "Enter snippet code in <a href=\"https://twinery.org/cookbook/terms/terms_twee.html\">twee format</a>."
+  },
+  "addSnippetDlgTitle": {
+    "message": "Insert snippet"
   },
   "exportAsTwee": {
     "message": "Export as *.twee"
@@ -62,6 +68,9 @@
   "enableDebug": {
     "message": "\"Play this story in test mode\" hotkey (Shift+F9)"
   },
+  "enableSnippet": {
+    "message": "Insert snippet (Alt+S)"
+  },
   "styleChanges": {
     "message": "Stylistic changes"
   },
@@ -85,5 +94,8 @@
   },
   "resetSettings": {
     "message": "Reset to defaults"
+  },
+  "confirm": {
+    "message": "OK"
   }
 }

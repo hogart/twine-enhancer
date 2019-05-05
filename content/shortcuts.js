@@ -1,12 +1,15 @@
 import { loadOptions } from '../syncOptions';
-import { waitForElement } from './waitForElement';
+import { waitForElement } from './dom/waitForElement';
 import { h } from './dom/h';
 import { toggleTheme } from './toggleTheme';
 import { snapPassages } from './snapPassages';
-import { listenForHotKey } from './listenForHotkeys';
+import { listenForHotKey } from './dom/listenForHotkeys';
 
 import { downloadTwee } from './downloadTwee';
 import { createIcon } from './dom/createIcon';
+import { mergeTwee } from './story/mergeTwee';
+import { writeStory } from './story/writeStory';
+import { addSnippet } from './addSnippet';
 
 function triggerEvent(element, type = 'click') {
     const event = new MouseEvent(type, {
@@ -75,6 +78,12 @@ const buttonsMap = {
     debug: {
         hotkey: 'shift+f9',
         buttonIndex: 9,
+    },
+    snippet: {
+        icon: 'puzzle-piece',
+        title: 'Insert snippet',
+        hotkey: 'alt+a',
+        action: addSnippet,
     },
 };
 
