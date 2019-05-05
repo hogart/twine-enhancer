@@ -2,7 +2,7 @@
     "name": "Twine Enhancer",
     "short_name": "Twine++",
     "manifest_version": 2,
-    "version": "1.5.0",
+    "version": "1.5.1",
     "description": "Unofficial enhancements and tuning for Twine (online version)",
     "homepage_url": "https://github.com/hogart/twine-enhancer",
     "default_locale": "en",
