@@ -12,7 +12,7 @@
     "message": "<strong style=\"color: red;\">Экспериментальная функция!</strong> Скачайте резервную копию перед использованием."
   },
   "addSnippetDlgHelp": {
-    "message": "Введите код сниппета <a href=\"https://twinery.org/cookbook/terms/terms_twee.html\">формате twee</a>."
+    "message": "Введите код сниппета <a href=\"https://twinery.org/cookbook/terms/terms_twee.html\" target=\"_blank\">формате twee</a>."
   },
   "addSnippetDlgTitle": {
     "message": "Вставить сниппет"

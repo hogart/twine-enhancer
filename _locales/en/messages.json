@@ -12,7 +12,7 @@
     "message": "<strong style=\"color: red;\">Experimental feature!</strong> Make backup before proceed."
   },
   "addSnippetDlgHelp": {
-    "message": "Enter snippet code in <a href=\"https://twinery.org/cookbook/terms/terms_twee.html\">twee format</a>."
+    "message": "Enter snippet code in <a href=\"https://twinery.org/cookbook/terms/terms_twee.html\" target=\"_blank\">twee format</a>."
   },
   "addSnippetDlgTitle": {
     "message": "Insert snippet"
