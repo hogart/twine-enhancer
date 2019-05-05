@@ -13,8 +13,10 @@ export async function downloadTwee() {
 
         const url = URL.createObjectURL(new Blob([twee], { type: 'text/plain' }));
 
-        const link = h('a', {href: url, download: `${story.title}.${options.tweeExtension}`});
+        const link = h('a', { href: url, download: `${story.title}.${options.tweeExtension}` });
 
+        document.body.appendChild(link);
         link.click();
+        document.body.removeChild(link);
     }
 }
