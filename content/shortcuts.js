@@ -7,8 +7,6 @@ import { listenForHotKey } from './dom/listenForHotkeys';
 
 import { downloadTwee } from './downloadTwee';
 import { createIcon } from './dom/createIcon';
-import { mergeTwee } from './story/mergeTwee';
-import { writeStory } from './story/writeStory';
 import { addSnippet } from './addSnippet';
 
 function triggerEvent(element, type = 'click') {
