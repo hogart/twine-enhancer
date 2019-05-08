@@ -20,8 +20,11 @@
     "web-ext": "^3.0.0"
   },
   "scripts": {
-    "prebuild": "rm -rf build && mkdirp build && mkdirp build/content",
-    "postbuild": "cp -r ./manifest.json ./syncOptions.js ./domI18n.js ./options ./_locales ./icons build && cp -r content/bundle.js content/*.css build/content && web-ext build -s build -a .",
+    "clean": "rm -rf build && mkdirp build && mkdirp build/content",
+    "copydest": "cp -r ./manifest.json ./syncOptions.js ./domI18n.js ./options ./_locales ./icons build && cp -r content/bundle.js content/*.css build/content",
+    "pack": "web-ext build --overwrite-dest -s build -a .",
+    "prebuild": "npm run clean",
+    "postbuild": "npm run copydest && npm run pack",
     "build": "rollup -c",
     "watch": "rollup -c -w",
     "chrome": "npm run watch",

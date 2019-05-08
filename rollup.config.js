@@ -10,6 +10,8 @@ export default {
         format: 'iife',
         sourcemap: true,
     },
+    context: 'null',
+    moduleContext: 'null',
     plugins: [
         resolve(),
         commonjs(),
