@@ -18,6 +18,10 @@ Version 1.6:
 
 * Import snippets in *.twee format
 
+Version 1.6.1:
+
+* Firefox compatibility
+
 ## Development
 
 You should have nodejs and npm installed.
