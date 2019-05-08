@@ -1,3 +1,5 @@
+import html from 'hyperhtml';
+
 import { loadOptions } from '../syncOptions';
 import { waitForElement } from './dom/waitForElement';
 import { h } from './dom/h';
@@ -19,8 +21,15 @@ function triggerEvent(element, type = 'click') {
     element.dispatchEvent(event);
 }
 
-function button({icon, title}, action) {
-    return h('button', {title, data: {action}}, [createIcon(icon)]);
+function Icon(iconName) {
+    const cls = `fa fa-${iconName}`;
+    return html`<i class=${cls}></i>`;
+}
+
+function Button({icon, title}, action) {
+    return html`<button title=${title} data-action=${action}>
+        ${Icon(icon)}
+    </button>`;
 }
 
 const buttonsMap = {
@@ -115,7 +124,7 @@ function attachToDom(menu, toolbar, options, buttonsContainer) {
         const conf = buttonsMap[btnName];
 
         if (conf.icon && conf.title) {
-            buttonsContainer.appendChild(button(conf, btnName));
+            buttonsContainer.appendChild(Button(conf, btnName));
         }
 
         if (conf.hotkey) {
