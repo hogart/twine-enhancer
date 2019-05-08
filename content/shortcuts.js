@@ -2,62 +2,60 @@ import html from 'hyperhtml';
 
 import { loadOptions } from '../syncOptions';
 import { waitForElement } from './dom/waitForElement';
-import { h } from './dom/h';
 import { toggleTheme } from './toggleTheme';
 import { snapPassages } from './snapPassages';
 import { listenForHotKey } from './dom/listenForHotkeys';
 
 import { downloadTwee } from './downloadTwee';
-import { createIcon } from './dom/createIcon';
 import { addSnippet } from './addSnippet';
-
-function triggerEvent(element, type = 'click') {
-    const event = new MouseEvent(type, {
-        view: window,
-        bubbles: true,
-        cancelable: true,
-    });
-
-    element.dispatchEvent(event);
-}
+import { triggerEvent } from './dom/triggerEvent.js';
 
 function Icon(iconName) {
     const cls = `fa fa-${iconName}`;
-    return html`<i class=${cls}></i>`;
+    return html`
+        <i class=${cls}></i>
+    `;
 }
 
-function Button({icon, title}, action) {
-    return html`<button title=${title} data-action=${action}>
-        ${Icon(icon)}
-    </button>`;
+function Button({icon, title, name}) {
+    return html`
+        <button title=${title} data-action=${name}>
+            ${Icon(icon)}
+        </button>
+    `;
 }
 
-const buttonsMap = {
-    editJs: {
+const buttonsMap = [
+    {
+        name: 'editJs',
         icon: 'terminal',
-        title: chrome.i18n.getMessage('editJs'),//'Edit Story JavaScript',
+        title: chrome.i18n.getMessage('editJs'),
         hotkey: 'alt+j',
         buttonIndex: 0,
     },
-    editCss: {
+    {
+        name: 'editCss',
         icon: 'css3',
         title: chrome.i18n.getMessage('editCss'),
         hotkey: 'alt+c',
         buttonIndex: 1,
     },
-    proofRead: {
+    {
+        name: 'proofRead',
         icon: 'book',
         title: chrome.i18n.getMessage('proofRead'),
         hotkey: 'f4',
         buttonIndex: 7,
     },
-    publish: {
+    {
+        name: 'publish',
         icon: 'download',
         title: chrome.i18n.getMessage('download'),
         hotkey: 'ctrl+s',
         buttonIndex: 8,
     },
-    export: {
+    {
+        name: 'export',
         icon: 'file-code-o',
         title: chrome.i18n.getMessage('exportAsTwee'),
         hotkey: 'ctrl+e',
@@ -65,7 +63,8 @@ const buttonsMap = {
             downloadTwee();
         },
     },
-    snap: {
+    {
+        name: 'snap',
         icon: 'sitemap',
         title: chrome.i18n.getMessage('snapPassages'),
         action() {
@@ -73,26 +72,30 @@ const buttonsMap = {
             window.location.reload();
         },
     },
-    theme: {
+    {
+        name: 'theme',
         icon: 'moon-o',
-        title: chrome.i18n.getMessage('Toggle dark/light theme'),
+        title: chrome.i18n.getMessage('toggleDarkLightTheme'),
         action: toggleTheme,
     },
-    run: {
+    {
+        name: 'run',
         hotkey: 'shift+f10',
         buttonIndex: 10,
     },
-    debug: {
+    {
+        name: 'debug',
         hotkey: 'shift+f9',
         buttonIndex: 9,
     },
-    snippet: {
+    {
+        name: 'snippet',
         icon: 'puzzle-piece',
         title: 'Insert snippet',
         hotkey: 'alt+a',
         action: addSnippet,
     },
-};
+];
 
 function getMenu(toolbar) {
     const menuButton = toolbar.querySelector('.storyName');
@@ -109,30 +112,46 @@ function getMenuButtons(menu, toolbar) {
     ];
 }
 
-function createContainer() {
-    return h('div', {class: 'toolbarButtons'});
+function ToolbarButtons(visibleButtons) {
+    return html`
+        <div class="toolbarButtons">
+            ${visibleButtons.map(button => Button(button))}
+        </div>
+    `;
 }
 
-function attachToDom(menu, toolbar, options, buttonsContainer) {
+function attachToDom(menu, toolbar, options) {
     const menuButtons = getMenuButtons(menu, toolbar[0]);
 
-    Object.keys(buttonsMap).forEach((btnName) => {
-        if (!options[btnName]) {
-            return;
-        }
+    const {visible, withShortcuts} = buttonsMap.reduce(
+        (acc, button) => {
+            if (!options[button.name]) {
+                return acc;
+            }
 
-        const conf = buttonsMap[btnName];
+            if (button.icon && button.title) {
+                acc.visible.push(button);
+            }
 
-        if (conf.icon && conf.title) {
-            buttonsContainer.appendChild(Button(conf, btnName));
-        }
+            if (button.hotkey) {
+                acc.withShortcuts.push(button);
+            }
 
-        if (conf.hotkey) {
-            listenForHotKey(conf.hotkey, () => {
-                const handler = btnConfToHandler(menuButtons, conf);
-                handler();
-            });
+            return acc;
+        },
+        {
+            visible: [],
+            withShortcuts: [],
         }
+    );
+
+    const buttonsContainer = ToolbarButtons(visible);
+
+    withShortcuts.forEach((button) => {
+        listenForHotKey(button.hotkey, () => {
+            const handler = btnConfToHandler(menuButtons, button);
+            handler();
+        });
     });
 
     buttonsContainer.addEventListener('click', (event) => {
@@ -146,12 +165,12 @@ function attachToDom(menu, toolbar, options, buttonsContainer) {
     toolbar[0].appendChild(buttonsContainer);
 }
 
-function btnConfToHandler(buttons, conf) {
+function btnConfToHandler(buttons, { buttonIndex, action}) {
     let handler;
-    if (Number.isInteger(conf.buttonIndex)) {
-        handler = () => triggerEvent(buttons[conf.buttonIndex]);
-    } else if (typeof conf.action === 'function') {
-        handler = conf.action;
+    if (Number.isInteger(buttonIndex)) {
+        handler = () => triggerEvent(buttons[buttonIndex]);
+    } else if (typeof action === 'function') {
+        handler = action;
     }
 
     return handler;
@@ -164,7 +183,6 @@ export async function attachShortcutToolbar() {
         return;
     }
 
-    const buttonsContainer = createContainer(options);
     const toolbar = await waitForElement('.toolbar.main .left');
 
     if (toolbar[0].querySelector('.toolbarButtons')) {
@@ -173,7 +191,7 @@ export async function attachShortcutToolbar() {
 
     const menu = getMenu(toolbar[0]);
 
-    attachToDom(menu, toolbar, options, buttonsContainer);
+    attachToDom(menu, toolbar, options);
 }
 
 

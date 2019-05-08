@@ -4,6 +4,7 @@
   "description": "Unofficial enhancements and tuning for Twine (online version)",
   "dependencies": {
     "aife-twee2": "github:aifejs/aife-interop#v1.3.1",
+    "hyperhtml": "^2.25.5",
     "tiny-uuid": "^1.0.0"
   },
   "devDependencies": {
