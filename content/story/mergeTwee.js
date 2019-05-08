@@ -1,6 +1,7 @@
 import { getCurrentStoryIfid } from './getCurrentStoryIfid';
 import { importTwee } from 'aife-twee2/src/importTwee';
 import { extractStory } from './extractStory';
+import { inferPassagePosition } from './inferPassagePosition.js';
 
 function wrapInsertion(content, storyTitle = 'untitled_snippet') {
     return `
@@ -85,15 +86,7 @@ function mergeStories(story, toMerge, override) {
                         story.passages[existingPassage[0]] = mergePassage(existingPassage[1], passage);
                     }
                 } else {
-                    if (!passage.position) {
-                        Object.assign(passage, {
-                            position: {
-                                x: index * 25,
-                                y: index * 125,
-                            },
-                        });
-                    }
-                    story.passages.push(passage);
+                    story.passages.push(inferPassagePosition(passage, index));
                 }
             }
         }

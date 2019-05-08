@@ -7,6 +7,7 @@ import { Modal } from './dom/Modal';
 import { extractStoryMetaRaw } from './story/extractStory';
 import { writeStory } from './story/writeStory';
 import { readStoryUids } from './story/persistence';
+import { inferPassagePosition } from './story/inferPassagePosition.js';
 
 function createDashboardButton({text, icon}, onClick) {
     const iconEl = createIcon(icon);
@@ -61,6 +62,8 @@ async function onFileChange() {
         if (dublicateId !== null) {
             renameDublicate(dublicateId);
         }
+
+        importingStory.passages.forEach(inferPassagePosition);
 
         writeStory(importingStory);
         location.reload();
