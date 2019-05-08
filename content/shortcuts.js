@@ -156,8 +156,8 @@ function attachToDom(menu, toolbar, options) {
 
     buttonsContainer.addEventListener('click', (event) => {
         const button = event.target.closest('button[data-action]');
-        const action = button.dataset.action;
-        const conf = buttonsMap[action];
+        const name = button.dataset.action;
+        const conf = buttonsMap.find(conf => conf.name === name);
         const handler = btnConfToHandler(menuButtons, conf);
         handler();
     });
