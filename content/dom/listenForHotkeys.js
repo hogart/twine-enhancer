@@ -31,7 +31,7 @@ function eventMatchesHotKey(event, hotKey) {
 
 export function listenForHotKey(hotKey, handler) {
     const parsedHotKey = parseHotKeyString(hotKey);
-    window.addEventListener('keydown', (event) => {
+    const eventHandler = (event) => {
         if (eventMatchesHotKey(event, parsedHotKey)) {
             handler(event);
 
@@ -39,7 +39,11 @@ export function listenForHotKey(hotKey, handler) {
             event.stopPropagation();
             return false;
         }
-    }, false);
+    };
+    window.addEventListener('keydown', eventHandler, false);
+    return () => {
+        window.removeEventListener('keydown', eventHandler);
+    };
 }
 
 // eslint-disable-next-line no-unused-vars
