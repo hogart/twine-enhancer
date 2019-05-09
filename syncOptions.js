@@ -47,3 +47,11 @@ export function clearOptions() {
         });
     });
 }
+
+export function listenOptions(onChange) {
+    chrome.storage.onChanged.addListener((changes, namespace) => {
+        if (namespace === 'sync') {
+            onChange(changes);
+        }
+    });
+}

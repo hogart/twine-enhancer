@@ -1,101 +1,14 @@
-import html from 'hyperhtml';
-
 import { loadOptions } from '../syncOptions';
 import { waitForElement } from './dom/waitForElement';
-import { toggleTheme } from './toggleTheme';
-import { snapPassages } from './snapPassages';
-import { listenForHotKey } from './dom/listenForHotkeys';
-
-import { downloadTwee } from './downloadTwee';
-import { addSnippet } from './addSnippet';
 import { triggerEvent } from './dom/triggerEvent.js';
-
-function Icon(iconName) {
-    const cls = `fa fa-${iconName}`;
-    return html`
-        <i class=${cls}></i>
-    `;
-}
-
-function Button({icon, title, name}) {
-    return html`
-        <button title=${title} data-action=${name}>
-            ${Icon(icon)}
-        </button>
-    `;
-}
-
-const buttonsMap = [
-    {
-        name: 'editJs',
-        icon: 'terminal',
-        title: chrome.i18n.getMessage('editJs'),
-        hotkey: 'alt+j',
-        buttonIndex: 0,
-    },
-    {
-        name: 'editCss',
-        icon: 'css3',
-        title: chrome.i18n.getMessage('editCss'),
-        hotkey: 'alt+c',
-        buttonIndex: 1,
-    },
-    {
-        name: 'proofRead',
-        icon: 'book',
-        title: chrome.i18n.getMessage('proofRead'),
-        hotkey: 'f4',
-        buttonIndex: 7,
-    },
-    {
-        name: 'publish',
-        icon: 'download',
-        title: chrome.i18n.getMessage('download'),
-        hotkey: 'ctrl+s',
-        buttonIndex: 8,
-    },
-    {
-        name: 'export',
-        icon: 'file-code-o',
-        title: chrome.i18n.getMessage('exportAsTwee'),
-        hotkey: 'ctrl+e',
-        action() {
-            downloadTwee();
-        },
-    },
-    {
-        name: 'snap',
-        icon: 'sitemap',
-        title: chrome.i18n.getMessage('snapPassages'),
-        action() {
-            snapPassages();
-            window.location.reload();
-        },
-    },
-    {
-        name: 'theme',
-        icon: 'moon-o',
-        title: chrome.i18n.getMessage('toggleDarkLightTheme'),
-        action: toggleTheme,
-    },
-    {
-        name: 'run',
-        hotkey: 'shift+f10',
-        buttonIndex: 10,
-    },
-    {
-        name: 'debug',
-        hotkey: 'shift+f9',
-        buttonIndex: 9,
-    },
-    {
-        name: 'snippet',
-        icon: 'puzzle-piece',
-        title: 'Insert snippet',
-        hotkey: 'alt+a',
-        action: addSnippet,
-    },
-];
+import { ToolbarButtons } from './components/ToolbarButtons.js';
+import { ButtonsConfig, buttonsMap } from '../buttonsMap.js';
+import { downloadTwee } from './downloadTwee.js';
+import { snapPassages } from './snapPassages.js';
+import { toggleTheme } from './toggleTheme.js';
+import { addSnippet } from './addSnippet.js';
+import { listenOptions } from '../syncOptions.js';
+import { hyper } from 'hyperhtml';
 
 function getMenu(toolbar) {
     const menuButton = toolbar.querySelector('.storyName');
@@ -105,6 +18,22 @@ function getMenu(toolbar) {
     return document.querySelector('.drop-content div .menu:first-child');
 }
 
+const actionsMap = {
+    editJs: 0,
+    editCss: 1,
+    proofRead: 7,
+    publish: 8,
+    export: downloadTwee,
+    snap() {
+        snapPassages();
+        window.location.reload();
+    },
+    theme: toggleTheme,
+    run: 10,
+    debug: 9,
+    snippet: addSnippet,
+};
+
 function getMenuButtons(menu, toolbar) {
     return [
         ...menu.querySelectorAll('li button'),
@@ -112,86 +41,65 @@ function getMenuButtons(menu, toolbar) {
     ];
 }
 
-function ToolbarButtons(visibleButtons) {
-    return html`
-        <div class="toolbarButtons">
-            ${visibleButtons.map(button => Button(button))}
-        </div>
-    `;
-}
+function createContainer(builtinButtons, btnConf) {
+    function emulateMenuButton(index) {
+        triggerEvent(builtinButtons[index]);
+    }
 
-function attachToDom(menu, toolbar, options) {
-    const menuButtons = getMenuButtons(menu, toolbar[0]);
-
-    const {visible, withShortcuts} = buttonsMap.reduce(
-        (acc, button) => {
-            if (!options[button.name]) {
-                return acc;
+    window.addEventListener(
+        'message',
+        (request) => {
+            if (request.data && request.data.action) {
+                const action = actionsMap[request.data.action];
+                if (action !== undefined) {
+                    if (typeof action === 'number') {
+                        emulateMenuButton(action);
+                    } else {
+                        action();
+                    }
+                }
             }
-
-            if (button.icon && button.title) {
-                acc.visible.push(button);
-            }
-
-            if (button.hotkey) {
-                acc.withShortcuts.push(button);
-            }
-
-            return acc;
-        },
-        {
-            visible: [],
-            withShortcuts: [],
         }
     );
 
-    const buttonsContainer = ToolbarButtons(visible);
-
-    withShortcuts.forEach((button) => {
-        listenForHotKey(button.hotkey, () => {
-            const handler = btnConfToHandler(menuButtons, button);
-            handler();
-        });
-    });
-
-    buttonsContainer.addEventListener('click', (event) => {
-        const button = event.target.closest('button[data-action]');
-        const name = button.dataset.action;
-        const conf = buttonsMap.find(conf => conf.name === name);
-        const handler = btnConfToHandler(menuButtons, conf);
-        handler();
-    });
-
-    toolbar[0].appendChild(buttonsContainer);
-}
-
-function btnConfToHandler(buttons, { buttonIndex, action}) {
-    let handler;
-    if (Number.isInteger(buttonIndex)) {
-        handler = () => triggerEvent(buttons[buttonIndex]);
-    } else if (typeof action === 'function') {
-        handler = action;
-    }
-
-    return handler;
+    return new ToolbarButtons(btnConf);
 }
 
 export async function attachShortcutToolbar() {
     const options = await loadOptions();
 
+    const btnConf = new ButtonsConfig(buttonsMap, options);
+
     if (!options.shortcutButtons) {
         return;
     }
 
-    const toolbar = await waitForElement('.toolbar.main .left');
+    const [toolbar] = await waitForElement('.toolbar.main .left');
 
-    if (toolbar[0].querySelector('.toolbarButtons')) {
+    if (toolbar.querySelector('.toolbarButtons')) {
         return;
     }
 
-    const menu = getMenu(toolbar[0]);
+    const menu = getMenu(toolbar);
 
-    attachToDom(menu, toolbar, options);
+    const builtinButtons = getMenuButtons(menu, toolbar);
+
+    const buttonsContainer = createContainer(builtinButtons, btnConf);
+    const wrapper = document.createElement('span');
+
+    toolbar.appendChild(wrapper);
+    hyper(wrapper)`${buttonsContainer}`;
+
+    listenOptions((changes) => {
+        for (const key of Object.keys(changes)) {
+            options[key] = changes[key].newValue;
+        }
+
+        btnConf.update(options);
+
+        // FIXME: doesn't remove existing buttons for some reason, throws error
+        buttonsContainer.setState({buttons: btnConf});
+    });
 }
 
 

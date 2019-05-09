@@ -7,3 +7,12 @@ export interface IMergeOverride {
 
 // @ts-ignore
 export type TFoundPassage = [number, IPassage];
+
+export interface IButtonConfig {
+    name: string;
+    icon: string;
+    title: string;
+    hotkey?: string;
+    buttonIndex?: number;
+    action?: Function;
+}
