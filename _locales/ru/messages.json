@@ -38,6 +38,9 @@
   "download": {
     "message": "Опубликовать в файл"
   },
+  "insertSnippet": {
+    "message": "Вставить сниппет"
+  },
   "enableShortcuts": {
     "message": "Включить доп. кнопки и хоткеи"
   },

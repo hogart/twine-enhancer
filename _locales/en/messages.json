@@ -38,6 +38,9 @@
   "download": {
     "message": "Publish to File"
   },
+  "insertSnippet": {
+    "message": "Insert snippet"
+  },
   "enableShortcuts": {
     "message": "Enable shortcut buttons and hotkeys"
   },
