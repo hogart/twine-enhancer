@@ -31,15 +31,13 @@ export class Button extends html.Component {
         }
 
         const {title, icon, active} = this.state;
+        const hidden = !(title && icon && active);
+        const titleAttr = title ? chrome.i18n.getMessage(title) : '';
 
-        if (title && icon && active) {
-            return this.html`
-                <button title="${chrome.i18n.getMessage(title)}" onclick="${this}">
-                    ${Icon(icon)}
-                </button>
-            `;
-        } else {
-            return this.html``;
-        }
+        return this.html`
+            <button hidden="${hidden}" title="${titleAttr}" onclick="${this}">
+                ${Icon(icon)}
+            </button>
+        `;
     }
 }

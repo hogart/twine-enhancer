@@ -96,8 +96,6 @@ export async function attachShortcutToolbar() {
         }
 
         btnConf.update(options);
-
-        // FIXME: doesn't remove existing buttons for some reason, throws error
         buttonsContainer.setState({buttons: btnConf});
     });
 }

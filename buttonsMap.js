@@ -87,17 +87,17 @@ export const buttonsMap = [
         title: 'toggleDarkLightTheme',
     },
     {
+        name: 'snippet',
+        icon: 'puzzle-piece',
+        title: 'insertSnippet',
+        hotkey: 'alt+a',
+    },
+    {
         name: 'run',
         hotkey: 'shift+f10',
     },
     {
         name: 'debug',
         hotkey: 'shift+f9',
-    },
-    {
-        name: 'snippet',
-        icon: 'puzzle-piece',
-        title: 'Insert snippet',
-        hotkey: 'alt+a',
     },
 ];

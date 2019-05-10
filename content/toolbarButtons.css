@@ -1,3 +1,7 @@
 .toolbarButtons {
     display: inline-block;
 }
+
+.toolbarButtons [hidden] {
+    display: none !important;
+}
