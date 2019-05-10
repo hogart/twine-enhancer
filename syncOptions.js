@@ -1,18 +1,24 @@
 export const defaultOptions = {
     shortcutButtons: true,
     editJs: true,
+    editJsHk: 'alt+j',
     editCss: true,
+    editCssHk: 'alt+c',
     proofRead: false,
+    proofReadHk: 'f4',
     publish: true,
+    publishHk: 'ctrl+s',
     export: true,
+    exportHk: 'ctrl+e',
     snap: true,
     theme: false,
+    snippet: true,
+    snippetHk: 'alt+s',
     run: false,
     debug: false,
     wideEditors: true,
     neatPassages: false,
     tweeExtension: 'twee',
-    snippet: true,
 };
 
 /**

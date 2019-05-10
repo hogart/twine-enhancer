@@ -1,3 +1,5 @@
+import { hyper } from 'hyperhtml';
+
 import { loadOptions } from '../syncOptions';
 import { waitForElement } from './dom/waitForElement';
 import { triggerEvent } from './dom/triggerEvent.js';
@@ -8,7 +10,7 @@ import { snapPassages } from './snapPassages.js';
 import { toggleTheme } from './toggleTheme.js';
 import { addSnippet } from './addSnippet.js';
 import { listenOptions } from '../syncOptions.js';
-import { hyper } from 'hyperhtml';
+import { HotKeyListener } from './dom/HotKeyListener.js';
 
 function getMenu(toolbar) {
     const menuButton = toolbar.querySelector('.storyName');
@@ -24,10 +26,7 @@ const actionsMap = {
     proofRead: 7,
     publish: 8,
     export: downloadTwee,
-    snap() {
-        snapPassages();
-        window.location.reload();
-    },
+    snap: snapPassages,
     theme: toggleTheme,
     run: 10,
     debug: 9,
@@ -69,6 +68,7 @@ export async function attachShortcutToolbar() {
     const options = await loadOptions();
 
     const btnConf = new ButtonsConfig(buttonsMap, options);
+    const hotKeyListener = new HotKeyListener(buttonsMap, options);
 
     if (!options.shortcutButtons) {
         return;
@@ -96,6 +96,7 @@ export async function attachShortcutToolbar() {
         }
 
         btnConf.update(options);
+        hotKeyListener.update(buttonsMap, options);
         buttonsContainer.setState({buttons: btnConf});
     });
 }

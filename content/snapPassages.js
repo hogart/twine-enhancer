@@ -24,4 +24,6 @@ export function snapPassages() {
             writePassage(passage, storyId);
         });
     }
+
+    window.location.reload();
 }

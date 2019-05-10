@@ -43,6 +43,10 @@ export class ButtonsConfig {
     map(iterator) {
         return this._list.map(iterator);
     }
+
+    mapRenderable(iterator) {
+        return this._list.filter((button) => button.title && button.icon).map(iterator);
+    }
 }
 
 export const buttonsMap = [

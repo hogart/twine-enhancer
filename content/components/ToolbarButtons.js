@@ -10,7 +10,7 @@ export class ToolbarButtons extends html.Component {
     render() {
         return this.html`
             <div class="toolbarButtons">
-                ${this.state.buttons.map(button => new Button(button))}
+                ${this.state.buttons.mapRenderable(button => new Button(button))}
             </div>
         `;
     }
