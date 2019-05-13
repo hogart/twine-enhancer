@@ -15,7 +15,7 @@ export class HotKeyListener {
             const key = `${button.name}Hk`;
             if (options[key]) {
                 hkToAction.push({
-                    action: name,
+                    action: button.name,
                     key: HotKeyListener.parseHotKeyString(options[key]),
                 });
             }
@@ -28,6 +28,7 @@ export class HotKeyListener {
         for (const conf of this.hkToAction) {
             if (HotKeyListener.eventMatchesHotKey(event, conf.key)) {
                 window.postMessage({ action: conf.action }, '*');
+                event.preventDefault();
                 break;
             }
         }
