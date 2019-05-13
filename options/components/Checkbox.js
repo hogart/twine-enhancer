@@ -1,7 +1,7 @@
-import html from 'hyperhtml';
+import { Component } from 'hyperhtml';
 import { saveOptions } from '../../syncOptions.js';
 
-export class Checkbox extends html.Component {
+export class Checkbox extends Component {
     constructor(props) {
         super();
         this.setState(props);
@@ -15,11 +15,12 @@ export class Checkbox extends html.Component {
 
     render() {
         const { enabled, label, name } = this.state;
+        const labelKey = label || `${name}Label`;
 
         return this.html`
             <label>
                 <input type="checkbox" name="${name}" checked="${enabled}" onchange="${this}"/>
-                <span>${chrome.i18n.getMessage(label)}</span>
+                <span>${chrome.i18n.getMessage(labelKey)}</span>
             </label>
         `;
     }

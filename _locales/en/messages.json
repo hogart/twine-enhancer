@@ -44,43 +44,43 @@
   "enableShortcuts": {
     "message": "Enable shortcut buttons and hotkeys"
   },
-  "enableEditJs": {
-    "message": "\"Edit JS\" button (Alt+j)"
+  "editJsLabel": {
+    "message": "\"Edit JS\" button"
   },
-  "enableEditCss": {
-    "message": "\"Edit CSS\" button (Alt+c)"
+  "editCssLabel": {
+    "message": "\"Edit CSS\" button"
   },
-  "enableProofRead": {
-    "message": "\"Proof read\" button (F4)"
+  "proofReadLabel": {
+    "message": "\"Proof read\" button"
   },
-  "enablePublish": {
-    "message": "\"Publish\" button (Ctrl+S)"
+  "publishLabel": {
+    "message": "\"Publish\" button"
   },
-  "enableImportExport": {
-    "message": "\"Export as *.twee\" (Ctrl+E) and \"Import *.twee\" buttons"
+  "exportLabel": {
+    "message": "\"Export as *.twee\""
   },
-  "enableSnap": {
-    "message": "\"Snap passages\" button (also reloads entire page)"
+  "snapLabel": {
+    "message": "\"Snap passages\" button"
   },
-  "enableThemeToggle": {
+  "themeLabel": {
     "message": "\"Dark/light theme\" button"
   },
-  "enablePlay": {
-    "message": "\"Play this story\" hotkey (Shift+F10)"
+  "runLabel": {
+    "message": "\"Play this story\" hotkey"
   },
-  "enableDebug": {
-    "message": "\"Play this story in test mode\" hotkey (Shift+F9)"
+  "debugLabel": {
+    "message": "\"Play this story in test mode\" hotkey"
   },
-  "enableSnippet": {
-    "message": "Insert snippet (Alt+S)"
+  "snippetLabel": {
+    "message": "\"Insert snippet\" button"
   },
   "styleChanges": {
     "message": "Stylistic changes"
   },
-  "enableAlwaysWide": {
+  "wideEditorsLabel": {
     "message": "Always wide editors and search field (also hides \"expand\" button)"
   },
-  "enableNeatPassages": {
+  "neatPassagesLabel": {
     "message": "\"Neat\" passages"
   },
   "otherSettings": {

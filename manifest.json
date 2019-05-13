@@ -29,7 +29,7 @@
                 "http://twinery.org/2/*"
             ],
             "js": [
-                "./content/bundle.js"
+                "./content/index.bundle.js"
             ],
             "css": [
                 "./content/biggerEditors.css",

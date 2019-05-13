@@ -1,5 +1,6 @@
 export const defaultOptions = {
     shortcutButtons: true,
+
     editJs: true,
     editJsHk: 'alt+j',
     editCss: true,
@@ -11,11 +12,17 @@ export const defaultOptions = {
     export: true,
     exportHk: 'ctrl+e',
     snap: true,
+    snapHk: '',
     theme: false,
+    themeHk: '',
     snippet: true,
     snippetHk: 'alt+s',
+
     run: false,
+    runHk: 'shift+f10',
     debug: false,
+    debugHk: 'shift+f9',
+
     wideEditors: true,
     neatPassages: false,
     tweeExtension: 'twee',

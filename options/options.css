@@ -8,38 +8,27 @@ form fieldset {
     margin-bottom: 1ex;
 }
 
-form label {
+label {
     display: block;
+    margin-left: 0.5em;
+    height: 25px;
 }
 
-fieldset > label {
-    margin-left: 1em;
+.settingsItem {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.settingsItem label {
+    flex-grow: 1;
+}
+.settingsItem .hotKeyInput {
+    max-width: 100px;
+    text-align: center;
 }
 
 label input[type="checkbox"] {
-    margin-right: .5em;
-}
-
-dl dt {
-    font-weight: bold;
-}
-
-details {
-    margin-bottom: 1em;
-}
-
-summary {
-    font-size: 120%;
-    font-weight: bold;
-    opacity: 0.8;
-}
-
-summary:hover {
-    opacity: 1;
-}
-
-summary:focus {
-    outline: none;
+    margin-right: 0.2em;
 }
 
 .saveStatus {

@@ -1,5 +1,8 @@
+import hyper from 'hyperhtml';
 import { clearOptions, defaultOptions, loadOptions, saveOptions } from '../syncOptions.js';
 import { domI18n } from '../domI18n.js';
+import { StyleOptions } from './components/StyleOptions.js';
+import { ShortcutsOptions } from './components/ShortcutsOptions.js';
 
 const form = document.querySelector('.js-optionsForm');
 const fields = Array.from(form.querySelectorAll('input[type="checkbox"], select'));
@@ -67,4 +70,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             input.value = val;
         }
     });
+
+    const styleOptions = new StyleOptions(values);
+    const styleFieldset = form.querySelector('.styleChanges');
+    hyper(styleFieldset)`${styleOptions}`;
+
+    const shortcutsOptions = new ShortcutsOptions(values);
+    const shortcutFieldset = form.querySelector('.shortcuts');
+    hyper(shortcutFieldset)`${shortcutsOptions}`;
+
 });

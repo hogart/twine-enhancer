@@ -44,43 +44,43 @@
   "enableShortcuts": {
     "message": "Включить доп. кнопки и хоткеи"
   },
-  "enableEditJs": {
-    "message": "Кнопка \"Редактировать JS\" (Alt+j)"
+  "editJsLabel": {
+    "message": "Кнопка \"Редактировать JS\""
   },
-  "enableEditCss": {
-    "message": "Кнопка \"Редактировать стили\" (Alt+c)"
+  "editCssLabel": {
+    "message": "Кнопка \"Редактировать стили\""
   },
-  "enableProofRead": {
-    "message": "Кнопка \"Копия для вычитки\" (F4)"
+  "proofReadLabel": {
+    "message": "Кнопка \"Копия для вычитки\""
   },
-  "enablePublish": {
-    "message": "Кнопка \"Опубликовать\" (Ctrl+S)"
+  "publishLabel": {
+    "message": "Кнопка \"Опубликовать\""
   },
-  "enableImportExport": {
-    "message": "Кнопки \"Экспорт в *.twee\" (Ctrl+E) и \"Импорт из *.twee\""
+  "exportLabel": {
+    "message": "Кнопка \"Экспорт в *.twee\""
   },
-  "enableSnap": {
+  "snapLabel": {
     "message": "Кнопка \"Выровнять параграфы по сетке\""
   },
-  "enableThemeToggle": {
+  "themeLabel": {
     "message": "Кнопка \"Темная/светлая тема\""
   },
-  "enablePlay": {
-    "message": "Хоткей \"Запустить игру\" (Shift+F10)"
+  "runLabel": {
+    "message": "Хоткей \"Запустить игру\""
   },
-  "enableDebug": {
-    "message": "Хоткей \"Запустить игру в режиме отладки\" (Shift+F9)"
+  "debugLabel": {
+    "message": "Хоткей \"Запустить игру в режиме отладки\""
   },
-  "enableSnippet": {
-    "message": "Вставить сниппет (Alt+S)"
+  "snippetLabel": {
+    "message": "Кнопка \"Вставить сниппет\""
   },
   "styleChanges": {
     "message": "Визуальные изменения"
   },
-  "enableAlwaysWide": {
+  "wideEditorsLabel": {
     "message": "Всегда широкие окна редакторов и строка поиска (так же скрывает кнопку \"раскрыть\")"
   },
-  "enableNeatPassages": {
+  "neatPassagesLabel": {
     "message": "\"Аккуратные\" параграфы"
   },
   "otherSettings": {

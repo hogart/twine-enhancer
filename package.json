@@ -21,7 +21,7 @@
   },
   "scripts": {
     "clean": "rm -rf build && mkdirp build && mkdirp build/content",
-    "copydest": "cp -r ./manifest.json ./syncOptions.js ./domI18n.js ./options ./_locales ./icons build && cp -r content/bundle.js content/*.css build/content",
+    "copydest": "cp -r ./manifest.json ./syncOptions.js ./domI18n.js ./options ./_locales ./icons build && cp -r content/content.bundle.js content/*.css build/content",
     "pack": "web-ext build --overwrite-dest -s build -a .",
     "prebuild": "npm run clean",
     "postbuild": "npm run copydest && npm run pack",
