@@ -57,6 +57,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     Object.keys(values).forEach((key) => {
         const val = values[key];
         const input = form.querySelector(`[name=${key}]`);
+        if (input === null) {
+            return;
+        }
         const type = inputType(input);
         if (type === 'checkbox') {
             input.checked = val;
