@@ -1,6 +1,4 @@
 export const defaultOptions = {
-    shortcutButtons: true,
-
     editJs: true,
     editJsHk: 'alt+j',
     editCss: true,
@@ -17,7 +15,6 @@ export const defaultOptions = {
     themeHk: '',
     snippet: true,
     snippetHk: 'alt+s',
-
     run: false,
     runHk: 'shift+f10',
     debug: false,

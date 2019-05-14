@@ -1,31 +1,4 @@
 {
-  "importBtn": {
-    "message": "Import *.twee"
-  },
-  "importDlgTitle": {
-    "message": "Import *.twee/*.tw2"
-  },
-  "importDlgHelp": {
-    "message": "If there's already a story with the same name, it will be renamed as backup. Importing takes some time; page will automatically reload after."
-  },
-  "experimentalWarning": {
-    "message": "<strong style=\"color: red;\">Experimental feature!</strong> Make backup before proceed."
-  },
-  "addSnippetDlgHelp": {
-    "message": "Enter snippet code in <a href=\"https://twinery.org/cookbook/terms/terms_twee.html\" target=\"_blank\">twee format</a>."
-  },
-  "addSnippetDlgTitle": {
-    "message": "Insert snippet"
-  },
-  "export": {
-    "message": "Export as *.twee"
-  },
-  "snap": {
-    "message": "Snap all passages (reloads page)"
-  },
-  "theme": {
-    "message": "Toggle dark/light theme"
-  },
   "editJs": {
     "message": "Edit JavaScript"
   },
@@ -38,32 +11,17 @@
   "publish": {
     "message": "Publish to File"
   },
+  "export": {
+    "message": "Export as *.twee"
+  },
+  "snap": {
+    "message": "Snap all passages (reloads page)"
+  },
+  "theme": {
+    "message": "Toggle dark/light theme"
+  },
   "snippet": {
-    "message": "Insert snippet"
-  },
-  "enableShortcuts": {
-    "message": "Enable shortcut buttons and hotkeys"
-  },
-  "editJsLabel": {
-    "message": "\"Edit JS\" button"
-  },
-  "editCssLabel": {
-    "message": "\"Edit CSS\" button"
-  },
-  "proofReadLabel": {
-    "message": "\"Proof read\" button"
-  },
-  "publishLabel": {
-    "message": "\"Publish\" button"
-  },
-  "exportLabel": {
-    "message": "\"Export as *.twee\""
-  },
-  "snapLabel": {
-    "message": "\"Snap passages\" button"
-  },
-  "themeLabel": {
-    "message": "\"Dark/light theme\" button"
+    "message": "Insert snippet (reloads page)"
   },
   "run": {
     "message": "Play this story"
@@ -71,9 +29,28 @@
   "debug": {
     "message": "Play this story in test mode"
   },
-  "snippetLabel": {
-    "message": "\"Insert snippet\" button"
+
+  "importBtn": {
+    "message": "Import *.twee"
   },
+  "importDlgTitle": {
+    "message": "Import *.twee/*.tw2"
+  },
+  "importDlgHelp": {
+    "message": "If there's already a story with the same name, it will be renamed as backup. Importing takes some time; page will automatically reload after."
+  },
+
+  "addSnippetDlgHelp": {
+    "message": "Enter snippet code in <a href=\"https://twinery.org/cookbook/terms/terms_twee.html\" target=\"_blank\">twee format</a>."
+  },
+  "addSnippetDlgTitle": {
+    "message": "Insert snippet"
+  },
+
+  "enableShortcuts": {
+    "message": "Enable shortcut buttons and hotkeys"
+  },
+
   "styleChanges": {
     "message": "Stylistic changes"
   },
@@ -97,6 +74,10 @@
   },
   "resetSettings": {
     "message": "Reset to defaults"
+  },
+
+  "experimentalWarning": {
+    "message": "<strong style=\"color: red;\">Experimental feature!</strong> Make backup before proceed."
   },
   "confirm": {
     "message": "OK"

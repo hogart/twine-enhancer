@@ -1,31 +1,4 @@
 {
-  "importBtn": {
-    "message": "Импорт из *.twee"
-  },
-  "importDlgTitle": {
-    "message": "Импорт из *.twee/*.tw2"
-  },
-  "importDlgHelp": {
-    "message": "Если история с таким названием уже существует, она будете переименована в резервную копию. Импорт занимает некоторое время; страница автоматически перезагрузится."
-  },
-  "experimentalWarning": {
-    "message": "<strong style=\"color: red;\">Экспериментальная функция!</strong> Скачайте резервную копию перед использованием."
-  },
-  "addSnippetDlgHelp": {
-    "message": "Введите код сниппета <a href=\"https://twinery.org/cookbook/terms/terms_twee.html\" target=\"_blank\">формате twee</a>."
-  },
-  "addSnippetDlgTitle": {
-    "message": "Вставить сниппет"
-  },
-  "export": {
-    "message": "Экспорт в *.twee"
-  },
-  "snap": {
-    "message": "Выровнять параграфы по сетке (перезагружает страницу)"
-  },
-  "theme": {
-    "message": "Темная/светлая тема"
-  },
   "editJs": {
     "message": "Редактировать JavaScript"
   },
@@ -38,32 +11,17 @@
   "publish": {
     "message": "Опубликовать в файл"
   },
+  "export": {
+    "message": "Экспорт в *.twee"
+  },
+  "snap": {
+    "message": "Выровнять параграфы по сетке (перезагружает страницу)"
+  },
+  "theme": {
+    "message": "Темная/светлая тема"
+  },
   "snippet": {
-    "message": "Вставить сниппет"
-  },
-  "enableShortcuts": {
-    "message": "Включить доп. кнопки и хоткеи"
-  },
-  "editJsLabel": {
-    "message": "Кнопка \"Редактировать JS\""
-  },
-  "editCssLabel": {
-    "message": "Кнопка \"Редактировать стили\""
-  },
-  "proofReadLabel": {
-    "message": "Кнопка \"Копия для вычитки\""
-  },
-  "publishLabel": {
-    "message": "Кнопка \"Опубликовать\""
-  },
-  "exportLabel": {
-    "message": "Кнопка \"Экспорт в *.twee\""
-  },
-  "snapLabel": {
-    "message": "Кнопка \"Выровнять параграфы по сетке\""
-  },
-  "themeLabel": {
-    "message": "Кнопка \"Темная/светлая тема\""
+    "message": "Вставить сниппет (перезагружает страницу)"
   },
   "run": {
     "message": "Запустить историю"
@@ -71,9 +29,28 @@
   "debug": {
     "message": "Запустить историю в режиме тестирования"
   },
-  "snippetLabel": {
-    "message": "Кнопка \"Вставить сниппет\""
+
+  "importBtn": {
+    "message": "Импорт из *.twee"
   },
+  "importDlgTitle": {
+    "message": "Импорт из *.twee/*.tw2"
+  },
+  "importDlgHelp": {
+    "message": "Если история с таким названием уже существует, она будет переименована в резервную копию. Импорт занимает некоторое время; страница автоматически перезагрузится."
+  },
+
+  "addSnippetDlgHelp": {
+    "message": "Введите код сниппета <a href=\"https://twinery.org/cookbook/terms/terms_twee.html\" target=\"_blank\">формате twee</a>."
+  },
+  "addSnippetDlgTitle": {
+    "message": "Вставить сниппет"
+  },
+
+  "enableShortcuts": {
+    "message": "Включить доп. кнопки и хоткеи"
+  },
+
   "styleChanges": {
     "message": "Визуальные изменения"
   },
@@ -84,7 +61,7 @@
     "message": "\"Аккуратные\" параграфы"
   },
   "otherSettings": {
-    "message": "Прочие настройка"
+    "message": "Прочие настройки"
   },
   "exportExtension": {
     "message": "Расширение экспортируемого файла"
@@ -97,6 +74,10 @@
   },
   "resetSettings": {
     "message": "Настройки по умолчанию"
+  },
+
+  "experimentalWarning": {
+    "message": "<strong style=\"color: red;\">Экспериментальная функция!</strong> Скачайте резервную копию перед использованием."
   },
   "confirm": {
     "message": "ОК"
