@@ -14,13 +14,12 @@ export class Checkbox extends Component {
     }
 
     render() {
-        const { enabled, label, name } = this.state;
-        const labelKey = label || `${name}Label`;
+        const { enabled, name } = this.state;
 
         return this.html`
             <label>
                 <input type="checkbox" name="${name}" checked="${enabled}" onchange="${this}"/>
-                <span>${chrome.i18n.getMessage(labelKey)}</span>
+                <span>${chrome.i18n.getMessage(name)}</span>
             </label>
         `;
     }

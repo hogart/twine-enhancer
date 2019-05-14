@@ -24,19 +24,23 @@ export class Shortcut extends html.Component {
     }
 
     render() {
-        const {enabled, label, hotKey, name} = this.state;
-        const labelKey = label || `${name}Label`;
+        const {enabled, hotKey, name} = this.state;
 
+        const noButtonClass = ['debug', 'run'].includes(name) ? ' noButton' : '';
+        const trClass = `shortcutItem${noButtonClass}`;
+
+        /* eslint-disable indent */
         return this.html`
-            <tr>
-                <td>${chrome.i18n.getMessage(labelKey)}</td>
+            <tr class="${trClass}">
+                <td>${chrome.i18n.getMessage(name)}</td>
                 <td>
                     <input type="checkbox" name="${name}" checked="${enabled}" onchange="${this}"/>
                 </td>
                 <td>
-                    <input type="text" value="${hotKey}" oninput="${this}" class="hotKeyInput"/>
+                <input type="text" value="${hotKey}" oninput="${this}" class="hotKeyInput"/>
                 </td>
             </tr>
         `;
+        /* eslint-enable indent */
     }
 }

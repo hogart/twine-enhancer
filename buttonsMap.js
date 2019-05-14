@@ -45,7 +45,7 @@ export class ButtonsConfig {
     }
 
     mapRenderable(iterator) {
-        return this._list.filter((button) => button.title && button.icon).map(iterator);
+        return this._list.filter((button) => !!button.icon).map(iterator);
     }
 }
 
@@ -53,47 +53,39 @@ export const buttonsMap = [
     {
         name: 'editJs',
         icon: 'terminal',
-        title: 'editJs',
         hotkey: 'alt+j',
     },
     {
         name: 'editCss',
         icon: 'css3',
-        title: 'editCss',
         hotkey: 'alt+c',
     },
     {
         name: 'proofRead',
         icon: 'book',
-        title: 'proofRead',
         hotkey: 'f4',
     },
     {
         name: 'publish',
         icon: 'download',
-        title: 'download',
         hotkey: 'ctrl+s',
     },
     {
         name: 'export',
         icon: 'file-code-o',
-        title: 'exportAsTwee',
         hotkey: 'ctrl+e',
     },
     {
         name: 'snap',
         icon: 'sitemap',
-        title: 'snapPassages',
     },
     {
         name: 'theme',
         icon: 'moon-o',
-        title: 'toggleDarkLightTheme',
     },
     {
         name: 'snippet',
         icon: 'puzzle-piece',
-        title: 'insertSnippet',
         hotkey: 'alt+a',
     },
     {

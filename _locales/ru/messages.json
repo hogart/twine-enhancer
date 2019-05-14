@@ -17,13 +17,13 @@
   "addSnippetDlgTitle": {
     "message": "Вставить сниппет"
   },
-  "exportAsTwee": {
+  "export": {
     "message": "Экспорт в *.twee"
   },
-  "snapPassages": {
+  "snap": {
     "message": "Выровнять параграфы по сетке (перезагружает страницу)"
   },
-  "toggleDarkLightTheme": {
+  "theme": {
     "message": "Темная/светлая тема"
   },
   "editJs": {
@@ -35,10 +35,10 @@
   "proofRead": {
     "message": "Копия для вычитки"
   },
-  "download": {
+  "publish": {
     "message": "Опубликовать в файл"
   },
-  "insertSnippet": {
+  "snippet": {
     "message": "Вставить сниппет"
   },
   "enableShortcuts": {
@@ -65,11 +65,11 @@
   "themeLabel": {
     "message": "Кнопка \"Темная/светлая тема\""
   },
-  "runLabel": {
-    "message": "Хоткей \"Запустить игру\""
+  "run": {
+    "message": "Запустить историю"
   },
-  "debugLabel": {
-    "message": "Хоткей \"Запустить игру в режиме отладки\""
+  "debug": {
+    "message": "Запустить историю в режиме тестирования"
   },
   "snippetLabel": {
     "message": "Кнопка \"Вставить сниппет\""

@@ -27,3 +27,21 @@ label input[type="checkbox"] {
     opacity: 1;
     transition: 150ms opacity linear;
 }
+
+.shortcutGrid {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.shortcutGrid th {
+    text-align: left;
+}
+
+.shortcutGrid tr.shortcutItem:hover {
+    background-color: #f2f2f2;
+}
+
+.shortcutGrid tr.shortcutItem.noButton input[type="checkbox"] {
+    display: none;
+}

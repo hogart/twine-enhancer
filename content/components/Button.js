@@ -13,12 +13,11 @@ export class Button extends html.Component {
     }
 
     render() {
-        const {title, icon, active} = this.state;
-        const hidden = !(title && icon && active);
-        const titleAttr = title ? chrome.i18n.getMessage(title) : '';
+        const {icon, active} = this.state;
+        const titleAttr = chrome.i18n.getMessage(name);
 
         return this.html`
-            <button hidden="${hidden}" title="${titleAttr}" onclick="${this}">
+            <button hidden="${!active}" title="${titleAttr}" onclick="${this}">
                 ${Icon(icon)}
             </button>
         `;

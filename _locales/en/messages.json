@@ -17,13 +17,13 @@
   "addSnippetDlgTitle": {
     "message": "Insert snippet"
   },
-  "exportAsTwee": {
+  "export": {
     "message": "Export as *.twee"
   },
-  "snapPassages": {
+  "snap": {
     "message": "Snap all passages (reloads page)"
   },
-  "toggleDarkLightTheme": {
+  "theme": {
     "message": "Toggle dark/light theme"
   },
   "editJs": {
@@ -35,10 +35,10 @@
   "proofRead": {
     "message": "View Proofing Copy"
   },
-  "download": {
+  "publish": {
     "message": "Publish to File"
   },
-  "insertSnippet": {
+  "snippet": {
     "message": "Insert snippet"
   },
   "enableShortcuts": {
@@ -65,11 +65,11 @@
   "themeLabel": {
     "message": "\"Dark/light theme\" button"
   },
-  "runLabel": {
-    "message": "\"Play this story\" hotkey"
+  "run": {
+    "message": "Play this story"
   },
-  "debugLabel": {
-    "message": "\"Play this story in test mode\" hotkey"
+  "debug": {
+    "message": "Play this story in test mode"
   },
   "snippetLabel": {
     "message": "\"Insert snippet\" button"
