@@ -1,23 +1,15 @@
+import { hyper } from 'hyperhtml';
+
 import { importTwee } from 'aife-twee2/src/importTwee';
-import { loadOptions } from '../syncOptions';
+import { listenOptions, loadOptions } from '../syncOptions';
 import { waitForElement } from './dom/waitForElement';
 import { h } from './dom/h';
-import { createIcon } from './dom/createIcon';
 import { Modal } from './dom/Modal';
 import { extractStoryMetaRaw } from './story/extractStory';
 import { writeStory } from './story/writeStory';
 import { readStoryUids } from './story/persistence';
 import { inferPassagePosition } from './story/inferPassagePosition.js';
-
-function createDashboardButton({text, icon}, onClick) {
-    const iconEl = createIcon(icon);
-    const button = h('button', {class: 'block _enhancer-button'}, [iconEl, text]);
-    const li = h('li', null, [button]);
-
-    button.addEventListener('click', onClick);
-
-    return li;
-}
+import { DashboardButton } from './components/DashboardButton.js';
 
 function detectDublicates(name) {
     const ifids = readStoryUids();
@@ -84,24 +76,41 @@ function createImportModal() {
     return new Modal(chrome.i18n.getMessage('importDlgTitle'), selectFileWrapper);
 }
 
-export async function addButtons() {
+export async function addButtons(actionListener) {
     const options = await loadOptions();
-    if (options.export) {
-        const listControlsUl = await waitForElement('nav.listControls ul');
+    const [listControlsUl] = await waitForElement('nav.listControls ul');
 
-        // check if we already created buttons
-        if (listControlsUl[0].querySelector('._enhancer-button') !== null) {
-            return;
-        }
-
-        const modal = createImportModal();
-
-        const button = createDashboardButton({
-            text: chrome.i18n.getMessage('importBtn'),
-            icon: 'file-text',
-        }, () => modal.show());
-
-        listControlsUl[0].insertBefore(button, listControlsUl[0].querySelector('li:nth-child(3)'));
+    // check if we already created buttons
+    if (listControlsUl.querySelector('._enhancer-button') !== null) {
+        return;
     }
 
+    const modal = createImportModal();
+
+    const actionsMap = {
+        import() {
+            modal.show();
+        },
+    };
+
+    actionListener.add(actionsMap);
+
+    const button = new DashboardButton({
+        text: chrome.i18n.getMessage('importBtn'),
+        icon: 'file-text',
+        active: options.import,
+    });
+
+    const wrapper = document.createElement('li');
+    listControlsUl.insertBefore(wrapper, listControlsUl.querySelector('li:nth-child(3)'));
+
+    hyper(wrapper)`${button}`;
+
+    listenOptions((changes) => {
+        for (const key of Object.keys(changes)) {
+            options[key] = changes[key].newValue;
+        }
+
+        button.setState({active: options.import});
+    });
 }

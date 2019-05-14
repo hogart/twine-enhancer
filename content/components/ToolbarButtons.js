@@ -1,7 +1,7 @@
-import html from 'hyperhtml';
+import { Component } from 'hyperhtml';
 import { Button } from './Button.js';
 
-export class ToolbarButtons extends html.Component {
+export class ToolbarButtons extends Component {
     constructor(buttons) {
         super();
         this.state = {buttons};

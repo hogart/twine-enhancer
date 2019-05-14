@@ -22,6 +22,8 @@ export const defaultOptions = {
 
     wideEditors: true,
     neatPassages: false,
+
+    import: true,
     tweeExtension: 'twee',
 };
 

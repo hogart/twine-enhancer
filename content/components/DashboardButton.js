@@ -1,7 +1,7 @@
 import { Component } from 'hyperhtml';
 import { Icon } from './Icon.js';
 
-export class Button extends Component {
+export class DashboardButton extends Component {
     constructor(buttonConf) {
         super();
         this.setState(buttonConf);
@@ -13,12 +13,12 @@ export class Button extends Component {
     }
 
     render() {
-        const {icon, active, name} = this.state;
-        const titleAttr = chrome.i18n.getMessage(name);
+        const { icon, text, active } = this.state;
 
         return this.html`
-            <button hidden="${!active}" title="${titleAttr}" onclick="${this}">
+            <button hidden="${!active}" class="block _enhancer-button" onclick="${this}">
                 ${Icon(icon)}
+                ${text}
             </button>
         `;
     }

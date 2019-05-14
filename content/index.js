@@ -1,9 +1,12 @@
 import { attachShortcutToolbar } from './shortcuts.js';
 import { detectStoryEditor } from './detectStoryEditor.js';
-import './biggerEditors';
-import './neaterPassages';
-import { detectDashboard } from './detectDashboard';
-import { addButtons } from './dashboardAddons';
+import './biggerEditors.js';
+import './neaterPassages.js';
+import { detectDashboard } from './detectDashboard.js';
+import { addButtons } from './dashboardAddons.js';
+import { WindowMessageListener } from './WindowMessageListener.js';
 
-detectStoryEditor(attachShortcutToolbar);
-detectDashboard(addButtons);
+const actionListener = new WindowMessageListener();
+
+detectStoryEditor(attachShortcutToolbar(actionListener));
+detectDashboard(addButtons(actionListener));

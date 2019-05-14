@@ -20,59 +20,49 @@ function getMenu(toolbar) {
     return document.querySelector('.drop-content div .menu:first-child');
 }
 
-const actionsMap = {
-    editJs: 0,
-    editCss: 1,
-    proofRead: 7,
-    publish: 8,
-    export: downloadTwee,
-    snap: snapPassages,
-    theme: toggleTheme,
-    run: 10,
-    debug: 9,
-    snippet: addSnippet,
-};
+function getActionsMap(builtinButtons) {
+    function emulateMenuButton(index) {
+        triggerEvent(builtinButtons[index]);
+    }
 
-function getMenuButtons(menu, toolbar) {
+    return {
+        editJs() {
+            emulateMenuButton(0);
+        },
+        editCss() {
+            emulateMenuButton(1);
+        },
+        proofRead() {
+            emulateMenuButton(7);
+        },
+        publish() {
+            emulateMenuButton(8);
+        },
+        export: downloadTwee,
+        snap: snapPassages,
+        theme: toggleTheme,
+        run() {
+            emulateMenuButton(10);
+        },
+        debug() {
+            emulateMenuButton(9);
+        },
+        snippet: addSnippet,
+    };
+}
+
+function getBuiltinButtons(menu, toolbar) {
     return [
         ...menu.querySelectorAll('li button'),
         ...toolbar.closest('.toolbar').querySelectorAll('.right > button'),
     ];
 }
 
-function createContainer(builtinButtons, btnConf) {
-    function emulateMenuButton(index) {
-        triggerEvent(builtinButtons[index]);
-    }
-
-    window.addEventListener(
-        'message',
-        (request) => {
-            if (request.data && request.data.action) {
-                const action = actionsMap[request.data.action];
-                if (action !== undefined) {
-                    if (typeof action === 'number') {
-                        emulateMenuButton(action);
-                    } else {
-                        action();
-                    }
-                }
-            }
-        }
-    );
-
-    return new ToolbarButtons(btnConf);
-}
-
-export async function attachShortcutToolbar() {
+export async function attachShortcutToolbar(actionListener) {
     const options = await loadOptions();
 
     const btnConf = new ButtonsConfig(buttonsMap, options);
     const hotKeyListener = new HotKeyListener(buttonsMap, options);
-
-    if (!options.shortcutButtons) {
-        return;
-    }
 
     const [toolbar] = await waitForElement('.toolbar.main .left');
 
@@ -82,9 +72,11 @@ export async function attachShortcutToolbar() {
 
     const menu = getMenu(toolbar);
 
-    const builtinButtons = getMenuButtons(menu, toolbar);
+    const builtinButtons = getBuiltinButtons(menu, toolbar);
 
-    const buttonsContainer = createContainer(builtinButtons, btnConf);
+    actionListener.add(getActionsMap(builtinButtons));
+
+    const buttonsContainer = new ToolbarButtons(btnConf);
     const wrapper = document.createElement('span');
 
     toolbar.appendChild(wrapper);
