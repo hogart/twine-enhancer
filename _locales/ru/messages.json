@@ -54,16 +54,19 @@
   "styleChanges": {
     "message": "Визуальные изменения"
   },
-  "wideEditorsLabel": {
+  "wideEditors": {
     "message": "Всегда широкие окна редакторов и строка поиска (так же скрывает кнопку \"раскрыть\")"
   },
-  "neatPassagesLabel": {
+  "neatPassages": {
     "message": "\"Аккуратные\" параграфы"
   },
   "otherSettings": {
     "message": "Прочие настройки"
   },
-  "exportExtension": {
+  "import": {
+    "message": "Кнопка \"Импорт из *.twee\""
+  },
+  "tweeExtension": {
     "message": "Расширение экспортируемого файла"
   },
   "savedSuccessfully": {

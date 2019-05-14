@@ -3,6 +3,7 @@ import { clearOptions, defaultOptions, loadOptions, saveOptions } from '../syncO
 import { domI18n } from '../domI18n.js';
 import { StyleOptions } from './components/StyleOptions.js';
 import { ShortcutsOptions } from './components/ShortcutsOptions.js';
+import { OtherOptions } from './components/OtherOptions.js';
 
 const form = document.querySelector('.js-optionsForm');
 const fields = Array.from(form.querySelectorAll('input[type="checkbox"], select'));
@@ -78,5 +79,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const shortcutsOptions = new ShortcutsOptions(values);
     const shortcutFieldset = form.querySelector('.shortcuts');
     hyper(shortcutFieldset)`${shortcutsOptions}`;
+
+    const otherOptions = new OtherOptions(values);
+    const otherFieldset = form.querySelector('.otherChanges');
+    hyper(otherFieldset)`${otherOptions}`;
 
 });

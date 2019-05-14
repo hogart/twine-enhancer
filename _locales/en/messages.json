@@ -54,16 +54,19 @@
   "styleChanges": {
     "message": "Stylistic changes"
   },
-  "wideEditorsLabel": {
+  "wideEditors": {
     "message": "Always wide editors and search field (also hides \"expand\" button)"
   },
-  "neatPassagesLabel": {
+  "neatPassages": {
     "message": "\"Neat\" passages"
   },
   "otherSettings": {
     "message": "Other settings"
   },
-  "exportExtension": {
+  "import": {
+    "message": "\"Import *.twee\" button"
+  },
+  "tweeExtension": {
     "message": "Export file extension"
   },
   "savedSuccessfully": {
