@@ -18,12 +18,15 @@ export class HotKey extends html.Component {
         const labelKey = label || `${name}Label`;
 
         return this.html`
-            <div class="settingsItem">
-                <label>
-                    <input type="text" value="${hotKey}" oninput="${this}" class="hotKeyInput"/>
+            <tr>
+                <td>
                     <span>${chrome.i18n.getMessage(labelKey)}</span>
-                </label>
-            </div>
+                </td>
+                <td></td>
+                <td>
+                    <input type="text" value="${hotKey}" oninput="${this}" class="hotKeyInput"/>
+                </td>
+            </tr>
         `;
     }
 }

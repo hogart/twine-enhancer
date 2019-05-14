@@ -14,19 +14,6 @@ label {
     height: 25px;
 }
 
-.settingsItem {
-    display: flex;
-    margin-bottom: 5px;
-}
-
-.settingsItem label {
-    flex-grow: 1;
-}
-.settingsItem .hotKeyInput {
-    max-width: 100px;
-    text-align: center;
-}
-
 label input[type="checkbox"] {
     margin-right: 0.2em;
 }

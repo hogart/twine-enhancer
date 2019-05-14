@@ -4,7 +4,11 @@ import { saveOptions } from '../../syncOptions.js';
 export class Shortcut extends html.Component {
     constructor(props) {
         super();
-        this.setState(props);
+        const hkName = `${props.name}Hk`;
+        this.setState({
+            hkName,
+            ...props,
+        });
     }
 
     onchange(e) {
@@ -15,7 +19,7 @@ export class Shortcut extends html.Component {
 
     oninput(e) {
         saveOptions({
-            [this.state.name]: e.currentTarget.value,
+            [this.state.hkName]: e.currentTarget.value.trim(),
         });
     }
 
@@ -24,13 +28,15 @@ export class Shortcut extends html.Component {
         const labelKey = label || `${name}Label`;
 
         return this.html`
-            <div class="settingsItem">
-                <label>
+            <tr>
+                <td>${chrome.i18n.getMessage(labelKey)}</td>
+                <td>
                     <input type="checkbox" name="${name}" checked="${enabled}" onchange="${this}"/>
-                    <span>${chrome.i18n.getMessage(labelKey)}</span>
-                </label>
-                <input type="text" value="${hotKey}" oninput="${this}" class="hotKeyInput"/>
-            </div>
+                </td>
+                <td>
+                    <input type="text" value="${hotKey}" oninput="${this}" class="hotKeyInput"/>
+                </td>
+            </tr>
         `;
     }
 }
