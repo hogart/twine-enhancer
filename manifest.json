@@ -32,6 +32,7 @@
                 "./content/index.bundle.js"
             ],
             "css": [
+                "./content/common.css",
                 "./content/biggerEditors.css",
                 "./content/neaterPassages.css",
                 "./content/toolbarButtons.css"
