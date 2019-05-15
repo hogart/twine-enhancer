@@ -15,18 +15,20 @@ export class ShortcutsOptions extends Component {
 
     render() {
         return this.html`
-            <legend>${chrome.i18n.getMessage('enableShortcuts')}</legend>
-            <table class="shortcutGrid">
-                <thead>
-                    <tr>
-                        <th>Action name</th>
-                        <th>Show button?</th>
-                        <th>Shortcut <abbr title="Clear text to disable shortcut">*</abbr></th>    
-                    </tr>
-                </thead>
-
-                ${this.shortcutFields.map((name) => Shortcut.for({ enabled: this.state[name], name, hotKey: this.state[`${name}Hk`] }))}
-            </table>
+            <fieldset>
+                <legend>${chrome.i18n.getMessage('enableShortcuts')}</legend>
+                <table class="shortcutGrid">
+                    <thead>
+                        <tr>
+                            <th>Action name</th>
+                            <th>Show button?</th>
+                            <th>Shortcut <abbr title="Clear text to disable shortcut">*</abbr></th>    
+                        </tr>
+                    </thead>
+    
+                    ${this.shortcutFields.map((name) => Shortcut.for({ enabled: this.state[name], name, hotKey: this.state[`${name}Hk`] }))}
+                </table>
+            </fieldset>
         `;
     }
 }

@@ -13,9 +13,11 @@ export class StyleOptions extends Component {
 
     render() {
         return this.html`
-            <legend>${chrome.i18n.getMessage('styleChanges')}</legend>
-            
-            ${this.styleFields.map((name) => Checkbox.for({enabled: this.state[name], name}))}
+            <fieldset>
+                <legend>${chrome.i18n.getMessage('styleChanges')}</legend>
+                
+                ${this.styleFields.map((name) => Checkbox.for({enabled: this.state[name], name}))}
+            </fieldset>
         `;
     }
 }

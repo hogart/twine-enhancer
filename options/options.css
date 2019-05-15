@@ -2,7 +2,7 @@ body {
     min-width: 600px;
 }
 
-form fieldset {
+fieldset {
     border: 1px solid grey;
     border-radius: 3px;
     margin-bottom: 1ex;

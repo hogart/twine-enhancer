@@ -17,11 +17,13 @@ export class OtherOptions extends Component {
 
     render() {
         return this.html`
-            <legend>${chrome.i18n.getMessage('otherSettings')}</legend>
-            
-            ${Checkbox.for({ enabled: this.state.import, name: 'import' })}
-            
-            ${Select.for({values: this.extensionOptions, name: 'tweeExtension', value: this.state.tweeExtension})}
+            <fieldset>
+                <legend>${chrome.i18n.getMessage('otherSettings')}</legend>
+                
+                ${Checkbox.for({ enabled: this.state.import, name: 'import' })}
+                
+                ${Select.for({values: this.extensionOptions, name: 'tweeExtension', value: this.state.tweeExtension})}
+            </fieldset>
         `;
     }
 }
