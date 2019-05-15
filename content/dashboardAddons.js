@@ -76,41 +76,44 @@ function createImportModal() {
     return new Modal(chrome.i18n.getMessage('importDlgTitle'), selectFileWrapper);
 }
 
-export async function addButtons(actionListener) {
-    const options = await loadOptions();
-    const [listControlsUl] = await waitForElement('nav.listControls ul');
+export function addButtons(actionListener) {
+    return async function() {
+        const [listControlsUl] = await waitForElement('nav.listControls ul');
 
-    // check if we already created buttons
-    if (listControlsUl.querySelector('._enhancer-button') !== null) {
-        return;
-    }
-
-    const modal = createImportModal();
-
-    const actionsMap = {
-        import() {
-            modal.show();
-        },
-    };
-
-    actionListener.add(actionsMap);
-
-    const button = new DashboardButton({
-        text: chrome.i18n.getMessage('importBtn'),
-        icon: 'file-text',
-        active: options.import,
-    });
-
-    const wrapper = document.createElement('li');
-    listControlsUl.insertBefore(wrapper, listControlsUl.querySelector('li:nth-child(3)'));
-
-    hyper(wrapper)`${button}`;
-
-    listenOptions((changes) => {
-        for (const key of Object.keys(changes)) {
-            options[key] = changes[key].newValue;
+        // check if we already created buttons
+        if (listControlsUl.querySelector('._enhancer-button') !== null) {
+            return;
         }
 
-        button.setState({active: options.import});
-    });
+        const options = await loadOptions();
+
+        const modal = createImportModal();
+
+        const actionsMap = {
+            import() {
+                modal.show();
+            },
+        };
+
+        actionListener.add(actionsMap);
+
+        const button = new DashboardButton({
+            text: chrome.i18n.getMessage('importBtn'),
+            icon: 'file-text',
+            active: options.import,
+        });
+
+        const wrapper = document.createElement('li');
+        listControlsUl.insertBefore(wrapper, listControlsUl.querySelector('li:nth-child(3)'));
+
+        hyper(wrapper)`${button}`;
+
+        listenOptions((changes) => {
+            for (const key of Object.keys(changes)) {
+                options[key] = changes[key].newValue;
+            }
+
+            button.setState({ active: options.import });
+        });
+    };
 }

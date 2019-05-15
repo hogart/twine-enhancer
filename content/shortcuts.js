@@ -58,39 +58,39 @@ function getBuiltinButtons(menu, toolbar) {
     ];
 }
 
-export async function attachShortcutToolbar(actionListener) {
-    const options = await loadOptions();
+export function attachShortcutToolbar(actionListener) {
+    return async function() {
+        const [toolbar] = await waitForElement('.toolbar.main .left');
 
-    const btnConf = new ButtonsConfig(buttonsMap, options);
-    const hotKeyListener = new HotKeyListener(buttonsMap, options);
-
-    const [toolbar] = await waitForElement('.toolbar.main .left');
-
-    if (toolbar.querySelector('.toolbarButtons')) {
-        return;
-    }
-
-    const menu = getMenu(toolbar);
-
-    const builtinButtons = getBuiltinButtons(menu, toolbar);
-
-    actionListener.add(getActionsMap(builtinButtons));
-
-    const buttonsContainer = new ToolbarButtons(btnConf);
-    const wrapper = document.createElement('span');
-
-    toolbar.appendChild(wrapper);
-    hyper(wrapper)`${buttonsContainer}`;
-
-    listenOptions((changes) => {
-        for (const key of Object.keys(changes)) {
-            options[key] = changes[key].newValue;
+        if (toolbar.querySelector('.toolbarButtons')) {
+            return;
         }
 
-        btnConf.update(options);
-        hotKeyListener.update(buttonsMap, options);
-        buttonsContainer.setState({buttons: btnConf});
-    });
+        const options = await loadOptions();
+        const btnConf = new ButtonsConfig(buttonsMap, options);
+        const hotKeyListener = new HotKeyListener(buttonsMap, options);
+
+        const menu = getMenu(toolbar);
+        const builtinButtons = getBuiltinButtons(menu, toolbar);
+
+        actionListener.add(getActionsMap(builtinButtons));
+
+        const buttonsContainer = new ToolbarButtons(btnConf);
+        const wrapper = document.createElement('span');
+
+        toolbar.appendChild(wrapper);
+        hyper(wrapper)`${buttonsContainer}`;
+
+        listenOptions((changes) => {
+            for (const key of Object.keys(changes)) {
+                options[key] = changes[key].newValue;
+            }
+
+            btnConf.update(options);
+            hotKeyListener.update(buttonsMap, options);
+            buttonsContainer.setState({ buttons: btnConf });
+        });
+    };
 }
 
 
