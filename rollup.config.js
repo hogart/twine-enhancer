@@ -1,6 +1,5 @@
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
-import html from 'rollup-plugin-html';
 import { eslint } from 'rollup-plugin-eslint';
 
 const plugins = [
@@ -10,7 +9,6 @@ const plugins = [
         exclude: ['**/*.html'],
         formatter: 'unix',
     }),
-    html(),
 ];
 
 export default [{
