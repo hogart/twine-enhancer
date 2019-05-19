@@ -1,7 +1,8 @@
+import hyper from 'hyperhtml';
+import { exportTwee } from 'aife-twee2/src/exportTwee';
+
 import { getCurrentStoryIfid } from './story/getCurrentStoryIfid';
 import { extractStory } from './story/extractStory';
-import { exportTwee } from 'aife-twee2/src/exportTwee';
-import { h } from './dom/h';
 import { loadOptions } from '../syncOptions';
 
 export async function downloadTwee() {
@@ -12,8 +13,8 @@ export async function downloadTwee() {
         const options = await loadOptions();
 
         const url = URL.createObjectURL(new Blob([twee], { type: 'text/plain' }));
-
-        const link = h('a', { href: url, download: `${story.title}.${options.tweeExtension}` });
+        const title = `${story.title}.${options.tweeExtension}`;
+        const link = hyper`<a href="${url}" download="${title}"></a>`;
 
         document.body.appendChild(link);
         link.click();

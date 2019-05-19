@@ -1,8 +1,9 @@
+import hyper from 'hyperhtml';
+
 import { mergeTwee } from './story/mergeTwee';
 import { writeStory } from './story/writeStory';
 import { Modal } from './components/Modal';
 import { SnippetModal } from './components/SnippetModal';
-import hyper from 'hyperhtml';
 
 function createSnippetModal(onSnippet) {
     return new Modal({

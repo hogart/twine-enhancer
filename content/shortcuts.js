@@ -58,6 +58,10 @@ function getBuiltinButtons(menu, toolbar) {
     ];
 }
 
+/**
+ * @param {WindowMessageListener} actionListener
+ * @return {Function}
+ */
 export function attachShortcutToolbar(actionListener) {
     // waitForElement uses setTimeout inside, so it's possible to run several instances of async function in parallel
     let block = false;

@@ -1,15 +1,16 @@
-import { hyper } from 'hyperhtml';
-
+import hyper from 'hyperhtml';
 import { importTwee } from 'aife-twee2/src/importTwee';
+
 import { listenOptions, loadOptions } from '../syncOptions';
 import { waitForElement } from './dom/waitForElement';
-import { h } from './dom/h';
-import { Modal } from './dom/Modal';
 import { extractStoryMetaRaw } from './story/extractStory';
 import { writeStory } from './story/writeStory';
 import { readStoryUids } from './story/persistence';
 import { inferPassagePosition } from './story/inferPassagePosition.js';
+
 import { DashboardButton } from './components/DashboardButton.js';
+import { Modal } from './components/Modal';
+import { ImportModal } from './components/ImportModal';
 
 function detectDublicates(name) {
     const ifids = readStoryUids();
@@ -44,8 +45,8 @@ function renameDublicate(ifid) {
     localStorage.setItem(`twine-stories-${ifid}`, JSON.stringify(meta));
 }
 
-async function onFileChange() {
-    const text = await readFile(this);
+async function onFileChange(input) {
+    const text = await readFile(input);
 
     if (text !== null) {
         const importingStory = importTwee(text);
@@ -63,19 +64,17 @@ async function onFileChange() {
 }
 
 function createImportModal() {
-    const fileInput = h('input', {type: 'file', accept: '.twee,.tw2'});
-    const fileHint0 = h(`<p>${chrome.i18n.getMessage('experimentalWarning')}</p>`);
-    const fileHint1 = h(
-        `<p>${chrome.i18n.getMessage('importDlgHelp')}</p>`
-    );
-    const selectFileWrapper = h('div', {class: 'selectWrapper select'}, [fileInput, fileHint0, fileHint1]);
-
-
-    fileInput.addEventListener('change', onFileChange);
-
-    return new Modal(chrome.i18n.getMessage('importDlgTitle'), selectFileWrapper);
+    return new Modal({
+        slotted: ImportModal,
+        title: chrome.i18n.getMessage('importDlgTitle'),
+        onFileChange,
+    });
 }
 
+/**
+ * @param {WindowMessageListener} actionListener
+ * @return {Function}
+ */
 export function addButtons(actionListener) {
     let block = false; // waitForElement uses setTimeout inside, so it's possible to run several instances of async function in parallel
     return async function() {
@@ -95,6 +94,9 @@ export function addButtons(actionListener) {
         const options = await loadOptions();
 
         const modal = createImportModal();
+        const modalWrapper = document.createElement('div');
+        hyper(modalWrapper)`${modal}`;
+        document.body.appendChild(modalWrapper);
 
         const actionsMap = {
             import() {
@@ -105,6 +107,7 @@ export function addButtons(actionListener) {
         actionListener.add(actionsMap);
 
         const button = new DashboardButton({
+            name: 'import',
             text: chrome.i18n.getMessage('importBtn'),
             icon: 'file-text',
             active: options.import,
