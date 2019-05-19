@@ -1,14 +1,18 @@
-export const ifidRe = /[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
+import { getCurrentStoryIfid } from './story/getCurrentStoryIfid';
 
-export function detectStoryEditor(callback) {
-    const urlMatch = ifidRe.exec(location.hash);
-    if (urlMatch) {
-        const storyId = urlMatch[0];
-
+function runIfStory(callback) {
+    const storyId = getCurrentStoryIfid();
+    if (storyId !== null) {
         callback(storyId);
     }
+}
 
-    window.addEventListener('hashchange', () => {
-        detectStoryEditor(callback);
-    }, false);
+export function detectStoryEditor(callback) {
+    runIfStory(callback);
+
+    function onHashChange() {
+        runIfStory(callback);
+    }
+
+    window.addEventListener('hashchange', onHashChange, false);
 }

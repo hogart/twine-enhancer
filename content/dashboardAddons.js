@@ -77,8 +77,15 @@ function createImportModal() {
 }
 
 export function addButtons(actionListener) {
+    let block = false; // waitForElement uses setTimeout inside, so it's possible to run several instances of async function in parallel
     return async function() {
+        if (block) {
+            return;
+        } else {
+            block = true;
+        }
         const [listControlsUl] = await waitForElement('nav.listControls ul');
+        block = false;
 
         // check if we already created buttons
         if (listControlsUl.querySelector('._enhancer-button') !== null) {

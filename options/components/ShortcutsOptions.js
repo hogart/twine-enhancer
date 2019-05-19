@@ -1,6 +1,5 @@
 import { Component } from 'hyperhtml';
 import { Shortcut } from './Shortcut.js';
-// import { HotKey } from './HotKey.js';
 
 export class ShortcutsOptions extends Component {
     constructor(props) {

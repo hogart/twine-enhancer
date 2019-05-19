@@ -1,5 +1,7 @@
-import { loadOptions } from '../syncOptions';
+import { onOptions } from '../syncOptions';
 
-loadOptions().then((options) => {
+function makeEditorsBigger(options) {
     document.documentElement.classList.toggle('wideEditors', options.wideEditors);
-});
+}
+
+onOptions(makeEditorsBigger);

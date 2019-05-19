@@ -1,7 +1,7 @@
 export class HotKeyListener {
     constructor(list, options) {
         this.list = list;
-        this.hkToAction = this.update(options);
+        this.update(options);
 
         this.onKeyDown = this._onKeyDown.bind(this);
 
@@ -21,7 +21,7 @@ export class HotKeyListener {
             }
         });
 
-        return hkToAction;
+        this.hkToAction = hkToAction;
     }
 
     _onKeyDown(event) {

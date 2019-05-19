@@ -59,8 +59,16 @@ function getBuiltinButtons(menu, toolbar) {
 }
 
 export function attachShortcutToolbar(actionListener) {
+    // waitForElement uses setTimeout inside, so it's possible to run several instances of async function in parallel
+    let block = false;
     return async function() {
+        if (block) {
+            return;
+        } else {
+            block = true;
+        }
         const [toolbar] = await waitForElement('.toolbar.main .left');
+        block = false;
 
         if (toolbar.querySelector('.toolbarButtons')) {
             return;
@@ -87,7 +95,7 @@ export function attachShortcutToolbar(actionListener) {
             }
 
             btnConf.update(options);
-            hotKeyListener.update(buttonsMap, options);
+            hotKeyListener.update(options);
             buttonsContainer.setState({ buttons: btnConf });
         });
     };

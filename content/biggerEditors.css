@@ -4,11 +4,6 @@
     right: .5rem !important;
 }
 
-.wideEditors .modal-dialog.editor .content > p {
-    height: 0;
-    overflow: hidden;
-}
-
 .wideEditors .modal-dialog.editor button.widen {
     display: none;
 }

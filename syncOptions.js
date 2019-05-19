@@ -67,3 +67,16 @@ export function listenOptions(onChange) {
         }
     });
 }
+
+export async function onOptions(listener) {
+    const options = await loadOptions();
+    listener(options);
+
+    listenOptions((changes) => {
+        for (const key of Object.keys(changes)) {
+            options[key] = changes[key].newValue;
+        }
+
+        listener(options);
+    });
+}
