@@ -84,5 +84,8 @@
   },
   "confirm": {
     "message": "OK"
+  },
+  "cancel": {
+    "message": "Cancel"
   }
 }
