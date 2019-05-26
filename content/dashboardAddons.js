@@ -12,10 +12,10 @@ import { DashboardButton } from './components/DashboardButton.js';
 import { Modal } from './components/Modal';
 import { ImportModal } from './components/ImportModal';
 
-function detectDublicates(name) {
-    const ifids = readStoryUids();
-    for (const ifid of ifids) {
-        const story = extractStoryMetaRaw(ifid);
+function detectDuplicates(name) {
+    const uids = readStoryUids();
+    for (const uid of uids) {
+        const story = extractStoryMetaRaw(uid);
         if (story.name === name) {
             return story.id;
         }
@@ -24,42 +24,45 @@ function detectDublicates(name) {
     return null;
 }
 
-function readFile(input) {
-    if (input.files.length) {
+function readFile(files) {
+    if (files.length) {
         return new Promise((resolve, reject) => {
             const reader = new FileReader();
             reader.onload = () => {
                 resolve(reader.result);
             };
             reader.onerror = reject;
-            reader.readAsText(input.files[0]);
+            reader.readAsText(files[0]);
         });
     } else {
         return Promise.resolve(null);
     }
 }
 
-function renameDublicate(ifid) {
+function renameDuplicate(ifid) {
     const meta = extractStoryMetaRaw(ifid);
     meta.name = `${meta.name}.${new Date()}.bak`;
     localStorage.setItem(`twine-stories-${ifid}`, JSON.stringify(meta));
 }
 
-async function onFileChange(input) {
-    const text = await readFile(input);
+async function onFileChange(files, makeBackup) {
+    const text = await readFile(files);
 
     if (text !== null) {
         const importingStory = importTwee(text);
-        const dublicateId = detectDublicates(importingStory.title);
+        const duplicateId = detectDuplicates(importingStory.title);
 
-        if (dublicateId !== null) {
-            renameDublicate(dublicateId);
+        if (duplicateId !== null) {
+            if (makeBackup) {
+                renameDuplicate(duplicateId);
+            } else {
+                importingStory.id = duplicateId;
+            }
         }
 
         importingStory.passages.forEach(inferPassagePosition);
 
         writeStory(importingStory);
-        location.reload();
     }
 }
 

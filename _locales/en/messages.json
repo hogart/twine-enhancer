@@ -1,4 +1,8 @@
 {
+  "extensionDescription": {
+    "message": "Unofficial enhancements and tuning for Twine (online version)"
+  },
+
   "editJs": {
     "message": "Edit JavaScript"
   },
@@ -37,7 +41,18 @@
     "message": "Import *.twee/*.tw2"
   },
   "importDlgHelp": {
-    "message": "If there's already a story with the same name, it will be renamed as backup. Importing takes some time; page will automatically reload after."
+    "message": "Importing takes some time; page will automatically reload after. Story with the same name will be renamed to backup copy."
+  },
+  "importDlgBackup": {
+    "message": "Create backup if story with the same name exists."
+  },
+  "importDlgError": {
+    "message": "Error occurred. Please <a href=\"$homepage_url$\" target=\"_blank\">contact developer</a> with file you were trying to import and this message:",
+    "placeholders": {
+      "homepage_url": {
+        "content": ""
+      }
+    }
   },
 
   "addSnippetDlgHelp": {
@@ -80,7 +95,7 @@
   },
 
   "experimentalWarning": {
-    "message": "<strong style=\"color: red;\">Experimental feature!</strong> Make backup before proceed."
+    "message": "<strong class=\"experimental\">Experimental feature!</strong> Make backup before proceed."
   },
   "confirm": {
     "message": "OK"

@@ -15,3 +15,23 @@ textarea.snippet {
     width: 100%;
     resize: vertical;
 }
+
+.block {
+    display: block;
+}
+
+.mb-1 {
+    margin-bottom: 1ex;
+}
+
+strong.experimental {
+    color: red;
+}
+
+.importDlg-error {
+    display: none;
+}
+
+.importDlg.error .importDlg-error {
+    display: block;
+}

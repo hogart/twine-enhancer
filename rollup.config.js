@@ -1,12 +1,16 @@
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
+import json from 'rollup-plugin-json';
 import { eslint } from 'rollup-plugin-eslint';
 
 const plugins = [
     resolve(),
     commonjs(),
+    json({
+        preferConst: true,
+    }),
     eslint({
-        exclude: ['**/*.html'],
+        exclude: ['manifest.json'],
         formatter: 'unix',
     }),
 ];
