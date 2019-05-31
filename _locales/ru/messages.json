@@ -64,6 +64,18 @@
   "addSnippetDlgTitle": {
     "message": "Вставить сниппет"
   },
+  "addSnippetOverrideTitle": {
+    "message": "Заменить название"
+  },
+  "addSnippetOverrideScript": {
+    "message": "Заменить скрипт"
+  },
+  "addSnippetOverrideStyleSheet": {
+    "message": "Заменить стили"
+  },
+  "addSnippetOverridePassages": {
+    "message": "Заменить параграфы"
+  },
 
   "enableShortcuts": {
     "message": "Включить доп. кнопки и хоткеи"

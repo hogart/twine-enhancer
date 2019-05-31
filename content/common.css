@@ -13,6 +13,7 @@ textarea.code {
 
 textarea.snippet {
     width: 100%;
+    min-height: 10em;
     resize: vertical;
 }
 

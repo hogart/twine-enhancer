@@ -5,7 +5,17 @@ export class SnippetModal extends Component {
         super();
         const {parent, ...otherProps} = props;
         this._parent = parent;
-        this.setState({value: '', ...otherProps});
+        this.setState({
+            value: '',
+            override: {
+                title: false,
+                script: false,
+                styleSheet: false,
+                passages: false,
+            },
+
+            ...otherProps,
+        });
     }
 
     confirm() {
@@ -26,6 +36,26 @@ export class SnippetModal extends Component {
             <p>${{html: chrome.i18n.getMessage('experimentalWarning')}}</p>
             <p>${{html: chrome.i18n.getMessage('addSnippetDlgHelp')}}</p>
             <textarea oninput="${this}" class="code snippet"></textarea>
+            
+            <div>
+                <label>
+                    <input type="checkbox" checked="${this.state.override.title}"/>
+                    ${chrome.i18n.getMessage('addSnippetOverrideTitle')}
+                </label>
+                <label>
+                    <input type="checkbox" checked="${this.state.override.script}"/>
+                    ${chrome.i18n.getMessage('addSnippetOverrideScript')}
+                </label>
+                <label>
+                    <input type="checkbox" checked="${this.state.override.styleSheet}"/>
+                    ${chrome.i18n.getMessage('addSnippetOverrideStyleSheet')}
+                </label>
+                <label>
+                    <input type="checkbox" checked="${this.state.override.passages}"/>
+                    ${chrome.i18n.getMessage('addSnippetOverridePassages')}
+                </label>
+            </div>
+
             <div class="buttons">
                 <button onclick="${this}" data-call="cancel">${chrome.i18n.getMessage('cancel')}</button>
                 <button onclick="${this}" data-call="confirm" disabled="${this.state.value === ''}" class="primary">${chrome.i18n.getMessage('confirm')}</button>

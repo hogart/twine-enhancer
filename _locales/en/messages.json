@@ -64,6 +64,18 @@
   "addSnippetDlgTitle": {
     "message": "Insert snippet"
   },
+  "addSnippetOverrideTitle": {
+    "message": "Override title"
+  },
+  "addSnippetOverrideScript": {
+    "message": "Override script"
+  },
+  "addSnippetOverrideStyleSheet": {
+    "message": "Override style"
+  },
+  "addSnippetOverridePassages": {
+    "message": "Override passages"
+  },
 
   "enableShortcuts": {
     "message": "Enable shortcut buttons and hotkeys"
