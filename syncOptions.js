@@ -19,6 +19,8 @@ export const defaultOptions = {
     runHk: 'shift+f10',
     debug: false,
     debugHk: 'shift+f9',
+    openOptions: true,
+    openOptionsHk: '',
 
     wideEditors: true,
     neatPassages: false,

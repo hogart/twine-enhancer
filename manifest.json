@@ -23,6 +23,13 @@
         "storage"
     ],
 
+    "background": {
+        "scripts": [
+            "background/index.bundle.js"
+        ],
+        "persistent": false
+    },
+
     "content_scripts": [
         {
             "matches": [

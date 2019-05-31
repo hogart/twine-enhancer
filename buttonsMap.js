@@ -53,27 +53,22 @@ export const buttonsMap = [
     {
         name: 'editJs',
         icon: 'terminal',
-        hotkey: 'alt+j',
     },
     {
         name: 'editCss',
         icon: 'css3',
-        hotkey: 'alt+c',
     },
     {
         name: 'proofRead',
         icon: 'book',
-        hotkey: 'f4',
     },
     {
         name: 'publish',
         icon: 'download',
-        hotkey: 'ctrl+s',
     },
     {
         name: 'export',
         icon: 'file-code-o',
-        hotkey: 'ctrl+e',
     },
     {
         name: 'snap',
@@ -86,14 +81,15 @@ export const buttonsMap = [
     {
         name: 'snippet',
         icon: 'puzzle-piece',
-        hotkey: 'alt+a',
+    },
+    {
+        name: 'openOptions',
+        icon: 'cog',
     },
     {
         name: 'run',
-        hotkey: 'shift+f10',
     },
     {
         name: 'debug',
-        hotkey: 'shift+f9',
     },
 ];

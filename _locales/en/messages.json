@@ -33,6 +33,9 @@
   "debug": {
     "message": "Play this story in test mode"
   },
+  "openOptions": {
+    "message": "Extension settings"
+  },
 
   "importBtn": {
     "message": "Import *.twee"

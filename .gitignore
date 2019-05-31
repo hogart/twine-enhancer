@@ -3,5 +3,7 @@ content/index.bundle.js
 content/index.bundle.js.map
 options/options.bundle.js
 options/options.bundle.js.map
+background/index.bundle.js
+background/index.bundle.js.map
 build
 twine_enhancer-*.zip

@@ -35,4 +35,14 @@ export default [{
     context: 'null',
     moduleContext: 'null',
     plugins,
+}, {
+    input: 'background/index.js',
+    output: {
+        file: 'background/index.bundle.js',
+        format: 'esm',
+        sourcemap: true,
+    },
+    context: 'null',
+    moduleContext: 'null',
+    plugins,
 }];

@@ -33,6 +33,9 @@
   "debug": {
     "message": "Запустить историю в режиме тестирования"
   },
+  "openOptions": {
+    "message": "Настройки расширения"
+  },
 
   "importBtn": {
     "message": "Импорт из *.twee"

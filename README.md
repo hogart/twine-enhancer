@@ -25,6 +25,7 @@ Unofficial browser extension for online [Twine](https://twinery.org/2/).
 ######Version 1.7.0
 
 * Hotkeys now can be customized by user
+* "Extension settings" button added
 * All options changes are applied on-the-fly, without page reloading
 
 ## Development

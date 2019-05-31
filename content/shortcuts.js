@@ -47,6 +47,9 @@ function getActionsMap(builtinButtons) {
         debug() {
             emulateMenuButton(9);
         },
+        openOptions() {
+            chrome.runtime.sendMessage({action: 'openOptions'});
+        },
         snippet: addSnippet,
     };
 }
