@@ -11,7 +11,7 @@ export function writePassage(passage, storyId) {
     const id = passage.id || uuid();
 
     writeJson(`twine-passages-${id}`, {
-        height: 100,
+        height: passage.position.height || 100,
         id,
         left: passage.position.x,
         name: passage.title,
@@ -20,7 +20,7 @@ export function writePassage(passage, storyId) {
         tags: passage.tags,
         text: passage.text,
         top: passage.position.y,
-        width: 100,
+        width: passage.position.width || 100,
     });
 
     return [id, passage.starting];

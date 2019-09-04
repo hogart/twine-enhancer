@@ -46,6 +46,8 @@ export function extractPassages(storyId, startPassage = null) {
                         position: {
                             x: rawPassage.left,
                             y: rawPassage.top,
+                            width: rawPassage.width,
+                            height: rawPassage.height,
                         },
                     });
                 }

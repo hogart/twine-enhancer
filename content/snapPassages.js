@@ -10,6 +10,8 @@ function snapPosition(position) {
     return {
         x: snapCoord(position.x),
         y: snapCoord(position.y),
+        width: position.width || 100,
+        height: position.height || 100,
     };
 }
 
