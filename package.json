@@ -17,7 +17,7 @@
     "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "web-ext": "^3.0.0"
+    "web-ext": "^3.1.1"
   },
   "scripts": {
     "clean": "rm -rf build && mkdirp build && mkdirp build/content && mkirp build/background",
