@@ -87,7 +87,6 @@ export function addButtons(actionListener) {
             block = true;
         }
         const [listControlsUl] = await waitForElement('nav.listControls ul');
-        block = false;
 
         // check if we already created buttons
         if (listControlsUl.querySelector('._enhancer-button') !== null) {
@@ -128,5 +127,7 @@ export function addButtons(actionListener) {
 
             button.setState({ active: options.import });
         });
+
+        block = false;
     };
 }
