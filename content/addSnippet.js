@@ -15,9 +15,9 @@ function createSnippetModal(onSnippet) {
 
 let modal;
 
-function onSnippet(snippet) {
+function onSnippet(snippet, override) {
     if (snippet !== '') {
-        const merged = mergeTwee(snippet, {});
+        const merged = mergeTwee(snippet, override);
         writeStory(merged);
         location.reload();
     } else {

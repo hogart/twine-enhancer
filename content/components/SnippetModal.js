@@ -19,7 +19,7 @@ export class SnippetModal extends Component {
     }
 
     confirm() {
-        this.state.onSnippet(this.state.value);
+        this.state.onSnippet(this.state.value, this.state.override);
     }
 
     cancel() {
@@ -31,6 +31,18 @@ export class SnippetModal extends Component {
         this.setState({value: e.currentTarget.value.trim()});
     }
 
+    onchange(e) {
+        const name = e.currentTarget.name;
+        const value = e.currentTarget.checked;
+
+        this.setState({
+            override: {
+                ...this.state.override,
+                [name]: value,
+            },
+        });
+    }
+
     render() {
         return this.html`
             <p>${{html: chrome.i18n.getMessage('experimentalWarning')}}</p>
@@ -39,19 +51,19 @@ export class SnippetModal extends Component {
             
             <div>
                 <label>
-                    <input type="checkbox" checked="${this.state.override.title}"/>
+                    <input type="checkbox" checked="${this.state.override.title}" name="title" onchange="${this}"/>
                     ${chrome.i18n.getMessage('addSnippetOverrideTitle')}
                 </label>
                 <label>
-                    <input type="checkbox" checked="${this.state.override.script}"/>
+                    <input type="checkbox" checked="${this.state.override.script}" name="script" onchange="${this}"/>
                     ${chrome.i18n.getMessage('addSnippetOverrideScript')}
                 </label>
                 <label>
-                    <input type="checkbox" checked="${this.state.override.styleSheet}"/>
+                    <input type="checkbox" checked="${this.state.override.styleSheet}" name="styleSheet" onchange="${this}"/>
                     ${chrome.i18n.getMessage('addSnippetOverrideStyleSheet')}
                 </label>
                 <label>
-                    <input type="checkbox" checked="${this.state.override.passages}"/>
+                    <input type="checkbox" checked="${this.state.override.passages}" name="passages" onchange="${this}"/>
                     ${chrome.i18n.getMessage('addSnippetOverridePassages')}
                 </label>
             </div>
