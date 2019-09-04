@@ -10,7 +10,7 @@
   "devDependencies": {
     "@types/chrome": "0.0.81",
     "concurrently": "^4.1.0",
-    "eslint": "^5.15.2",
+    "eslint": "^6.3.0",
     "mkdirp": "^0.5.1",
     "rollup": "^1.20.3",
     "rollup-plugin-commonjs": "^9.3.4",

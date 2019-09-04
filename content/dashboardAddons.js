@@ -128,6 +128,6 @@ export function addButtons(actionListener) {
             button.setState({ active: options.import });
         });
 
-        block = false;
+        block = false; // eslint-disable-line require-atomic-updates
     };
 }

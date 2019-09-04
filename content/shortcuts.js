@@ -75,7 +75,7 @@ export function attachShortcutToolbar(actionListener) {
             block = true;
         }
         const [toolbar] = await waitForElement('.toolbar.main .left');
-        block = false;
+        block = false; // eslint-disable-line require-atomic-updates
 
         if (toolbar.querySelector('.toolbarButtons')) {
             return;
