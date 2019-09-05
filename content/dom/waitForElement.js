@@ -5,15 +5,26 @@
  */
 export function waitForElement(selector, parent = document) {
     return new Promise((resolve) => {
-        function getElem() {
-            const elem = parent.querySelectorAll(selector);
-            if (elem.length) {
-                resolve(elem);
-            } else {
-                setTimeout(getElem);
+        const elem = parent.querySelectorAll(selector);
+        if (elem.length) {
+            resolve(elem);
+            return;
+        }
+
+        const observer = new MutationObserver(callback);
+
+        function callback(mutationsList) {
+            for (const mutation of mutationsList) {
+                if (mutation.type === 'childList') {
+                    const elem = parent.querySelectorAll(selector);
+                    if (elem.length) {
+                        observer.disconnect();
+                        resolve(elem);
+                    }
+                }
             }
         }
 
-        getElem();
+        observer.observe(parent, {childList: true, subtree: true});
     });
 }
