@@ -1,8 +1,8 @@
 import { hyper } from 'hyperhtml';
 
 import { loadOptions } from '../syncOptions';
-import { waitForElement } from './dom/waitForElement';
-import { triggerEvent } from './dom/triggerEvent.js';
+import { waitForElement } from './utils/waitForElement';
+import { triggerEvent } from './utils/triggerEvent.js';
 import { ToolbarButtons } from './components/ToolbarButtons.js';
 import { ButtonsConfig, buttonsMap } from '../buttonsMap.js';
 import { downloadTwee } from './downloadTwee.js';
@@ -10,7 +10,7 @@ import { snapPassages } from './snapPassages.js';
 import { toggleTheme } from './toggleTheme.js';
 import { addSnippet } from './addSnippet.js';
 import { listenOptions } from '../syncOptions.js';
-import { HotKeyListener } from './dom/HotKeyListener.js';
+import { HotKeyListener } from './utils/HotKeyListener.js';
 
 function getMenu(toolbar) {
     const menuButton = toolbar.querySelector('.storyName');

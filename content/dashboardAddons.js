@@ -2,7 +2,7 @@ import hyper from 'hyperhtml';
 import { importTwee } from 'aife-twee2/src/importTwee';
 
 import { listenOptions, loadOptions } from '../syncOptions';
-import { waitForElement } from './dom/waitForElement';
+import { waitForElement } from './utils/waitForElement';
 import { extractStoryMetaRaw } from './story/extractStory';
 import { writeStory } from './story/writeStory';
 import { readStoryUids } from './story/persistence';
