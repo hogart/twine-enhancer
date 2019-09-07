@@ -25,7 +25,7 @@
     "message": "Toggle dark/light theme"
   },
   "snippet": {
-    "message": "Insert snippet (reloads page)"
+    "message": "Insert snippet"
   },
   "run": {
     "message": "Play this story"
@@ -59,7 +59,7 @@
   },
 
   "addSnippetDlgHelp": {
-    "message": "Enter snippet code in <a href=\"https://twinery.org/cookbook/terms/terms_twee.html\" target=\"_blank\">twee format</a>."
+    "message": "Enter snippet code in <a href=\"https://twinery.org/cookbook/terms/terms_twee.html\" target=\"_blank\">twee format</a>.<br/><small>Page will reload.</small>"
   },
   "addSnippetDlgTitle": {
     "message": "Insert snippet"
