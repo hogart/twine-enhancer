@@ -1,4 +1,4 @@
-import { onHashMatch } from './onHashMatch.js';
+import { onHashMatch } from './utils/onHashMatch.js';
 
 const dashboardHashRe = /\/stories$/;
 
