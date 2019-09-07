@@ -75,7 +75,6 @@ export function attachShortcutToolbar(actionListener) {
             block = true;
         }
         const [toolbar] = await waitForElement('.toolbar.main .left');
-        block = false; // eslint-disable-line require-atomic-updates
 
         if (toolbar.querySelector('.toolbarButtons')) {
             return;
@@ -105,6 +104,8 @@ export function attachShortcutToolbar(actionListener) {
             hotKeyListener.update(options);
             buttonsContainer.setState({ buttons: btnConf });
         });
+
+        block = false; // eslint-disable-line require-atomic-updates
     };
 }
 
