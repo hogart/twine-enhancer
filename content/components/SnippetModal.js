@@ -1,21 +1,36 @@
 import { Component } from 'hyperhtml';
+import { loadOptions, saveOptions } from '../../syncOptions';
 
 export class SnippetModal extends Component {
     constructor(props) {
         super();
         const {parent, ...otherProps} = props;
         this._parent = parent;
+
         this.setState({
             value: '',
-            override: {
-                title: false,
-                script: false,
-                styleSheet: false,
-                passages: false,
-            },
+
+            snippetOverrideTitle: false,
+            snippetOverrideScript: false,
+            snippetOverrideStyleSheet: false,
+            snippetOverridePassages: false,
 
             ...otherProps,
         });
+
+        this._loadOverrideOptions();
+    }
+
+    _loadOverrideOptions() {
+        loadOptions().then((options) => {
+            this.setState({
+                snippetOverrideTitle: options.snippetOverrideTitle,
+                snippetOverrideScript: options.snippetOverrideScript,
+                snippetOverrideStyleSheet: options.snippetOverrideStyleSheet,
+                snippetOverridePassages: options.snippetOverridePassages,
+            });
+        });
+
     }
 
     confirm() {
@@ -36,10 +51,12 @@ export class SnippetModal extends Component {
         const value = e.currentTarget.checked;
 
         this.setState({
-            override: {
-                ...this.state.override,
-                [name]: value,
-            },
+            ...this.state.override,
+            [name]: value,
+        });
+
+        saveOptions({
+            [name]: value,
         });
     }
 
@@ -51,19 +68,19 @@ export class SnippetModal extends Component {
             
             <div>
                 <label>
-                    <input type="checkbox" checked="${this.state.override.title}" name="title" onchange="${this}"/>
+                    <input type="checkbox" checked="${this.state.snippetOverrideTitle}" name="snippetOverrideTitle" onchange="${this}"/>
                     ${chrome.i18n.getMessage('addSnippetOverrideTitle')}
                 </label>
                 <label>
-                    <input type="checkbox" checked="${this.state.override.script}" name="script" onchange="${this}"/>
+                    <input type="checkbox" checked="${this.state.snippetOverrideScript}" name="snippetOverrideScript" onchange="${this}"/>
                     ${chrome.i18n.getMessage('addSnippetOverrideScript')}
                 </label>
                 <label>
-                    <input type="checkbox" checked="${this.state.override.styleSheet}" name="styleSheet" onchange="${this}"/>
+                    <input type="checkbox" checked="${this.state.snippetOverrideStyleSheet}" name="snippetOverrideStyleSheet" onchange="${this}"/>
                     ${chrome.i18n.getMessage('addSnippetOverrideStyleSheet')}
                 </label>
                 <label>
-                    <input type="checkbox" checked="${this.state.override.passages}" name="passages" onchange="${this}"/>
+                    <input type="checkbox" checked="${this.state.snippetOverridePassages}" name="snippetOverridePassages" onchange="${this}"/>
                     ${chrome.i18n.getMessage('addSnippetOverridePassages')}
                 </label>
             </div>

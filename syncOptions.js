@@ -27,6 +27,11 @@ export const defaultOptions = {
 
     import: true,
     tweeExtension: 'twee',
+
+    snippetOverrideTitle: false,
+    snippetOverrideScript: false,
+    snippetOverrideStyleSheet: false,
+    snippetOverridePassages: false,
 };
 
 /**
