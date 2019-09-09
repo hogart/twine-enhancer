@@ -29,7 +29,8 @@
     "watch": "rollup -c -w",
     "chrome": "npm run watch",
     "ff": "concurrently \"npm:watch\" \"web-ext run\"",
-    "lint": "eslint --ignore-path .gitignore ."
+    "lint": "eslint --ignore-path .gitignore .",
+    "lint:fix": "npm run lint -- --fix"
   },
   "repository": {
     "type": "git",
