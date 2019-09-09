@@ -1,7 +1,6 @@
 import hyper from 'hyperhtml';
-import { defaultOptions, loadOptions } from '../syncOptions.js';
+import { defaultOptions, loadOptions , subscribeToOptions } from '../syncOptions.js';
 import { AllOptions } from './components/AllOptions.js';
-import { subscribeToOptions } from '../syncOptions';
 
 document.addEventListener('DOMContentLoaded', async () => {
     const options = await loadOptions(defaultOptions);

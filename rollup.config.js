@@ -15,7 +15,8 @@ const plugins = [
     }),
 ];
 
-export default [{
+
+const config = [{
     input: 'content/index.js',
     output: {
         file: 'content/index.bundle.js',
@@ -46,3 +47,6 @@ export default [{
     moduleContext: 'null',
     plugins,
 }];
+
+// eslint-disable-next-line import/no-default-export
+export default config;
