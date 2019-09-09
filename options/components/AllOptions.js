@@ -14,7 +14,6 @@ export class AllOptions extends Component {
         e.preventDefault();
 
         await clearOptions();
-        window.reload(); // TODO figure out why hyperhtml doesn't update state here
     }
 
     render() {

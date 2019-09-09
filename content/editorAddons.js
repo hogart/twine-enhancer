@@ -1,6 +1,6 @@
 import { hyper } from 'hyperhtml';
 
-import { loadOptions } from '../syncOptions';
+import { loadOptions, subscribeToOptions } from '../syncOptions';
 import { waitForElement } from './utils/waitForElement';
 import { triggerEvent } from './utils/triggerEvent.js';
 import { ToolbarButtons } from './components/ToolbarButtons.js';
@@ -9,9 +9,7 @@ import { downloadTwee } from './downloadTwee.js';
 import { snapPassages } from './snapPassages.js';
 import { toggleTheme } from './toggleTheme.js';
 import { addSnippet } from './addSnippet.js';
-import { listenOptions } from '../syncOptions.js';
 import { HotKeyListener } from './utils/HotKeyListener.js';
-import { hasOwnProp } from './utils/hasOwnProp';
 
 function getMenu(toolbar) {
     const menuButton = toolbar.querySelector('.storyName');
@@ -96,17 +94,11 @@ export function attachShortcutToolbar(actionListener) {
         toolbar.appendChild(wrapper);
         hyper(wrapper)`${buttonsContainer}`;
 
-        listenOptions((changes) => {
-            for (const [key, changeObject] of Object.entries(changes)) {
-                if (hasOwnProp(changeObject, 'newValue')) {
-                    options[key] = changeObject.newValue;
-                }
-            }
-
+        subscribeToOptions(() => {
             btnConf.update(options);
             hotKeyListener.update(options);
             buttonsContainer.setState({ buttons: btnConf });
-        });
+        }, options);
 
         block = false; // eslint-disable-line require-atomic-updates
     };

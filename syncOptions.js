@@ -1,5 +1,3 @@
-import { hasOwnProp } from './content/utils/hasOwnProp';
-
 export const defaultOptions = {
     editJs: true,
     editJsHk: 'alt+j',
@@ -69,6 +67,10 @@ export function clearOptions() {
     });
 }
 
+/**
+ * Listens to sync storage events
+ * @param {function} onChange
+ */
 export function listenOptions(onChange) {
     chrome.storage.onChanged.addListener((changes, namespace) => {
         if (namespace === 'sync') {
@@ -77,17 +79,49 @@ export function listenOptions(onChange) {
     });
 }
 
-export async function onOptions(listener) {
-    const options = await loadOptions();
-    listener(options);
+export function hasOwnProp(obj, key) {
+    return Object.hasOwnProperty.call(obj, key);
+}
 
-    listenOptions((changes) => {
+/**
+ * @param {typeof defaultOptions} options
+ * @param {function} handler
+ * @return {function}
+ */
+function onChangeListenerFactory(options, handler) {
+    return function onChange(changes) {
         for (const [key, changeObject] of Object.entries(changes)) {
             if (hasOwnProp(changeObject, 'newValue')) {
                 options[key] = changeObject.newValue;
+            } else {
+                options[key] = defaultOptions[key];
             }
         }
 
-        listener(options);
-    });
+        handler(options);
+    };
+}
+
+/**
+ * Calls `listener` every time storage is changed
+ * @param {function} listener
+ * @param {typeof defaultOptions} options
+ */
+export function subscribeToOptions(listener, options) {
+    const onChange = onChangeListenerFactory(options, listener);
+
+    listenOptions(onChange);
+}
+
+/**
+ * Loads options and calls `listener`, and calls it every time storage is changed
+ * @param {function} listener
+ * @return {Promise<void>}
+ */
+export async function loadAndSubscribeToOptions(listener) {
+    const options = await loadOptions();
+    listener(options);
+
+    const onChange = onChangeListenerFactory(options, listener);
+    listenOptions(onChange);
 }

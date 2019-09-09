@@ -1,6 +1,7 @@
 import hyper from 'hyperhtml';
-import { defaultOptions, listenOptions, loadOptions } from '../syncOptions.js';
+import { defaultOptions, loadOptions } from '../syncOptions.js';
 import { AllOptions } from './components/AllOptions.js';
+import { subscribeToOptions } from '../syncOptions';
 
 document.addEventListener('DOMContentLoaded', async () => {
     const options = await loadOptions(defaultOptions);
@@ -9,11 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const allOptions = new AllOptions(options);
     hyper(form)`${allOptions}`;
 
-    listenOptions((changes) => {
-        for (const key of Object.keys(changes)) {
-            options[key] = changes[key].newValue;
-        }
-
+    await subscribeToOptions(() => {
         allOptions.setState(options);
-    });
+    }, options);
 });

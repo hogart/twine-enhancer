@@ -1,7 +1,7 @@
-import { onOptions } from '../syncOptions';
+import { loadAndSubscribeToOptions } from '../syncOptions';
 
 function makePassagesNeat(options) {
     document.documentElement.classList.toggle('neatPassages', options.neatPassages);
 }
 
-onOptions(makePassagesNeat);
+loadAndSubscribeToOptions(makePassagesNeat);
