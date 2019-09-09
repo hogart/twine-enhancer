@@ -1,3 +1,5 @@
+import { hasOwnProp } from './content/utils/hasOwnProp';
+
 export const defaultOptions = {
     editJs: true,
     editJsHk: 'alt+j',
@@ -80,8 +82,10 @@ export async function onOptions(listener) {
     listener(options);
 
     listenOptions((changes) => {
-        for (const key of Object.keys(changes)) {
-            options[key] = changes[key].newValue;
+        for (const [key, changeObject] of Object.entries(changes)) {
+            if (hasOwnProp(changeObject, 'newValue')) {
+                options[key] = changeObject.newValue;
+            }
         }
 
         listener(options);

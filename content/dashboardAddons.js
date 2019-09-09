@@ -11,6 +11,7 @@ import { inferPassagePosition } from './story/inferPassagePosition.js';
 import { DashboardButton } from './components/DashboardButton.js';
 import { Modal } from './components/Modal';
 import { ImportModal } from './components/ImportModal';
+import { hasOwnProp } from './utils/hasOwnProp';
 
 function detectDuplicates(name) {
     const uids = readStoryUids();
@@ -121,8 +122,10 @@ export function addButtons(actionListener) {
         hyper(wrapper)`${button}`;
 
         listenOptions((changes) => {
-            for (const key of Object.keys(changes)) {
-                options[key] = changes[key].newValue;
+            for (const [key, changeObject] of Object.entries(changes)) {
+                if (hasOwnProp(changeObject, 'newValue')) {
+                    options[key] = changeObject.newValue;
+                }
             }
 
             button.setState({ active: options.import });

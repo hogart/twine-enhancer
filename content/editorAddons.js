@@ -11,6 +11,7 @@ import { toggleTheme } from './toggleTheme.js';
 import { addSnippet } from './addSnippet.js';
 import { listenOptions } from '../syncOptions.js';
 import { HotKeyListener } from './utils/HotKeyListener.js';
+import { hasOwnProp } from './utils/hasOwnProp';
 
 function getMenu(toolbar) {
     const menuButton = toolbar.querySelector('.storyName');
@@ -96,8 +97,10 @@ export function attachShortcutToolbar(actionListener) {
         hyper(wrapper)`${buttonsContainer}`;
 
         listenOptions((changes) => {
-            for (const key of Object.keys(changes)) {
-                options[key] = changes[key].newValue;
+            for (const [key, changeObject] of Object.entries(changes)) {
+                if (hasOwnProp(changeObject, 'newValue')) {
+                    options[key] = changeObject.newValue;
+                }
             }
 
             btnConf.update(options);
