@@ -3,7 +3,7 @@
   "version": "1.7.0",
   "description": "Unofficial enhancements and tuning for Twine (online version)",
   "dependencies": {
-    "aife-twee2": "github:aifejs/aife-interop#v1.3.1",
+    "aife-twee2": "github:aifejs/aife-interop#v2.1.0",
     "hyperhtml": "^2.30.5",
     "tiny-uuid": "^1.0.0"
   },
