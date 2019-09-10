@@ -34,7 +34,13 @@ export class SnippetModal extends Component {
     }
 
     confirm() {
-        this.state.onSnippet(this.state.value, this.state.override);
+        const override = {
+            title: this.state.snippetOverrideTitle,
+            script: this.state.snippetOverrideScript,
+            styleSheet: this.state.snippetOverrideStyleSheet,
+            passages: this.state.snippetOverridePassages,
+        };
+        this.state.onSnippet(this.state.value, override);
     }
 
     cancel() {
