@@ -1,5 +1,5 @@
 import { Component } from 'hyperhtml';
-import {homepage_url} from '../../manifest.json';
+import { homepage_url } from '../../manifest.json';
 
 export class ImportModal extends Component {
     constructor(props) {
@@ -15,7 +15,10 @@ export class ImportModal extends Component {
     }
 
     async onchange(e) {
-        this.setState({files: e.currentTarget.files, error: ''});
+        const files = e.currentTarget.files;
+        this.setState({files,
+            error: '',
+        });
     }
 
     onMakeBackup() {
