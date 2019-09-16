@@ -49,6 +49,9 @@
   "importDlgBackup": {
     "message": "Create backup if story with the same name exists."
   },
+  "importDlgMerge": {
+    "message": "Merge with existing story if exists."
+  },
   "importDlgError": {
     "message": "Error occurred. Please <a href=\"$homepage_url$\" target=\"_blank\">contact developer</a> with file you were trying to import and this message:",
     "placeholders": {
@@ -64,16 +67,20 @@
   "addSnippetDlgTitle": {
     "message": "Insert snippet"
   },
-  "addSnippetOverrideTitle": {
+
+  "overrideTitle": {
     "message": "Override title"
   },
-  "addSnippetOverrideScript": {
+  "overrideMeta": {
+    "message": "Override meta-data"
+  },
+  "overrideScript": {
     "message": "Override script"
   },
-  "addSnippetOverrideStyleSheet": {
+  "overrideStyleSheet": {
     "message": "Override style"
   },
-  "addSnippetOverridePassages": {
+  "overridePassages": {
     "message": "Override passages"
   },
 

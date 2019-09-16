@@ -1,5 +1,6 @@
 export interface IMergeOverride {
     title?: boolean;
+    meta?: boolean;
     script?: boolean;
     styleSheet?: boolean;
     passages?: boolean;

@@ -29,9 +29,16 @@ export const defaultOptions = {
     tweeExtension: 'twee',
 
     snippetOverrideTitle: false,
+    snippetOverrideMeta: false,
     snippetOverrideScript: false,
     snippetOverrideStyleSheet: false,
     snippetOverridePassages: false,
+
+    storyOverrideTitle: false,
+    storyOverrideMeta: false,
+    storyOverrideScript: false,
+    storyOverrideStyleSheet: false,
+    storyOverridePassages: false,
 };
 
 /**

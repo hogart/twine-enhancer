@@ -3,60 +3,24 @@ import { importTwee } from 'aife-twee2/src/importTwee';
 
 import { loadOptions, subscribeToOptions } from '../syncOptions';
 import { waitForElement } from './utils/waitForElement';
-import { extractStoryMetaRaw } from './story/extractStory';
 import { writeStory } from './story/writeStory';
-import { readStoryUids } from './story/persistence';
 import { inferPassagePosition } from './story/inferPassagePosition.js';
 
 import { DashboardButton } from './components/DashboardButton.js';
 import { Modal } from './components/Modal';
 import { ImportModal } from './components/ImportModal';
-import { readFileAsync } from './utils/readFileAsync.js';
-
-/**
- * @param {string} name
- * @return {null|IStory}
- */
-function detectDuplicates(name) {
-    const uids = readStoryUids();
-    for (const uid of uids) {
-        const story = extractStoryMetaRaw(uid);
-        if (story.name === name) {
-            return story;
-        }
-    }
-
-    return null;
-}
-
-/**
- * @param {FileList} files
- * @return {Promise<string>|Promise<null>}
- */
-function readText(files) {
-    if (files.length) {
-        return readFileAsync(files[0]);
-    } else {
-        return Promise.resolve(null);
-    }
-}
-
-/**
- * @param {IStory} story
- */
-function renameDuplicate(story) {
-    const meta = extractStoryMetaRaw(story.ifid);
-    meta.name = `${meta.name}.${new Date()}.bak`;
-    localStorage.setItem(`twine-stories-${story.ifid}`, JSON.stringify(meta));
-}
+import { detectDuplicates } from './story/detectDuplicates.js';
+import { renameDuplicate } from '../story/renameDuplicate.js';
+import { readTextFromFile } from './utils/readTextFromFile.js';
 
 /**
  * @param {FileList} files
  * @param {boolean} makeBackup
+ * @param {IMergeOverride} override
  * @return {Promise<void>}
  */
-async function onFileChange(files, makeBackup) {
-    const text = await readText(files);
+async function onFileChange(files, makeBackup, override) {
+    const text = await readTextFromFile(files);
 
     if (text !== null) {
         const importingStory = importTwee(text);

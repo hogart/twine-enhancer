@@ -64,16 +64,20 @@
   "addSnippetDlgTitle": {
     "message": "Вставить сниппет"
   },
-  "addSnippetOverrideTitle": {
+
+  "overrideTitle": {
     "message": "Заменить название"
   },
-  "addSnippetOverrideScript": {
+  "overrideMeta": {
+    "message": "Заменить мета-данные"
+  },
+  "overrideScript": {
     "message": "Заменить скрипт"
   },
-  "addSnippetOverrideStyleSheet": {
+  "overrideStyleSheet": {
     "message": "Заменить стили"
   },
-  "addSnippetOverridePassages": {
+  "overridePassages": {
     "message": "Заменить параграфы"
   },
 

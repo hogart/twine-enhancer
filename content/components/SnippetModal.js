@@ -1,5 +1,5 @@
 import { Component } from 'hyperhtml';
-import { loadOptions, saveOptions } from '../../syncOptions';
+import { OverrideOptions } from './OverrideOptions.js';
 
 export class SnippetModal extends Component {
     constructor(props) {
@@ -9,38 +9,17 @@ export class SnippetModal extends Component {
 
         this.setState({
             value: '',
-
-            snippetOverrideTitle: false,
-            snippetOverrideScript: false,
-            snippetOverrideStyleSheet: false,
-            snippetOverridePassages: false,
-
+            override: {},
             ...otherProps,
         });
 
-        this._loadOverrideOptions();
-    }
-
-    _loadOverrideOptions() {
-        loadOptions().then((options) => {
-            this.setState({
-                snippetOverrideTitle: options.snippetOverrideTitle,
-                snippetOverrideScript: options.snippetOverrideScript,
-                snippetOverrideStyleSheet: options.snippetOverrideStyleSheet,
-                snippetOverridePassages: options.snippetOverridePassages,
-            });
-        });
-
+        this.onOverride = (override) => {
+            this.setState({override});
+        };
     }
 
     confirm() {
-        const override = {
-            title: this.state.snippetOverrideTitle,
-            script: this.state.snippetOverrideScript,
-            styleSheet: this.state.snippetOverrideStyleSheet,
-            passages: this.state.snippetOverridePassages,
-        };
-        this.state.onSnippet(this.state.value, override);
+        this.state.onSnippet(this.state.value, this.state.override);
     }
 
     cancel() {
@@ -52,43 +31,15 @@ export class SnippetModal extends Component {
         this.setState({value: e.currentTarget.value.trim()});
     }
 
-    onchange(e) {
-        const name = e.currentTarget.name;
-        const value = e.currentTarget.checked;
-
-        this.setState({
-            ...this.state.override,
-            [name]: value,
-        });
-
-        saveOptions({
-            [name]: value,
-        });
-    }
-
     render() {
+        const overrideProps = {prefix: 'snippet', onInput: this.onOverride, cls: 'snippet'};
         return this.html`
             <p>${{html: chrome.i18n.getMessage('experimentalWarning')}}</p>
             <p>${{html: chrome.i18n.getMessage('addSnippetDlgHelp')}}</p>
             <textarea oninput="${this}" class="code snippet"></textarea>
             
             <div>
-                <label>
-                    <input type="checkbox" checked="${this.state.snippetOverrideTitle}" name="snippetOverrideTitle" onchange="${this}"/>
-                    ${chrome.i18n.getMessage('addSnippetOverrideTitle')}
-                </label>
-                <label>
-                    <input type="checkbox" checked="${this.state.snippetOverrideScript}" name="snippetOverrideScript" onchange="${this}"/>
-                    ${chrome.i18n.getMessage('addSnippetOverrideScript')}
-                </label>
-                <label>
-                    <input type="checkbox" checked="${this.state.snippetOverrideStyleSheet}" name="snippetOverrideStyleSheet" onchange="${this}"/>
-                    ${chrome.i18n.getMessage('addSnippetOverrideStyleSheet')}
-                </label>
-                <label>
-                    <input type="checkbox" checked="${this.state.snippetOverridePassages}" name="snippetOverridePassages" onchange="${this}"/>
-                    ${chrome.i18n.getMessage('addSnippetOverridePassages')}
-                </label>
+                ${OverrideOptions.for(overrideProps)}
             </div>
 
             <div class="buttons">

@@ -6,7 +6,7 @@ export function extractStoryMetaRaw(storyId) {
 
 /**
  * @param {string} storyId
- * @return {object}
+ * @return {IStory}
  */
 export function extractStoryMeta(storyId) {
     const rawMeta = extractStoryMetaRaw(storyId);

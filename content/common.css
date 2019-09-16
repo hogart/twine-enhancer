@@ -36,3 +36,20 @@ strong.experimental {
 .importDlg.error .importDlg-error {
     display: block;
 }
+
+.importDlg-merge {
+    display: none;
+}
+
+.importDlg.merge .importDlg-merge {
+    display: block;
+}
+
+
+.importDlg-hasDuplicate {
+    display: none;
+}
+
+.importDlg.hasDuplicate .importDlg-hasDuplicate {
+    display: block;
+}

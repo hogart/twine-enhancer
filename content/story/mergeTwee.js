@@ -96,6 +96,19 @@ function mergeStories(story, toMerge, override) {
         story.styleSheet = override.styleSheet ? toMerge.styleSheet : story.styleSheet + wrapInsertion(toMerge.styleSheet, toMerge.title);
     }
 
+    if (override.meta) {
+        if (toMerge.zoom) {
+            story.zoom = toMerge.zoom;
+        }
+        if (toMerge.tagColors) {
+            story.tagColors = toMerge.tagColors;
+        }
+    } else {
+        if (toMerge.tagColors) {
+            Object.assign(story.tagColors, toMerge.tagColors);
+        }
+    }
+
     if (toMerge.passages.length > 0) {
         if (story.passages.length === 0) {
             story.passages = toMerge.passages;
