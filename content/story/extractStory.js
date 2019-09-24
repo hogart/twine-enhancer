@@ -11,6 +11,7 @@ export function extractStoryMetaRaw(storyId) {
 export function extractStoryMeta(storyId) {
     const rawMeta = extractStoryMetaRaw(storyId);
     return {
+        id: rawMeta.id,
         title: rawMeta.name,
         ifid: rawMeta.ifid,
         lastEdit: rawMeta.lastUpdate,

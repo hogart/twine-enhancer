@@ -5,6 +5,9 @@ import { homepage_url } from '../../manifest.json';
 import { OverrideOptions } from './OverrideOptions.js';
 import { readTextFromFile } from '../utils/readTextFromFile.js';
 import { detectDuplicates } from '../story/detectDuplicates.js';
+import { renameDuplicate } from '../../story/renameDuplicate.js';
+import { inferPassagePosition } from '../story/inferPassagePosition.js';
+import { writeStory } from '../story/writeStory.js';
 
 export class ImportModal extends Component {
     constructor(props) {
@@ -46,7 +49,6 @@ export class ImportModal extends Component {
             const text = await readTextFromFile(files);
             story = importTwee(text);
             duplicate = detectDuplicates(story);
-
         } catch(e) {
             error = e.message;
         }
@@ -65,13 +67,24 @@ export class ImportModal extends Component {
         });
     }
 
-    async confirm() {
+    confirm() {
         try {
-            await this.state.onFileChange(this.state.files, this.state.makeBackup, this.state.override);
-            this._hide();
-            location.reload();
+            if (this.state.duplicate !== null) {
+                if (this.state.makeBackup) {
+                    renameDuplicate(this.state.duplicate);
+                } else {
+                    this.state.story.id = this.state.duplicate.id;
+                }
+            }
+
+            this.state.story.passages.forEach(inferPassagePosition);
+
+            writeStory(this.state.story);
+            window.location.reload();
         } catch (e) {
-            this.setState({error: e.message});
+            this.setState({
+                error: e.message,
+            });
         }
     }
 
@@ -107,6 +120,7 @@ export class ImportModal extends Component {
                 </label>
                 
                 <div class="importDlg-hasDuplicate">
+                    <p>${chrome.i18n.getMessage('importDlgHasDuplicate')}</p>
                     <label class="block mb-1">
                         <input type="radio" name="makeBackup" value="on" onchange="${this}" checked="${makeBackup}"/>
                         ${chrome.i18n.getMessage('importDlgBackup')}

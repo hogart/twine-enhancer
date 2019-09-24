@@ -44,13 +44,16 @@
     "message": "Import *.twee/*.tw2"
   },
   "importDlgHelp": {
-    "message": "Importing takes some time; page will automatically reload after. Story with the same name will be renamed to backup copy."
+    "message": "Importing takes some time; page will automatically reload after."
+  },
+  "importDlgHasDuplicate": {
+    "message": "Story with the same name detected."
   },
   "importDlgBackup": {
-    "message": "Create backup if story with the same name exists."
+    "message": "Backup existing story"
   },
   "importDlgMerge": {
-    "message": "Merge with existing story if exists."
+    "message": "Merge with existing story"
   },
   "importDlgError": {
     "message": "Error occurred. Please <a href=\"$homepage_url$\" target=\"_blank\">contact developer</a> with file you were trying to import and this message:",
