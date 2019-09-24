@@ -53,3 +53,7 @@ strong.experimental {
 .importDlg.hasDuplicate .importDlg-hasDuplicate {
     display: block;
 }
+
+.overrideOption {
+    display: inline-block;
+}

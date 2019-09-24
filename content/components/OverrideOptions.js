@@ -14,7 +14,7 @@ export class OverrideOptions extends Component {
         super();
         this._prefix = props.prefix;
         this.onInput = props.onInput;
-        this.cls = props.cls || `overrideOptions-${props.prefix}`;
+        this.cls = [`overrideOptions-${props.prefix}`, props.cls].join(' ');
 
         this._loadOverrideOptions();
     }
@@ -48,23 +48,23 @@ export class OverrideOptions extends Component {
     render() {
         return this.html`                
             <div class="${this.cls}">
-                <label>
+                <label class="overrideOption">
                     <input type="checkbox" checked="${this.state.overrideTitle}" name="overrideTitle" onchange="${this}"/>
                     ${chrome.i18n.getMessage('overrideTitle')}
                 </label>
-                <label>
+                <label class="overrideOption">
                     <input type="checkbox" checked="${this.state.overrideMeta}" name="overrideMeta" onchange="${this}"/>
                     ${chrome.i18n.getMessage('overrideMeta')}
                 </label>
-                <label>
+                <label class="overrideOption">
                     <input type="checkbox" checked="${this.state.overrideScript}" name="overrideScript" onchange="${this}"/>
                     ${chrome.i18n.getMessage('overrideScript')}
                 </label>
-                <label>
+                <label class="overrideOption">
                     <input type="checkbox" checked="${this.state.overrideStyleSheet}" name="overrideStyleSheet" onchange="${this}"/>
                     ${chrome.i18n.getMessage('overrideStyleSheet')}
                 </label>
-                <label>
+                <label class="overrideOption">
                     <input type="checkbox" checked="${this.state.overridePassages}" name="overridePassages" onchange="${this}"/>
                     ${chrome.i18n.getMessage('overridePassages')}
                 </label>
