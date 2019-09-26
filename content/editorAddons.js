@@ -67,6 +67,7 @@ function getBuiltinButtons(menu, toolbar) {
 export function attachShortcutToolbar(actionListener) {
     // waitForElement uses setTimeout inside, so it's possible to run several instances of async function in parallel
     let block = false;
+    let hotKeyListener;
     return async function() {
         if (block) {
             return;
@@ -81,7 +82,7 @@ export function attachShortcutToolbar(actionListener) {
 
         const options = await loadOptions();
         const btnConf = new ButtonsConfig(buttonsMap, options);
-        const hotKeyListener = new HotKeyListener(buttonsMap, options);
+        hotKeyListener = hotKeyListener || new HotKeyListener(buttonsMap, options);
 
         const menu = getMenu(toolbar);
         const builtinButtons = getBuiltinButtons(menu, toolbar);
