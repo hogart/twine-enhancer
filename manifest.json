@@ -25,7 +25,7 @@
 
     "background": {
         "scripts": [
-            "background/index.bundle.js"
+            "background/background.bundle.js"
         ],
         "persistent": false
     },
@@ -36,7 +36,7 @@
                 "http://twinery.org/2/*"
             ],
             "js": [
-                "./content/index.bundle.js"
+                "./content/content.bundle.js"
             ],
             "css": [
                 "./content/common.css",

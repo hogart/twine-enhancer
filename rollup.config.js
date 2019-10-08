@@ -19,7 +19,7 @@ const plugins = [
 const config = [{
     input: 'content/index.js',
     output: {
-        file: 'content/index.bundle.js',
+        file: 'content/content.bundle.js',
         format: 'iife',
         sourcemap: true,
     },
@@ -39,7 +39,7 @@ const config = [{
 }, {
     input: 'background/index.js',
     output: {
-        file: 'background/index.bundle.js',
+        file: 'background/background.bundle.js',
         format: 'esm',
         sourcemap: true,
     },
