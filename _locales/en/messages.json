@@ -1,31 +1,8 @@
 {
-  "importBtn": {
-    "message": "Import *.twee"
+  "extensionDescription": {
+    "message": "Unofficial enhancements and tuning for Twine (online version)"
   },
-  "importDlgTitle": {
-    "message": "Import *.twee/*.tw2"
-  },
-  "importDlgHelp": {
-    "message": "If there's already a story with the same name, it will be renamed as backup. Importing takes some time; page will automatically reload after."
-  },
-  "experimentalWarning": {
-    "message": "<strong style=\"color: red;\">Experimental feature!</strong> Make backup before proceed."
-  },
-  "addSnippetDlgHelp": {
-    "message": "Enter snippet code in <a href=\"https://twinery.org/cookbook/terms/terms_twee.html\" target=\"_blank\">twee format</a>."
-  },
-  "addSnippetDlgTitle": {
-    "message": "Insert snippet"
-  },
-  "exportAsTwee": {
-    "message": "Export as *.twee"
-  },
-  "snapPassages": {
-    "message": "Snap all passages (reloads page)"
-  },
-  "toggleDarkLightTheme": {
-    "message": "Toggle dark/light theme"
-  },
+
   "editJs": {
     "message": "Edit JavaScript"
   },
@@ -35,55 +12,101 @@
   "proofRead": {
     "message": "View Proofing Copy"
   },
-  "download": {
+  "publish": {
     "message": "Publish to File"
   },
+  "export": {
+    "message": "Export as *.twee"
+  },
+  "snap": {
+    "message": "Snap all passages (reloads page)"
+  },
+  "theme": {
+    "message": "Toggle dark/light theme"
+  },
+  "snippet": {
+    "message": "Insert snippet"
+  },
+  "run": {
+    "message": "Play this story"
+  },
+  "debug": {
+    "message": "Play this story in test mode"
+  },
+  "openOptions": {
+    "message": "Extension settings"
+  },
+
+  "importBtn": {
+    "message": "Import *.twee"
+  },
+  "importDlgTitle": {
+    "message": "Import *.twee/*.tw2"
+  },
+  "importDlgHelp": {
+    "message": "Importing takes some time; page will automatically reload after."
+  },
+  "importDlgHasDuplicate": {
+    "message": "Story with the same name detected."
+  },
+  "importDlgBackup": {
+    "message": "Backup existing story"
+  },
+  "importDlgMerge": {
+    "message": "Merge with existing story"
+  },
+  "importDlgError": {
+    "message": "Error occurred. Please <a href=\"$homepage_url$\" target=\"_blank\">contact developer</a> with file you were trying to import and this message:",
+    "placeholders": {
+      "homepage_url": {
+        "content": ""
+      }
+    }
+  },
+
+  "addSnippetDlgHelp": {
+    "message": "Enter snippet code in <a href=\"https://twinery.org/cookbook/terms/terms_twee.html\" target=\"_blank\">twee format</a>.<br/><small>Page will reload.</small>"
+  },
+  "addSnippetDlgTitle": {
+    "message": "Insert snippet"
+  },
+
+  "overrideTitle": {
+    "message": "Override title"
+  },
+  "overrideMeta": {
+    "message": "Override meta-data"
+  },
+  "overrideScript": {
+    "message": "Override script"
+  },
+  "overrideStyleSheet": {
+    "message": "Override style"
+  },
+  "overridePassages": {
+    "message": "Override passages"
+  },
+
   "enableShortcuts": {
     "message": "Enable shortcut buttons and hotkeys"
   },
-  "enableEditJs": {
-    "message": "\"Edit JS\" button (Alt+j)"
-  },
-  "enableEditCss": {
-    "message": "\"Edit CSS\" button (Alt+c)"
-  },
-  "enableProofRead": {
-    "message": "\"Proof read\" button (F4)"
-  },
-  "enablePublish": {
-    "message": "\"Publish\" button (Ctrl+S)"
-  },
-  "enableImportExport": {
-    "message": "\"Export as *.twee\" (Ctrl+E) and \"Import *.twee\" buttons"
-  },
-  "enableSnap": {
-    "message": "\"Snap passages\" button (also reloads entire page)"
-  },
-  "enableThemeToggle": {
-    "message": "\"Dark/light theme\" button"
-  },
-  "enablePlay": {
-    "message": "\"Play this story\" hotkey (Shift+F10)"
-  },
-  "enableDebug": {
-    "message": "\"Play this story in test mode\" hotkey (Shift+F9)"
-  },
-  "enableSnippet": {
-    "message": "Insert snippet (Alt+S)"
-  },
+
   "styleChanges": {
     "message": "Stylistic changes"
   },
-  "enableAlwaysWide": {
+  "wideEditors": {
     "message": "Always wide editors and search field (also hides \"expand\" button)"
   },
-  "enableNeatPassages": {
+  "neatPassages": {
     "message": "\"Neat\" passages"
   },
   "otherSettings": {
     "message": "Other settings"
   },
-  "exportExtension": {
+  "import": {
+    "message": "\"Import *.twee\" button"
+  },
+  "tweeExtension": {
     "message": "Export file extension"
   },
   "savedSuccessfully": {
@@ -95,7 +118,14 @@
   "resetSettings": {
     "message": "Reset to defaults"
   },
+
+  "experimentalWarning": {
+    "message": "<strong class=\"experimental\">Experimental feature!</strong> Make backup before proceed."
+  },
   "confirm": {
     "message": "OK"
+  },
+  "cancel": {
+    "message": "Cancel"
   }
 }

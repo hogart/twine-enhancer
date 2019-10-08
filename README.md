@@ -3,24 +3,38 @@
 Unofficial browser extension for online [Twine](https://twinery.org/2/).
 
 * (Optionally) adds shortcut buttons to toolbar
-* (Optionally) use hotkeys for actions like running game, exporting to file and editing code
+* (Optionally) use customizable hotkeys for actions like running game, exporting to file and editing code
 * (Optionaly) adds button and shortcut for exporting story to *.twee/*.tw2 file
 * "Snap all passages to grid" feature
 * Toggle day/night theme from toolbar
 * (Optionally) Make all editor windows full-width always
 
-Version 1.5:
+######Version 1.5:
 
 * Russian locale is added
 * *.twee/*.tw2 import added
 
-Version 1.6:
+######Version 1.6:
 
 * Import snippets in *.twee format
 
-Version 1.6.1:
+######Version 1.6.1:
 
 * Firefox compatibility
+
+######Version 1.7.0
+
+* Hotkeys now can be customized by user
+* "Extension settings" button added
+* All options changes are applied on-the-fly, without page reloading
+
+######Version 1.8.0
+
+This brings much better import and snippet insertion control, as well as some bug fixes.
+
+* [Twee 3 spec](https://github.com/iftechfoundation/twine-specs/blob/master/twee-3-specification.md) compatible import/export
+* Snippet insertion now gives granular control over merge/override passages, story meta, style and script
+* *.twee import dialogue now allows user to decide what to do when story with the same name exists: backup old story, completely overwrite it or merge with granular control
 
 ## Development
 

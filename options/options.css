@@ -2,44 +2,20 @@ body {
     min-width: 600px;
 }
 
-form fieldset {
+fieldset {
     border: 1px solid grey;
     border-radius: 3px;
     margin-bottom: 1ex;
 }
 
-form label {
+label {
     display: block;
-}
-
-fieldset > label {
-    margin-left: 1em;
+    margin-left: 0.5em;
+    height: 25px;
 }
 
 label input[type="checkbox"] {
-    margin-right: .5em;
-}
-
-dl dt {
-    font-weight: bold;
-}
-
-details {
-    margin-bottom: 1em;
-}
-
-summary {
-    font-size: 120%;
-    font-weight: bold;
-    opacity: 0.8;
-}
-
-summary:hover {
-    opacity: 1;
-}
-
-summary:focus {
-    outline: none;
+    margin-right: 0.2em;
 }
 
 .saveStatus {
@@ -50,4 +26,22 @@ summary:focus {
 .saveStatus.show {
     opacity: 1;
     transition: 150ms opacity linear;
+}
+
+.shortcutGrid {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.shortcutGrid th {
+    text-align: left;
+}
+
+.shortcutGrid tr.shortcutItem:hover {
+    background-color: #f2f2f2;
+}
+
+.shortcutGrid tr.shortcutItem.noButton input[type="checkbox"] {
+    display: none;
 }

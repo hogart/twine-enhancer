@@ -1,3 +1,5 @@
+import { onHashMatch } from './utils/onHashMatch.js';
+
 const dashboardHashRe = /\/stories$/;
 
 export function detectDashboard(callback) {
@@ -5,7 +7,5 @@ export function detectDashboard(callback) {
         callback();
     }
 
-    window.addEventListener('hashchange', () => {
-        detectDashboard(callback);
-    }, false);
+    onHashMatch(dashboardHashRe, callback);
 }

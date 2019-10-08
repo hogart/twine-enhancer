@@ -6,11 +6,12 @@ export function extractStoryMetaRaw(storyId) {
 
 /**
  * @param {string} storyId
- * @return {object}
+ * @return {IStory}
  */
 export function extractStoryMeta(storyId) {
     const rawMeta = extractStoryMetaRaw(storyId);
     return {
+        id: rawMeta.id,
         title: rawMeta.name,
         ifid: rawMeta.ifid,
         lastEdit: rawMeta.lastUpdate,
@@ -46,6 +47,8 @@ export function extractPassages(storyId, startPassage = null) {
                         position: {
                             x: rawPassage.left,
                             y: rawPassage.top,
+                            width: rawPassage.width,
+                            height: rawPassage.height,
                         },
                     });
                 }

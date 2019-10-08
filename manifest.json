@@ -2,8 +2,8 @@
     "name": "Twine Enhancer",
     "short_name": "Twine++",
     "manifest_version": 2,
-    "version": "1.6.2",
-    "description": "Unofficial enhancements and tuning for Twine (online version)",
+    "version": "1.7.0",
+    "description": "__MSG_extensionDescription__",
     "homepage_url": "https://github.com/hogart/twine-enhancer",
     "default_locale": "en",
     "icons": {
@@ -23,15 +23,23 @@
         "storage"
     ],
 
+    "background": {
+        "scripts": [
+            "background/background.bundle.js"
+        ],
+        "persistent": false
+    },
+
     "content_scripts": [
         {
             "matches": [
                 "http://twinery.org/2/*"
             ],
             "js": [
-                "./content/bundle.js"
+                "./content/content.bundle.js"
             ],
             "css": [
+                "./content/common.css",
                 "./content/biggerEditors.css",
                 "./content/neaterPassages.css",
                 "./content/toolbarButtons.css"

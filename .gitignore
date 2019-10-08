@@ -1,5 +1,9 @@
 node_modules
-content/bundle.js
-content/bundle.js.map
+content/*.bundle.js
+content/*.bundle.js.map
+options/*.bundle.js
+options/*.bundle.js.map
+background/*.bundle.js
+background/*.bundle.js.map
 build
 twine_enhancer-*.zip

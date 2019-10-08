@@ -1,5 +1,7 @@
-import { loadOptions } from '../syncOptions';
+import { loadAndSubscribeToOptions } from '../syncOptions';
 
-loadOptions().then((options) => {
+function makePassagesNeat(options) {
     document.documentElement.classList.toggle('neatPassages', options.neatPassages);
-});
+}
+
+loadAndSubscribeToOptions(makePassagesNeat);

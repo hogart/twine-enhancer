@@ -1,22 +1,52 @@
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
-import html from 'rollup-plugin-html';
+import json from 'rollup-plugin-json';
 import { eslint } from 'rollup-plugin-eslint';
 
-export default {
+const plugins = [
+    resolve(),
+    commonjs(),
+    json({
+        preferConst: true,
+    }),
+    eslint({
+        exclude: ['manifest.json'],
+        formatter: 'unix',
+    }),
+];
+
+
+const config = [{
     input: 'content/index.js',
     output: {
-        file: 'content/bundle.js',
+        file: 'content/content.bundle.js',
         format: 'iife',
         sourcemap: true,
     },
-    plugins: [
-        resolve(),
-        commonjs(),
-        eslint({
-            exclude: ['**/*.html'],
-            formatter: 'unix',
-        }),
-        html(),
-    ],
-};
+    context: 'null',
+    moduleContext: 'null',
+    plugins,
+}, {
+    input: 'options/options.js',
+    output: {
+        file: 'options/options.bundle.js',
+        format: 'esm',
+        sourcemap: true,
+    },
+    context: 'null',
+    moduleContext: 'null',
+    plugins,
+}, {
+    input: 'background/index.js',
+    output: {
+        file: 'background/background.bundle.js',
+        format: 'esm',
+        sourcemap: true,
+    },
+    context: 'null',
+    moduleContext: 'null',
+    plugins,
+}];
+
+// eslint-disable-next-line import/no-default-export
+export default config;

@@ -1,33 +1,23 @@
+import hyper from 'hyperhtml';
+
 import { mergeTwee } from './story/mergeTwee';
 import { writeStory } from './story/writeStory';
-import { h } from './dom/h';
-import { Modal } from './dom/Modal';
+import { Modal } from './components/Modal';
+import { SnippetModal } from './components/SnippetModal';
 
-function createSnippetModal(onConfirm) {
-    const snippetInput = h('textarea', {style: 'width: 100%; font-face: monospace;'});
-    const snippetHint0 = h(`<p>${chrome.i18n.getMessage('experimentalWarning')}</p>`);
-    const snippetHint1 = h(
-        `<p>${chrome.i18n.getMessage('addSnippetDlgHelp')}</p>`
-    );
-    const confirmButton = h(`<button type="submit">${chrome.i18n.getMessage('confirm')}</button>`);
-    const snippetWrapper = h('form', {class: 'snippetWrapper'}, [snippetHint0, snippetInput, snippetHint1, confirmButton]);
-
-    snippetInput.addEventListener('change', (event) => {
-        event.preventDefault();
-
-        onConfirm(snippetInput.value.trim());
-
-        return false;
+function createSnippetModal(onSnippet) {
+    return new Modal({
+        slotted: SnippetModal,
+        title: chrome.i18n.getMessage('addSnippetDlgTitle'),
+        onSnippet,
     });
-
-    return new Modal(chrome.i18n.getMessage('addSnippetDlgTitle'), snippetWrapper);
 }
 
 let modal;
 
-function onSnippet(snippet) {
+function onSnippet(snippet, override) {
     if (snippet !== '') {
-        const merged = mergeTwee(snippet, {});
+        const merged = mergeTwee(snippet, override);
         writeStory(merged);
         location.reload();
     } else {
@@ -39,6 +29,10 @@ export function addSnippet() {
     if (!modal) {
         modal = createSnippetModal(onSnippet);
     }
+
+    const wrapper = document.createElement('div');
+    hyper(wrapper)`${modal}`;
+    document.body.appendChild(wrapper);
 
     modal.show();
 }

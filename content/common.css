@@ -1,0 +1,59 @@
+button[hidden] {
+    display: none !important;
+}
+
+button[disabled] {
+    opacity: 0.6;
+    pointer-events: none;
+    filter: grayscale(0.8);
+}
+textarea.code {
+    font-family: "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+}
+
+textarea.snippet {
+    width: 100%;
+    min-height: 10em;
+    resize: vertical;
+}
+
+.block {
+    display: block;
+}
+
+.mb-1 {
+    margin-bottom: 1ex;
+}
+
+strong.experimental {
+    color: red;
+}
+
+.importDlg-error {
+    display: none;
+}
+
+.importDlg.error .importDlg-error {
+    display: block;
+}
+
+.importDlg-merge {
+    display: none;
+}
+
+.importDlg.merge .importDlg-merge {
+    display: block;
+}
+
+
+.importDlg-hasDuplicate {
+    display: none;
+}
+
+.importDlg.hasDuplicate .importDlg-hasDuplicate {
+    display: block;
+}
+
+.overrideOption {
+    display: inline-block;
+}

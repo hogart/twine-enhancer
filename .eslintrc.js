@@ -1,5 +1,6 @@
 module.exports = {
     root: true,
+    plugins: ['import'],
     parserOptions: {
         parser: 'babel-eslint',
         sourceType: 'module',
@@ -45,5 +46,12 @@ module.exports = {
         'prefer-const': ['error'],
 
         'one-var': ['error', 'never'],
+
+        'import/no-unresolved': ['error', {caseSensitive: true}],
+        'import/named': ['error'],
+        'import/no-duplicates': ['error'],
+        'import/no-namespace': ['error'],
+        'import/no-default-export': ['error'],
+        'import/no-anonymous-default-export': ['error'],
     },
 };

@@ -8,87 +8,8 @@
 </head>
 
 <body>
-    <form class="js-optionsForm">
-        <fieldset>
-            <legend>
-                <label>
-                    <input type="checkbox" name="shortcutButtons"/>
-                    <span data-i18n="enableShortcuts"></span>
-                </label>
-            </legend>
+    <div class="js-optionsForm"></div>
 
-            <label>
-                <input type="checkbox" name="editJs"/>
-                <span data-i18n="enableEditJs"></span>
-            </label>
-            <label>
-                <input type="checkbox" name="editCss"/>
-                <span data-i18n="enableEditCss"></span>
-            </label>
-            <label>
-                <input type="checkbox" name="proofRead"/>
-                <span data-i18n="enableProofRead"></span>
-            </label>
-            <label>
-                <input type="checkbox" name="publish"/>
-                <span data-i18n="enablePublish"></span>
-            </label>
-            <label>
-                <input type="checkbox" name="export"/>
-                <span data-i18n="enableImportExport"></span>
-            </label>
-            <label>
-                <input type="checkbox" name="snap"/>
-                <span data-i18n="enableSnap"></span>
-            </label>
-            <label>
-                <input type="checkbox" name="theme"/>
-                <span data-i18n="enableThemeToggle"></span>
-            </label>
-            <label>
-                <input type="checkbox" name="run"/>
-                <span data-i18n="enablePlay"></span>
-            </label>
-            <label>
-                <input type="checkbox" name="debug"/>
-                <span data-i18n="enableDebug"></span>
-            </label>
-            <label>
-                <input type="checkbox" name="snippet"/>
-                <span data-i18n="enableSnippet"></span>
-            </label>
-        </fieldset>
-
-        <fieldset>
-            <legend data-i18n="styleChanges"></legend>
-            <label>
-                <input type="checkbox" name="wideEditors"/>
-                <span data-i18n="enableAlwaysWide"></span>
-            </label>
-            <label>
-                <input type="checkbox" name="neatPassages"/>
-                <span data-i18n="enableNeatPassages"></span>
-            </label>
-        </fieldset>
-
-        <fieldset>
-            <legend data-i18n="otherSettings"></legend>
-
-            <label>
-                <select name="tweeExtension">
-                    <option value="twee">*.twee</option>
-                    <option value="tw2">*.tw2</option>
-                </select>
-                <span data-i18n="exportExtension"></span>
-            </label>
-        </fieldset>
-
-        <p class="saveStatus js-saveStatus" data-i18n="savedSuccessfully"></p>
-
-        <button type="submit" data-i18n="saveSettings"></button>
-        <button type="reset" data-i18n="resetSettings"></button>
-    </form>
-
-    <script src="./options.js" type="module"></script>
+    <script src="./options.bundle.js" type="module"></script>
 </body>
 </html>
