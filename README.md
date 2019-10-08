@@ -9,20 +9,20 @@ Unofficial browser extension for online [Twine](https://twinery.org/2/).
 * Toggle day/night theme from toolbar
 * (Optionally) Make all editor windows full-width always
 
-######Version 1.5:
+###### Version 1.5:
 
 * Russian locale is added
 * *.twee/*.tw2 import added
 
-######Version 1.6:
+###### Version 1.6:
 
 * Import snippets in *.twee format
 
-######Version 1.6.1:
+###### Version 1.6.1:
 
 * Firefox compatibility
 
-######Version 1.7.0
+###### Version 1.7.0
 
 This version brings much better import and snippet insertion control, as well as improved customization
 
