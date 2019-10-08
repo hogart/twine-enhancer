@@ -22,7 +22,7 @@
   },
   "scripts": {
     "clean": "rm -rf build && mkdirp build/{content,background}",
-    "copydest": "cp -r ./manifest.json ./syncOptions.js ./options ./_locales ./icons build && cp -r content/content.bundle.js content/*.css build/content && cp -r background/index.bundle.js build/background",
+    "copydest": "cp -r ./manifest.json ./syncOptions.js ./options ./_locales ./icons build && cp -r content/*.bundle.js content/*.css build/content && cp -r background/*.bundle.js build/background",
     "pack": "web-ext build --overwrite-dest -s build -a .",
     "prebuild": "npm run clean",
     "postbuild": "npm run copydest && npm run pack",
