@@ -24,14 +24,11 @@ Unofficial browser extension for online [Twine](https://twinery.org/2/).
 
 ######Version 1.7.0
 
+This brings much better import and snippet insertion control, as well as improved customization
+
 * Hotkeys now can be customized by user
 * "Extension settings" button added
 * All options changes are applied on-the-fly, without page reloading
-
-######Version 1.8.0
-
-This brings much better import and snippet insertion control, as well as some bug fixes.
-
 * [Twee 3 spec](https://github.com/iftechfoundation/twine-specs/blob/master/twee-3-specification.md) compatible import/export
 * Snippet insertion now gives granular control over merge/override passages, story meta, style and script
 * *.twee import dialogue now allows user to decide what to do when story with the same name exists: backup old story, completely overwrite it or merge with granular control
