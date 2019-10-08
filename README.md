@@ -24,7 +24,7 @@ Unofficial browser extension for online [Twine](https://twinery.org/2/).
 
 ######Version 1.7.0
 
-This brings much better import and snippet insertion control, as well as improved customization
+This version brings much better import and snippet insertion control, as well as improved customization
 
 * Hotkeys now can be customized by user
 * "Extension settings" button added
