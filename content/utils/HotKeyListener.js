@@ -1,6 +1,10 @@
 export class HotKeyListener {
-    constructor(list, options) {
-        this.list = list;
+    /**
+     * @param {Array<IButtonConfig>} buttonsMap
+     * @param {typeof defaultOptions} options
+     */
+    constructor(buttonsMap, options) {
+        this.buttonsMap = buttonsMap;
         this.update(options);
 
         this.onKeyDown = this._onKeyDown.bind(this);
@@ -11,7 +15,7 @@ export class HotKeyListener {
     update(options) {
         const hkToAction = [];
 
-        this.list.forEach((button) => {
+        this.buttonsMap.forEach((button) => {
             const key = `${button.name}Hk`;
             if (options[key]) {
                 hkToAction.push({
@@ -63,5 +67,20 @@ export class HotKeyListener {
             return acc;
         }, {});
         return hotKey;
+    }
+
+    /**
+     * @param {Array<IButtonConfig>} buttonsMap
+     * @param {typeof defaultOptions} options
+     * @returns HotKeyListener
+     */
+    static getInstance(buttonsMap, options) {
+        if (this._instance) {
+            this._instance.update(options);
+        } else {
+            this._instance = new this(buttonsMap, options);
+        }
+
+        return this._instance;
     }
 }

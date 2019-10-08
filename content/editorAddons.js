@@ -4,12 +4,13 @@ import { loadOptions, subscribeToOptions } from '../syncOptions';
 import { waitForElement } from './utils/waitForElement';
 import { triggerEvent } from './utils/triggerEvent.js';
 import { ToolbarButtons } from './components/ToolbarButtons.js';
-import { ButtonsConfig, buttonsMap } from '../buttonsMap.js';
+import { buttonsMap } from '../buttonsMap.js';
 import { downloadTwee } from './downloadTwee.js';
 import { snapPassages } from './snapPassages.js';
 import { toggleTheme } from './toggleTheme.js';
 import { addSnippet } from './addSnippet.js';
 import { HotKeyListener } from './utils/HotKeyListener.js';
+import { ButtonsConfig } from './utils/ButtonsConfig.js';
 
 function getMenu(toolbar) {
     const menuButton = toolbar.querySelector('.storyName');
@@ -80,8 +81,8 @@ export function attachShortcutToolbar(actionListener) {
         }
 
         const options = await loadOptions();
-        const btnConf = new ButtonsConfig(buttonsMap, options);
-        const hotKeyListener = new HotKeyListener(buttonsMap, options);
+        const btnConf = ButtonsConfig.getInstance(buttonsMap, options);
+        const hotKeyListener = HotKeyListener.getInstance(buttonsMap, options);
 
         const menu = getMenu(toolbar);
         const builtinButtons = getBuiltinButtons(menu, toolbar);
