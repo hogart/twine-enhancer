@@ -59,7 +59,7 @@
     "message": "Произошла ошибка. Пожалуйста, <a href=\"$homepage_url$\" target=\"_blank\">свяжитесь с разработчиком</a> и предоставьте файл, который вы пытались импортировать и это сообщение:",
     "placeholders": {
       "homepage_url": {
-        "content": ""
+        "content": "https://github.com/hogart/twine-enhancer"
       }
     }
   },
