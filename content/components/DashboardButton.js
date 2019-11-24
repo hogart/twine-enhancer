@@ -1,12 +1,7 @@
-import { Component } from 'hyperhtml';
+import { L10nComponent } from '../../shared/L10nComponent';
 import { Icon } from './Icon.js';
 
-export class DashboardButton extends Component {
-    constructor(buttonConf) {
-        super();
-        this.setState(buttonConf);
-    }
-
+export class DashboardButton extends L10nComponent {
     onclick() {
         const message = { action: this.state.name };
         window.postMessage(message, '*');

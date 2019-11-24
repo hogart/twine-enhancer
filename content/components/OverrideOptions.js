@@ -1,11 +1,8 @@
-import { Component } from 'hyperhtml';
 import { loadOptions, saveOptions } from '../../syncOptions';
+import { upperFirst } from '../../shared/upperFirst';
+import { L10nComponent } from '../../shared/L10nComponent';
 
-function upperFirst(str) {
-    return str.slice(0, 1).toLocaleUpperCase() + str.slice(1);
-}
-
-export class OverrideOptions extends Component {
+export class OverrideOptions extends L10nComponent {
     get _fieldNames()  {
         return ['overrideTitle', 'overrideMeta', 'overrideScript', 'overrideStyleSheet', 'overridePassages'];
     }
@@ -50,23 +47,23 @@ export class OverrideOptions extends Component {
             <div class="${this.cls}">
                 <label class="overrideOption">
                     <input type="checkbox" checked="${this.state.overrideTitle}" name="overrideTitle" onchange="${this}"/>
-                    ${chrome.i18n.getMessage('overrideTitle')}
+                    ${this.$t('overrideTitle')}
                 </label>
                 <label class="overrideOption">
                     <input type="checkbox" checked="${this.state.overrideMeta}" name="overrideMeta" onchange="${this}"/>
-                    ${chrome.i18n.getMessage('overrideMeta')}
+                    ${this.$t('overrideMeta')}
                 </label>
                 <label class="overrideOption">
                     <input type="checkbox" checked="${this.state.overrideScript}" name="overrideScript" onchange="${this}"/>
-                    ${chrome.i18n.getMessage('overrideScript')}
+                    ${this.$t('overrideScript')}
                 </label>
                 <label class="overrideOption">
                     <input type="checkbox" checked="${this.state.overrideStyleSheet}" name="overrideStyleSheet" onchange="${this}"/>
-                    ${chrome.i18n.getMessage('overrideStyleSheet')}
+                    ${this.$t('overrideStyleSheet')}
                 </label>
                 <label class="overrideOption">
                     <input type="checkbox" checked="${this.state.overridePassages}" name="overridePassages" onchange="${this}"/>
-                    ${chrome.i18n.getMessage('overridePassages')}
+                    ${this.$t('overridePassages')}
                 </label>
             </div>
         `;

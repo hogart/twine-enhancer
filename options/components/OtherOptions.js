@@ -1,13 +1,8 @@
-import { Component } from 'hyperhtml';
+import { L10nComponent } from '../../shared/L10nComponent';
 import { Checkbox } from './Checkbox.js';
 import { Select } from './Select.js';
 
-export class OtherOptions extends Component {
-    constructor(props) {
-        super();
-        this.setState(props);
-    }
-
+export class OtherOptions extends L10nComponent {
     get extensionOptions() {
         return [
             {name: '*.twee', value: 'twee'},
@@ -18,7 +13,7 @@ export class OtherOptions extends Component {
     render() {
         return this.html`
             <fieldset>
-                <legend>${chrome.i18n.getMessage('otherSettings')}</legend>
+                <legend>${this.$t('otherSettings')}</legend>
                 
                 ${Checkbox.for({ enabled: this.state.import, name: 'import' })}
                 

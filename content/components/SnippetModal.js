@@ -1,20 +1,23 @@
-import { Component } from 'hyperhtml';
+import { AbstractModal } from '../../shared/AbstractModal';
 import { OverrideOptions } from './OverrideOptions.js';
+import { ModalButtons } from '../../shared/ModalButtons';
 
-export class SnippetModal extends Component {
+export class SnippetModal extends AbstractModal {
     constructor(props) {
-        super();
-        const {parent, ...otherProps} = props;
-        this._parent = parent;
-
-        this.setState({
-            value: '',
-            override: {},
-            ...otherProps,
-        });
+        super(props);
 
         this.onOverride = (override) => {
             this.setState({override});
+        };
+    }
+
+    propsToState(props) {
+        const otherProps = super.propsToState(props);
+
+        return {
+            value: '',
+            override: {},
+            ...otherProps,
         };
     }
 
@@ -23,7 +26,7 @@ export class SnippetModal extends Component {
     }
 
     cancel() {
-        this._parent.hide();
+        super.cancel();
         this.setState({value: ''});
     }
 
@@ -33,18 +36,18 @@ export class SnippetModal extends Component {
 
     render() {
         const overrideProps = {prefix: 'snippet', onInput: this.onOverride, cls: 'snippet'};
-        return this.html`
-            <p>${{html: chrome.i18n.getMessage('experimentalWarning')}}</p>
-            <p>${{html: chrome.i18n.getMessage('addSnippetDlgHelp')}}</p>
-            <textarea oninput="${this}" class="code snippet"></textarea>
-            
-            <div>
-                ${OverrideOptions.for(overrideProps)}
-            </div>
 
-            <div class="buttons">
-                <button onclick="${this}" data-call="cancel">${chrome.i18n.getMessage('cancel')}</button>
-                <button onclick="${this}" data-call="confirm" disabled="${this.state.value === ''}" class="primary">${chrome.i18n.getMessage('confirm')}</button>
+        return this.html`
+            <div class="snippetDlg">
+                <p>${{html: this.$t('experimentalWarning')}}</p>
+                <p>${{html: this.$t('addSnippetDlgHelp')}}</p>
+                <textarea oninput="${this}" class="code snippet"></textarea>
+                
+                <div>
+                    ${OverrideOptions.for(overrideProps)}
+                </div>
+    
+                ${ModalButtons.for({ctx: this, disabled: this.state.value === ''})}           
             </div>
         `;
     }

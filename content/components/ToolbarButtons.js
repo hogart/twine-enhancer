@@ -1,10 +1,11 @@
-import { Component } from 'hyperhtml';
+import { L10nComponent } from '../../shared/L10nComponent';
 import { Button } from './Button.js';
 
-export class ToolbarButtons extends Component {
-    constructor(buttons) {
-        super();
-        this.state = {buttons};
+export class ToolbarButtons extends L10nComponent {
+    propsToState(props) {
+        return {
+            buttons: props,
+        };
     }
 
     render() {

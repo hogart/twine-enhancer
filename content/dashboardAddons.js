@@ -4,12 +4,12 @@ import { loadOptions, subscribeToOptions } from '../syncOptions';
 import { waitForElement } from './utils/waitForElement';
 
 import { DashboardButton } from './components/DashboardButton.js';
-import { Modal } from './components/Modal';
+import { ModalWrapper } from '../shared/ModalWrapper';
 import { ImportModal } from './components/ImportModal';
 
 
 function createImportModal() {
-    return new Modal({
+    return new ModalWrapper({
         slotted: ImportModal,
         title: chrome.i18n.getMessage('importDlgTitle'),
     });

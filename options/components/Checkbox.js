@@ -1,12 +1,7 @@
-import { Component } from 'hyperhtml';
+import { L10nComponent } from '../../shared/L10nComponent';
 import { saveOptions } from '../../syncOptions.js';
 
-export class Checkbox extends Component {
-    constructor(props) {
-        super();
-        this.setState(props);
-    }
-
+export class Checkbox extends L10nComponent {
     onchange(e) {
         saveOptions({
             [this.state.name]: e.currentTarget.checked,
@@ -19,7 +14,7 @@ export class Checkbox extends Component {
         return this.html`
             <label>
                 <input type="checkbox" name="${name}" checked="${enabled}" onchange="${this}"/>
-                <span>${chrome.i18n.getMessage(name)}</span>
+                <span>${this.$t(name)}</span>
             </label>
         `;
     }

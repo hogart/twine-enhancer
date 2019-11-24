@@ -2,11 +2,11 @@ import hyper from 'hyperhtml';
 
 import { mergeTwee } from './story/mergeTwee';
 import { writeStory } from './story/writeStory';
-import { Modal } from './components/Modal';
+import { ModalWrapper } from '../shared/ModalWrapper';
 import { SnippetModal } from './components/SnippetModal';
 
 function createSnippetModal(onSnippet) {
-    return new Modal({
+    return new ModalWrapper({
         slotted: SnippetModal,
         title: chrome.i18n.getMessage('addSnippetDlgTitle'),
         onSnippet,

@@ -1,12 +1,7 @@
-import { Component } from 'hyperhtml';
+import { L10nComponent } from '../../shared/L10nComponent';
 import { Checkbox } from './Checkbox.js';
 
-export class StyleOptions extends Component {
-    constructor(props) {
-        super();
-        this.setState(props);
-    }
-
+export class StyleOptions extends L10nComponent {
     get styleFields() {
         return ['wideEditors', 'neatPassages'];
     }
@@ -14,7 +9,7 @@ export class StyleOptions extends Component {
     render() {
         return this.html`
             <fieldset>
-                <legend>${chrome.i18n.getMessage('styleChanges')}</legend>
+                <legend>${this.$t('styleChanges')}</legend>
                 
                 ${this.styleFields.map((name) => Checkbox.for({enabled: this.state[name], name}))}
             </fieldset>

@@ -1,12 +1,7 @@
-import { Component } from 'hyperhtml';
+import { L10nComponent } from '../../shared/L10nComponent';
 import { Shortcut } from './Shortcut.js';
 
-export class ShortcutsOptions extends Component {
-    constructor(props) {
-        super();
-        this.setState(props);
-    }
-
+export class ShortcutsOptions extends L10nComponent {
     // fields with visible buttons and optional shortcuts
     get shortcutFields() {
         return ['editJs', 'editCss', 'proofRead', 'publish', 'export', 'snap', 'theme', 'snippet', 'media', 'run', 'debug', 'openOptions'];
@@ -15,7 +10,7 @@ export class ShortcutsOptions extends Component {
     render() {
         return this.html`
             <fieldset>
-                <legend>${chrome.i18n.getMessage('enableShortcuts')}</legend>
+                <legend>${this.$t('enableShortcuts')}</legend>
                 <table class="shortcutGrid">
                     <thead>
                         <tr>

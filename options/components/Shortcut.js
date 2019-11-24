@@ -1,13 +1,13 @@
-import html from 'hyperhtml';
+import { L10nComponent } from '../../shared/L10nComponent';
 import { saveOptions } from '../../syncOptions.js';
 
-export class Shortcut extends html.Component {
+export class Shortcut extends L10nComponent {
     constructor(props) {
-        super();
+        super(props);
+
         const hkName = `${props.name}Hk`;
         this.setState({
             hkName,
-            ...props,
         });
     }
 
@@ -32,7 +32,7 @@ export class Shortcut extends html.Component {
         /* eslint-disable indent */
         return this.html`
             <tr class="${trClass}">
-                <td>${chrome.i18n.getMessage(name)}</td>
+                <td>${this.$t(name)}</td>
                 <td>
                     <input type="checkbox" name="${name}" checked="${enabled}" onchange="${this}"/>
                 </td>

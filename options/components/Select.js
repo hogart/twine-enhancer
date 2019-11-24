@@ -1,12 +1,7 @@
-import { Component } from 'hyperhtml';
+import { L10nComponent } from '../../shared/L10nComponent';
 import { saveOptions } from '../../syncOptions.js';
 
-class Option extends Component {
-    constructor(props) {
-        super();
-        this.setState(props);
-    }
-
+class Option extends L10nComponent {
     render() {
         const {value, name, parentVal } = this.state;
         return this.html`
@@ -15,12 +10,7 @@ class Option extends Component {
     }
 }
 
-export class Select extends Component {
-    constructor(props) {
-        super();
-        this.setState(props);
-    }
-
+export class Select extends L10nComponent {
     onchange(e) {
         saveOptions({
             [this.state.name]: e.currentTarget.value,
@@ -35,7 +25,7 @@ export class Select extends Component {
                 <select name="${name}" onchange="${this}">
                     ${values.map((nameVal) => Option.for({parentVal: value, ...nameVal}))}
                 </select>
-                <span>${chrome.i18n.getMessage(name)}</span>
+                <span>${this.$t(name)}</span>
             </label>
         `;
     }

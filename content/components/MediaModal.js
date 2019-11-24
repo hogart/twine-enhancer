@@ -1,27 +1,18 @@
-import { Component } from 'hyperhtml';
+import { AbstractModal } from '../../shared/AbstractModal';
+import { ModalButtons } from '../../shared/ModalButtons';
 
-export class MediaModal extends Component {
-    constructor(props) {
-        super();
-        const {parent, onMedia} = props;
-        this._parent = parent;
-        this.setState({
+export class MediaModal extends AbstractModal {
+    propsToState(props) {
+        const {onMedia} = super.propsToState(props);
+        return {
             files: [],
             onMedia,
-        });
+        };
     }
 
     onchange(event) {
         const files = event.currentTarget.files;
         this.setState({files});
-    }
-
-    cancel() {
-        this._hide();
-    }
-
-    _hide() {
-        this._parent.hide();
     }
 
     confirm() {
@@ -38,19 +29,16 @@ export class MediaModal extends Component {
 
         return this.html`
             <div class="${wrapperClass}">
-                <p>${{html: chrome.i18n.getMessage('experimentalWarning')}}</p>
-                <p>${{html: chrome.i18n.getMessage('addMediaWarning')}}</p>
-                <p>${{html: chrome.i18n.getMessage('addMediaDlgHelp')}}</p>
+                <p>${{html: this.$t('experimentalWarning')}}</p>
+                <p>${{html: this.$t('addMediaWarning')}}</p>
+                <p>${{html: this.$t('addMediaDlgHelp')}}</p>
                 
                 <label class="block mb-1">
                     <span>Choose as many files as you want</span>
                     <input type="file" accept="image/*,audio/*,video/*,.vtt" multiple name="file" onchange="${this}"/>
                 </label>
                 
-                <div class="buttons">
-                    <button onclick="${this}" data-call="cancel">${chrome.i18n.getMessage('cancel')}</button>
-                    <button onclick="${this}" data-call="confirm" disabled="${!hasFiles}" class="primary">${chrome.i18n.getMessage('confirm')}</button>
-                </div>
+                ${ModalButtons.for({ctx: this, disabled: !hasFiles})}
             </div>
         `;
     }

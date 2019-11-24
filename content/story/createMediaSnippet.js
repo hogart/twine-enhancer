@@ -1,4 +1,4 @@
-import { readFileAsync } from '../utils/readFileAsync';
+import { readFileAsync } from '../../shared/readFileAsync';
 
 /**
  * @param {File} image

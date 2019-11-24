@@ -1,13 +1,13 @@
-import { Component } from 'hyperhtml';
+import { L10nComponent } from './L10nComponent';
 
-export class Modal extends Component {
-    constructor(props) {
-        super();
-
+export class ModalWrapper extends L10nComponent {
+    propsToState(props) {
         const {slotted, ...otherProps} = props;
         this._slotted = slotted;
-
-        this.setState({hidden: true, ...otherProps});
+        return {
+            hidden: true,
+            ...otherProps,
+        };
     }
 
     onclick() {

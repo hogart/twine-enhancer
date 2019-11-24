@@ -1,20 +1,28 @@
-import { Component } from 'hyperhtml';
 import { importTwee } from 'aife-twee2/src/importTwee';
 
+import { AbstractModal } from '../../shared/AbstractModal';
 import { homepage_url } from '../../manifest.json';
 import { OverrideOptions } from './OverrideOptions.js';
-import { readTextFromFile } from '../utils/readTextFromFile.js';
+import { readTextFromFile } from '../../shared/readTextFromFile.js';
 import { detectDuplicates } from '../story/detectDuplicates.js';
 import { renameDuplicate } from '../story/renameDuplicate.js';
 import { inferPassagePosition } from '../story/inferPassagePosition.js';
 import { writeStory } from '../story/writeStory.js';
+import { ModalButtons } from '../../shared/ModalButtons';
 
-export class ImportModal extends Component {
+export class ImportModal extends AbstractModal {
     constructor(props) {
-        super();
-        const {parent, ...otherProps} = props;
-        this._parent = parent;
-        this.setState({
+        super(props);
+
+        this.onOverride = (override) => {
+            this.setState({override});
+        };
+    }
+
+    propsToState(props) {
+        const otherProps = super.propsToState(props);
+
+        return {
             error: '',
             makeBackup: true,
             files: [],
@@ -22,10 +30,6 @@ export class ImportModal extends Component {
             duplicate: null,
             override: {},
             ...otherProps,
-        });
-
-        this.onOverride = (override) => {
-            this.setState({override});
         };
     }
 
@@ -88,14 +92,6 @@ export class ImportModal extends Component {
         }
     }
 
-    cancel() {
-        this._hide();
-    }
-
-    _hide() {
-        this._parent.hide();
-    }
-
     render() {
         const {files, error, makeBackup, duplicate} = this.state;
         const hasFiles = files.length !== 0;
@@ -109,10 +105,10 @@ export class ImportModal extends Component {
 
         return this.html`
             <div class="${wrapperClass}">
-                <p>${{html: chrome.i18n.getMessage('experimentalWarning')}}</p>
-                <p>${{html: chrome.i18n.getMessage('importDlgHelp')}}</p>
+                <p>${{html: this.$t('experimentalWarning')}}</p>
+                <p>${{html: this.$t('importDlgHelp')}}</p>
                 
-                <p class="importDlg-error">${{html: chrome.i18n.getMessage('importDlgError', {homepage_url})}}</p>
+                <p class="importDlg-error">${{html: this.$t('importDlgError', {homepage_url})}}</p>
                 <pre class="importDlg-error">${error}</pre>
                 
                 <label class="block mb-1">
@@ -120,25 +116,22 @@ export class ImportModal extends Component {
                 </label>
                 
                 <div class="importDlg-hasDuplicate">
-                    <p>${chrome.i18n.getMessage('importDlgHasDuplicate')}</p>
+                    <p>${this.$t('importDlgHasDuplicate')}</p>
                     <label class="block mb-1">
                         <input type="radio" name="makeBackup" value="on" onchange="${this}" checked="${makeBackup}"/>
-                        ${chrome.i18n.getMessage('importDlgBackup')}
+                        ${this.$t('importDlgBackup')}
                     </label>
                     <label class="block mb-1">
                         <input type="radio" name="makeBackup" value="off" onchange="${this}" checked="${!makeBackup}"/>
-                        ${chrome.i18n.getMessage('importDlgMerge')}
+                        ${this.$t('importDlgMerge')}
                     </label>
                     
                     <div class="importDlg-merge">
                         ${OverrideOptions.for({prefix: 'story', onInput: this.onOverride, cls: 'story'})}
                     </div>
                 </div>
-
-                <div class="buttons">
-                    <button onclick="${this}" data-call="cancel">${chrome.i18n.getMessage('cancel')}</button>
-                    <button onclick="${this}" data-call="confirm" disabled="${!hasFiles}" class="primary">${chrome.i18n.getMessage('confirm')}</button>
-                </div>
+                
+                ${ModalButtons.for({ctx: this, disabled: !hasFiles})}
             </div>
         `;
     }

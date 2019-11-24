@@ -1,13 +1,13 @@
 import hyper from 'hyperhtml';
 
-import { Modal } from './components/Modal';
+import { ModalWrapper } from '../shared/ModalWrapper';
 import { MediaModal } from './components/MediaModal';
 import { mergeTwee } from './story/mergeTwee';
 import { writeStory } from './story/writeStory';
 import { createMediaSnippet } from './story/createMediaSnippet';
 
 function createMediaModal(onMedia) {
-    return new Modal({
+    return new ModalWrapper({
         slotted: MediaModal,
         title: chrome.i18n.getMessage('addMediaDlgTitle'),
         onMedia,
