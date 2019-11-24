@@ -12,6 +12,8 @@ import { addSnippet } from './addSnippet.js';
 import { addMedia } from './addMedia.js';
 import { HotKeyListener } from './utils/HotKeyListener.js';
 import { ButtonsConfig } from './utils/ButtonsConfig.js';
+import { getCurrentStoryIfid } from './story/getCurrentStoryIfid';
+import { extractStoryMetaRaw } from './story/extractStory';
 
 function getMenu(toolbar) {
     const menuButton = toolbar.querySelector('.storyName');
@@ -76,6 +78,11 @@ export function attachShortcutToolbar(actionListener) {
         } else {
             block = true;
         }
+
+        const storyId = getCurrentStoryIfid();
+        const {storyFormat} = extractStoryMetaRaw(storyId);
+        document.documentElement.dataset.storyFormat = storyFormat;
+
         const [toolbar] = await waitForElement('.toolbar.main .left');
 
         if (toolbar.querySelector('.toolbarButtons')) {

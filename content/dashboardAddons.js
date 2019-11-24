@@ -27,6 +27,9 @@ export function addButtons(actionListener) {
         } else {
             block = true;
         }
+
+        delete document.documentElement.dataset.storyFormat;
+
         const [listControlsUl] = await waitForElement('nav.listControls ul');
 
         // check if we already created buttons
