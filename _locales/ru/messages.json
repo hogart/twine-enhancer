@@ -103,6 +103,18 @@
   "enableShortcuts": {
     "message": "Включить доп. кнопки и хоткеи"
   },
+  "optionsActionName": {
+    "message": "Действие"
+  },
+  "optionsShowButton": {
+    "message": "Показывать кнопку?"
+  },
+  "optionsHotkey": {
+    "message": "Хоткей"
+  },
+  "optionsHotkeyHelp": {
+    "message": "Удалите текст, чтобы отключить хоткей"
+  },
 
   "styleChanges": {
     "message": "Визуальные изменения"

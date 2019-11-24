@@ -14,9 +14,9 @@ export class ShortcutsOptions extends L10nComponent {
                 <table class="shortcutGrid">
                     <thead>
                         <tr>
-                            <th>Action name</th>
-                            <th>Show button?</th>
-                            <th>Shortcut <abbr title="Clear text to disable shortcut">*</abbr></th>
+                            <th>${this.$t('optionsActionName')}</th>
+                            <th>${this.$t('optionsShowButton')}</th>
+                            <th>${this.$t('optionsHotkey')} <abbr title="${this.$t('optionsHotkeyHelp')}">*</abbr></th>
                         </tr>
                     </thead>
     

@@ -103,6 +103,18 @@
   "enableShortcuts": {
     "message": "Enable shortcut buttons and hotkeys"
   },
+  "optionsActionName": {
+    "message": "Action name"
+  },
+  "optionsShowButton": {
+    "message": "Show button?"
+  },
+  "optionsHotkey": {
+    "message": "Hotkey"
+  },
+  "optionsHotkeyHelp": {
+    "message": "Clear text to disable hotkey"
+  },
 
   "styleChanges": {
     "message": "Stylistic changes"
