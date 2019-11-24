@@ -27,6 +27,9 @@
   "snippet": {
     "message": "Вставить сниппет"
   },
+  "media": {
+    "message": "Создать медиа-параграф (только SugarCube 2.x)"
+  },
   "run": {
     "message": "Запустить историю"
   },
@@ -85,6 +88,16 @@
   },
   "overridePassages": {
     "message": "Заменить параграфы"
+  },
+
+  "addMediaDlgHelp": {
+    "message": "Загрузить изображения и другие медиа-элементы и создать специальные пассажи по <a href=\"http://www.motoslave.net/sugarcube/2/docs/#guide-media-passages\">документации SugarCube</a>."
+  },
+  "addMediaWarning": {
+    "message": "<strong class=\"limitations\">Ввиду технических ограничений, этот способ не рекомендуется для объемных и/или большого количества файлов.</strong>"
+  },
+  "addMediaDlgTitle": {
+    "message": "Создать медиа-параграфы (только SugarCube 2.x)"
   },
 
   "enableShortcuts": {

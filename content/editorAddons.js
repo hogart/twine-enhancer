@@ -9,6 +9,7 @@ import { downloadTwee } from './downloadTwee.js';
 import { snapPassages } from './snapPassages.js';
 import { toggleTheme } from './toggleTheme.js';
 import { addSnippet } from './addSnippet.js';
+import { addMedia } from './addMedia.js';
 import { HotKeyListener } from './utils/HotKeyListener.js';
 import { ButtonsConfig } from './utils/ButtonsConfig.js';
 
@@ -51,6 +52,7 @@ function getActionsMap(builtinButtons) {
             chrome.runtime.sendMessage({action: 'openOptions'});
         },
         snippet: addSnippet,
+        media: addMedia,
     };
 }
 

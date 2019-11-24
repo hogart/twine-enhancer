@@ -25,7 +25,8 @@ textarea.snippet {
     margin-bottom: 1ex;
 }
 
-strong.experimental {
+strong.experimental,
+strong.limitations {
     color: red;
 }
 

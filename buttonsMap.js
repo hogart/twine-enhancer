@@ -32,6 +32,10 @@ export const buttonsMap = [
         icon: 'puzzle-piece',
     },
     {
+        name: 'media',
+        icon: 'picture-o',
+    },
+    {
         name: 'openOptions',
         icon: 'cog',
     },

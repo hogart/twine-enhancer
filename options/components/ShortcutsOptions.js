@@ -9,7 +9,7 @@ export class ShortcutsOptions extends Component {
 
     // fields with visible buttons and optional shortcuts
     get shortcutFields() {
-        return ['editJs', 'editCss', 'proofRead', 'publish', 'export', 'snap', 'theme', 'snippet', 'run', 'debug', 'openOptions'];
+        return ['editJs', 'editCss', 'proofRead', 'publish', 'export', 'snap', 'theme', 'snippet', 'media', 'run', 'debug', 'openOptions'];
     }
 
     render() {

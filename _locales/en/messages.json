@@ -27,6 +27,9 @@
   "snippet": {
     "message": "Insert snippet"
   },
+  "media": {
+    "message": "Create media passage (SugarCube 2.x only)"
+  },
   "run": {
     "message": "Play this story"
   },
@@ -85,6 +88,16 @@
   },
   "overridePassages": {
     "message": "Override passages"
+  },
+
+  "addMediaDlgHelp": {
+    "message": "Upload images and other media and create special passages as per <a href=\"http://www.motoslave.net/sugarcube/2/docs/#guide-media-passages\">SugarCube docs</a>."
+  },
+  "addMediaWarning": {
+    "message": "<strong class=\"limitations\">Due to technical limitations, it's not recommended to use for many and/or large files.</strong>"
+  },
+  "addMediaDlgTitle": {
+    "message": "Create media passage (SugarCube 2.x only)"
   },
 
   "enableShortcuts": {

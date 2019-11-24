@@ -66,7 +66,7 @@ export function writeStory(story) {
         storyFormatVersion: story.formatVer,
         stylesheet: story.styleSheet,
         tagColors: story.tagColors,
-        zoom: 1,
+        zoom: story.zoom,
     });
 
     const existingStories = readStoryUids();

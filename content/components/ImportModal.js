@@ -5,7 +5,7 @@ import { homepage_url } from '../../manifest.json';
 import { OverrideOptions } from './OverrideOptions.js';
 import { readTextFromFile } from '../utils/readTextFromFile.js';
 import { detectDuplicates } from '../story/detectDuplicates.js';
-import { renameDuplicate } from '../../story/renameDuplicate.js';
+import { renameDuplicate } from '../story/renameDuplicate.js';
 import { inferPassagePosition } from '../story/inferPassagePosition.js';
 import { writeStory } from '../story/writeStory.js';
 
@@ -29,17 +29,17 @@ export class ImportModal extends Component {
         };
     }
 
-    onchange(e) {
-        const target = e.currentTarget;
+    onchange(event) {
+        const target = event.currentTarget;
         if (target.name === 'file') {
-            this.onFileChange(e);
+            this.onFileChange(event);
         } else if (target.name === 'makeBackup') {
-            this.onBackupChange(e);
+            this.onBackupChange(event);
         }
     }
 
-    async onFileChange(e) {
-        const files = e.currentTarget.files;
+    async onFileChange(event) {
+        const files = event.currentTarget.files;
 
         let story = null;
         let error = '';
