@@ -132,6 +132,9 @@
     "message": "Reset to defaults"
   },
 
+  "acceptsMultipleFiles": {
+    "message": "Accepts multiple files"
+  },
   "experimentalWarning": {
     "message": "<strong class=\"experimental\">Experimental feature!</strong> Make backup before proceed."
   },

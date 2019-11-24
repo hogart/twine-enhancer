@@ -34,8 +34,8 @@ export class MediaModal extends AbstractModal {
                 <p>${{html: this.$t('addMediaDlgHelp')}}</p>
                 
                 <label class="block mb-1">
-                    <span>Choose as many files as you want</span>
                     <input type="file" accept="image/*,audio/*,video/*,.vtt" multiple name="file" onchange="${this}"/>
+                    <p class="multipleFiles">${this.$t('acceptsMultipleFiles')}</p>
                 </label>
                 
                 ${ModalButtons.for({ctx: this, disabled: !hasFiles})}

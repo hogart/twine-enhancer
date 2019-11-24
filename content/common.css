@@ -58,3 +58,7 @@ strong.limitations {
 .overrideOption {
     display: inline-block;
 }
+
+.mediaDlg .multipleFiles {
+    font-size: 85%;
+}

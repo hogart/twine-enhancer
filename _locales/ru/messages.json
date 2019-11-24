@@ -132,6 +132,9 @@
     "message": "Настройки по умолчанию"
   },
 
+  "acceptsMultipleFiles": {
+    "message": "Можно выбрать несколько файлов"
+  },
   "experimentalWarning": {
     "message": "<strong class=\"experimental\">Экспериментальная функция!</strong> Скачайте резервную копию перед использованием."
   },
