@@ -33,6 +33,10 @@ This version brings much better import and snippet insertion control, as well as
 * Snippet insertion now gives granular control over merge/override passages, story meta, style and script
 * *.twee import dialogue now allows user to decide what to do when story with the same name exists: backup old story, completely overwrite it or merge with granular control
 
+###### Version 1.8.0
+
+* Support for SugarCube 2's media passages.
+
 ## Development
 
 You should have nodejs and npm installed.
