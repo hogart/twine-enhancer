@@ -30,6 +30,9 @@
   "media": {
     "message": "Создать медиа-параграф (только SugarCube 2.x)"
   },
+  "tags": {
+    "message": "Продвинутые цвета тегов"
+  },
   "run": {
     "message": "Запустить историю"
   },
@@ -72,6 +75,13 @@
   },
   "addSnippetDlgTitle": {
     "message": "Вставить сниппет"
+  },
+
+  "tagsDlgTitle": {
+    "message": "Управление цветами тегов"
+  },
+  "tagsDlgHelp": {
+    "message": "Введите любой валидный <a href=\"https://developer.mozilla.org/docs/Web/CSS/color_value\" target=\"_blank\">цвет CSS</a>."
   },
 
   "overrideTitle": {

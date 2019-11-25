@@ -1,3 +1,5 @@
+import hyper from 'hyperhtml';
+
 import { L10nComponent } from './L10nComponent';
 
 export class ModalWrapper extends L10nComponent {
@@ -36,5 +38,11 @@ export class ModalWrapper extends L10nComponent {
                     </div>
                 </div>
             </div>`;
+    }
+
+    static attach(modal) {
+        const wrapper = document.createElement('div');
+        hyper(wrapper)`${modal}`;
+        document.body.appendChild(wrapper);
     }
 }

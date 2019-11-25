@@ -62,3 +62,27 @@ strong.limitations {
 .mediaDlg .multipleFiles {
     font-size: 85%;
 }
+
+.colorInput {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid silver;
+    margin-bottom: 1em;
+    padding-bottom: 1ex;
+    align-items: center;
+}
+
+.colorInput .tagName {
+    width: 60%;
+    text-align: right;
+    margin-right: 1em;
+}
+
+.colorInput .swatch {
+    height: 25px;
+    min-width: 25px;
+    margin-right: 1em;
+}
+
+.colorInput input {
+}

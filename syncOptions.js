@@ -17,6 +17,8 @@ export const defaultOptions = {
     snippetHk: 'alt+s',
     media: true,
     mediaHk: 'alt+m',
+    tags: true,
+    tagsHk: 'alt+t',
     run: false,
     runHk: 'shift+f10',
     debug: false,

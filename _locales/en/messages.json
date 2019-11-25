@@ -30,6 +30,9 @@
   "media": {
     "message": "Create media passage (SugarCube 2.x only)"
   },
+  "tags": {
+    "message": "Advanced tags colors"
+  },
   "run": {
     "message": "Play this story"
   },
@@ -91,13 +94,20 @@
   },
 
   "addMediaDlgHelp": {
-    "message": "Upload images and other media and create special passages as per <a href=\"http://www.motoslave.net/sugarcube/2/docs/#guide-media-passages\">SugarCube docs</a>."
+    "message": "Upload images and other media and create special passages as per <a href=\"http://www.motoslave.net/sugarcube/2/docs/#guide-media-passages\" target=\"_blank\">SugarCube docs</a>."
   },
   "addMediaWarning": {
     "message": "<strong class=\"limitations\">Due to technical limitations, it's not recommended to use for many and/or large files.</strong>"
   },
   "addMediaDlgTitle": {
     "message": "Create media passage (SugarCube 2.x only)"
+  },
+
+  "tagsDlgTitle": {
+    "message": "Manage tag colors"
+  },
+  "tagsDlgHelp": {
+    "message": "Enter any valid <a href=\"https://developer.mozilla.org/docs/Web/CSS/color_value\" target=\"_blank\">CSS color</a>."
   },
 
   "enableShortcuts": {

@@ -36,6 +36,10 @@ export const buttonsMap = [
         icon: 'picture-o',
     },
     {
+        name: 'tags',
+        icon: 'tags',
+    },
+    {
         name: 'openOptions',
         icon: 'cog',
     },

@@ -14,6 +14,7 @@ import { HotKeyListener } from './utils/HotKeyListener.js';
 import { ButtonsConfig } from './utils/ButtonsConfig.js';
 import { getCurrentStoryIfid } from './story/getCurrentStoryIfid';
 import { extractStoryMetaRaw } from './story/extractStory';
+import { manageTags } from './manageTags';
 
 function getMenu(toolbar) {
     const menuButton = toolbar.querySelector('.storyName');
@@ -55,6 +56,7 @@ function getActionsMap(builtinButtons) {
         },
         snippet: addSnippet,
         media: addMedia,
+        tags: manageTags,
     };
 }
 

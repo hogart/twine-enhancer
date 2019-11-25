@@ -36,6 +36,7 @@ This version brings much better import and snippet insertion control, as well as
 ###### Version 1.8.0
 
 * Support for SugarCube 2's media passages.
+* Advanced tags colors management: use any number of colors!
 
 ## Development
 
@@ -43,9 +44,9 @@ You should have nodejs and npm installed.
 
 0. Clone or download repository
 0. Run `npm install` in project directory.
-    
+
     In **Chrome**, run `npm run chrome`, open `chrome://extensions` page and click "Load unpacked" button. Select project directory. You'll need to manually click "reload" button every time you make changes.
-    
+
     In **Firefox**, run `npm run ff`. This will open browser window with extension installed and will automatically reload extension on changes.
 
 
