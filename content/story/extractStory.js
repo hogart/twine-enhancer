@@ -20,6 +20,7 @@ export function extractStoryMeta(storyId) {
         format: rawMeta.storyFormat,
         formatVer: rawMeta.storyFormatVersion,
         tagColors: rawMeta.tagColors,
+        zoom: rawMeta.zoom,
 
         startPassage: rawMeta.startPassage,
     };
