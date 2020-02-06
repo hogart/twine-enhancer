@@ -18,7 +18,7 @@ export class ColorInput extends L10nComponent {
             <label class="colorInput">
                 <span class="tagName">${tag}</span>
                 <span class="swatch" style="${style}"></span>
-                <input type="text" value="${color}" onchange="${this}"/>
+                <input type="text" value="${color}" onchange="${this}" list="colors"/>
             </label>
         `;
     }

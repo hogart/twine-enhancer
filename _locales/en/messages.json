@@ -107,7 +107,7 @@
     "message": "Manage tag colors"
   },
   "tagsDlgHelp": {
-    "message": "Enter any valid <a href=\"https://developer.mozilla.org/docs/Web/CSS/color_value\" target=\"_blank\">CSS color</a>."
+    "message": "Enter any <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords\" target=\"_blank\">CSS color name</a>."
   },
 
   "enableShortcuts": {

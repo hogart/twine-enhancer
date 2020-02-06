@@ -1,6 +1,6 @@
 import { ModalWrapper } from '../shared/ModalWrapper';
 import {TagsModal} from './components/TagsModal';
-import { collectTags, saveTags } from './story/collectTags';
+import { collectTags } from './story/collectTags';
 
 function createTagsModal(onSubmit, tags) {
     return new ModalWrapper({
@@ -13,8 +13,7 @@ function createTagsModal(onSubmit, tags) {
 
 let modal;
 
-function onSubmit(newTags) {
-    saveTags(newTags);
+function onSubmit() {
     window.location.reload();
 }
 

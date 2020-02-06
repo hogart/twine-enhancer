@@ -39,6 +39,10 @@ This version brings much better import and snippet insertion control, as well as
 * Advanced tags colors management: use any number of colors!
 * Now works on both http and https domains.
 
+###### Version 1.8.1
+* Fix tags list isn't always up to date in tag color management window.
+* Provide a dropdown with allowed color names (Chrome only)
+
 ## Development
 
 You should have nodejs and npm installed.

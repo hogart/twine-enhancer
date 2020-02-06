@@ -41,7 +41,7 @@ export class HotKeyListener {
     static eventMatchesHotKey(event, hotKey) {
         return Object.keys(hotKey).reduce((acc, key) => {
             let compareTo = event[key];
-            if (key === 'code') {
+            if (compareTo && key === 'code') {
                 compareTo = compareTo.toLowerCase();
             }
             return acc && (hotKey[key] === compareTo);
