@@ -37,6 +37,7 @@ This version brings much better import and snippet insertion control, as well as
 
 * Support for SugarCube 2's media passages.
 * Advanced tags colors management: use any number of colors!
+* Now works on both http and https domains.
 
 ## Development
 
