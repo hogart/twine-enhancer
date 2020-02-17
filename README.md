@@ -43,6 +43,9 @@ This version brings much better import and snippet insertion control, as well as
 * Fix tags list isn't always up to date in tag color management window.
 * Provide a dropdown with allowed color names (Chrome only)
 
+###### Version 1.8.2
+* Fix .twee import doesn't correctly read story settings
+
 ## Development
 
 You should have nodejs and npm installed.
