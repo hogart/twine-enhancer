@@ -4,21 +4,21 @@
   "description": "Unofficial enhancements and tuning for Twine (online version)",
   "dependencies": {
     "aife-twee2": "^2.1.2",
-    "hyperhtml": "^2.30.5",
+    "hyperhtml": "^2.32.2",
     "tiny-uuid": "^1.0.0"
   },
   "devDependencies": {
     "@types/chrome": "0.0.88",
-    "concurrently": "^4.1.2",
-    "eslint": "^6.3.0",
-    "eslint-plugin-import": "^2.18.2",
-    "mkdirp": "^0.5.1",
-    "rollup": "^1.20.3",
+    "concurrently": "^5.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.20.2",
+    "mkdirp": "^1.0.3",
+    "rollup": "^2.3.2",
     "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-eslint": "^6.0.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "web-ext": "^3.1.1"
+    "web-ext": "^4.1.0"
   },
   "scripts": {
     "clean": "rm -rf build && mkdirp build/content build/background",
