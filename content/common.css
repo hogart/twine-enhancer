@@ -86,3 +86,69 @@ strong.limitations {
 
 .colorInput input {
 }
+
+.enhancer-modal-overlay {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.8);
+}
+
+.enhancer-modal-dialog {
+    position: fixed;
+    z-index: 101;
+    display: flex;
+    flex-direction: column;
+    top: 1.5rem;
+    left: calc((100vw - 40em) / 2);
+    background: #fff;
+    width: 40em;
+    max-height: calc(100% - 3rem);
+    border-radius: 2px;
+    box-shadow: 0 1px 8px rgba(0,0,0,.5);
+}
+
+.enhancer-modal-dialog header {
+    display: flex;
+    flex-shrink: 0;
+    height: 3rem;
+    padding-left: 1.5rem;
+}
+
+.enhancer-modal-dialog header .title {
+    line-height: 3rem;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.enhancer-modal-dialog header button {
+    width: 3rem;
+    line-height: 3rem;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    font-size: 120%;
+}
+
+.enhancer-modal-dialog .content {
+    padding: 0 1.5rem 1.5rem;
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow: auto;
+}
+
+.enhancer-modal-dialog .content > :first-child {
+    margin-top: 0;
+}
+.enhancer-modal-dialog .content > :last-child {
+    margin-bottom: 0;
+}
+
+.enhancer-modal-dialog .buttons {
+    text-align: right;
+    margin-bottom: 0;
+}

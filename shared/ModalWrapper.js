@@ -26,9 +26,9 @@ export class ModalWrapper extends L10nComponent {
 
     render() {
         return this.html`
-            <div class="modal-dialog-transition" hidden="${this.state.hidden}">
-                <div id="modal-overlay" class="fade-in-out-transition"></div>
-                <div class="modal-dialog">
+            <div hidden="${this.state.hidden}">
+                <div class="enhancer-modal-overlay fade-in-out-transition"></div>
+                <div class="enhancer-modal-dialog">
                     <header>
                         <h2 class="title"><span>${{html: this.state.title}}</span></h2>
                         <button class="close subtle" onclick="${this}"><i class="fa fa-times"></i></button>
