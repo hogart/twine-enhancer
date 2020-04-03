@@ -46,6 +46,9 @@ This version brings much better import and snippet insertion control, as well as
 ###### Version 1.8.2
 * Fix .twee import doesn't correctly read story settings
 
+###### Version 1.8.3
+* Fix extension's modal dialogs break some app's dialogs (namely, 'Formats')
+
 ## Development
 
 You should have nodejs and npm installed.
