@@ -1,6 +1,6 @@
 {
   "name": "twine-enhancer",
-  "version": "1.8.3",
+  "version": "1.8.4",
   "description": "Unofficial enhancements and tuning for Twine (online version)",
   "dependencies": {
     "aife-twee2": "^2.1.3",
