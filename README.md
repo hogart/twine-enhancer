@@ -49,6 +49,10 @@ This version brings much better import and snippet insertion control, as well as
 ###### Version 1.8.3
 * Fix extension's modal dialogs break some app's dialogs (namely, 'Formats')
 
+
+###### Version 1.8.4
+* Fix *.twee with CRLF import
+
 ## Development
 
 You should have nodejs and npm installed.
