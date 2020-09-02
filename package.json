@@ -3,7 +3,7 @@
   "version": "1.8.3",
   "description": "Unofficial enhancements and tuning for Twine (online version)",
   "dependencies": {
-    "aife-twee2": "^2.1.2",
+    "aife-twee2": "^2.1.3",
     "hyperhtml": "^2.32.2",
     "tiny-uuid": "^1.0.0"
   },
